@@ -1,0 +1,34 @@
+{
+  "name": "@callback/ghl",
+  "version": "1.0.0",
+  "description": "A public Node.js compatible SDK for working with HighLevel's (GHL's) Version 2 API.",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "rimraf ./dist && tsc",
+    "start": "npm run build && node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CallBackCode/ghlSDK.git"
+  },
+  "keywords": [
+    "GHL",
+    "HighLevel",
+    "GoHighLevel"
+  ],
+  "author": "CallBack",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CallBackCode/ghlSDK/issues"
+  },
+  "homepage": "https://github.com/CallBackCode/ghlSDK#readme",
+  "engines": {
+    "node": ">=20.12"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.4.5"
+  }
+}
