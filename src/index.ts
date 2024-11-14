@@ -1,44 +1,9 @@
-import businesses from "./objects/businesses";
+import { businesses } from "./objects/businesses";
+import { calendars } from "./objects/calendars";
 
 const GHL = {
   businesses,
-  calendars: {
-    get: () => {},
-    search: () => {},
-    create: () => {},
-    update: () => {},
-    delete: () => {},
-    freeSlots: {
-      get: () => {},
-    },
-    groups: {
-      get: () => {},
-      create: () => {},
-      update: () => {},
-      delete: () => {},
-      disable: () => {},
-      validateSlug: () => {},
-    },
-    appointments: {
-      get: () => {},
-      search: () => {},
-      create: () => {},
-      delete: () => {},
-    },
-    blocks: {
-      search: () => {},
-      create: () => {},
-      update: () => {},
-      delete: () => {},
-    },
-    resources: {
-      get: () => {},
-      search: () => {},
-      create: () => {},
-      update: () => {},
-      delete: () => {},
-    },
-  },
+  calendars,
   campaigns: {
     search: () => {},
   },

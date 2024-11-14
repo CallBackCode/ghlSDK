@@ -4,12 +4,10 @@ import listByLocation from "./listByLocation";
 import update from "./update";
 import del from "./delete";
 
-const businesses = {
+export const businesses = {
   get,
   listByLocation,
   create,
   update,
   delete: del,
 };
-
-export default businesses;
