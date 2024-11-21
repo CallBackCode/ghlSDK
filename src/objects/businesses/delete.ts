@@ -23,6 +23,7 @@ const create = async (
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
         Version: "2021-07-28",
         Authorization: `Bearer ${authToken}`,
       },

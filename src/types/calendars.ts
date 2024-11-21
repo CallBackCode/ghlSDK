@@ -57,7 +57,6 @@ export type CalendarGroupUpdateDTO = {
 
 export type CalendarEventDTO = {
   id: string; // Calendar Event ID (0007BWpSzSwfiuSl0tR2)
-  address: string; // Calendar Event address (https://meet.google.com/yqp-gogr-wve)
   title: string; // Calendar Event title (Appointment with GHL Dev team)
   calendarId: string; // Calendar ID (BqTwX8QFwXzpegMve9EQ)
   locationId: string; // Location ID (BqTwX8QFwXzpegMve9EQ)
@@ -66,12 +65,16 @@ export type CalendarEventDTO = {
   appointmentStatus: string; // Appointment Status (confirmed)
   assignedUserId: string; // Assigned User ID (YlWd2wuCAZQzh2cH1fVZ)
   users: string[]; // Users ([YlWd2wuCAZQzh2cH1fVZ, 9NkT25Vor1v4aQatFsv2])
-  notes: string; // Notes (Some dummy note)
   startTime: string; // Start Time (2023-09-25T16:00:00+05:30)
   endTime: string; // End Time (2023-09-25T16:00:00+05:30)
   dateAdded: string; // Date Added (2023-09-25T16:00:00+05:30)
   dateUpdated: string; // Date Updated (2023-09-25T16:00:00+05:30)
-  assignedResources: string[]; // Assigned Resources ([YlWd2wuCAZQzh2cH1fVZ, 9NkT25Vor1v4aQatFsv2])
+  address?: string; // Calendar Event address (https://meet.google.com/yqp-gogr-wve)
+  notes?: string; // Notes (Some dummy note)
+  assignedResources?: string[]; // Assigned Resources ([YlWd2wuCAZQzh2cH1fVZ, 9NkT25Vor1v4aQatFsv2])
+  isRecurring?: boolean; // Is Recurring (false)
+  rrule?: string; // Recurrence Rule (RRULE) as per the iCalendar (RFC 5545) specification for recurring events. DTSTART is not required, instance ids are calculated on the basis of startTime of the event. The rrule only be applied if ignoreFreeSlotValidation is true.
+  masterEventId?: string; // Master Event ID (0007BWpSzSwfiuSl0tR2)
 };
 
 export type CalendarGetEventsSuccessfulResponseDTO = {
@@ -433,6 +436,7 @@ export type CalendarAppointmentCreateUpdateSchemaDTO = {
   address?: string; // Calendar Event address (https://meet.google.com/yqp-gogr-wve)
   ignoreDateRange?: boolean; // Ignore Date Range (false)
   toNotify?: boolean; // if set to false, the automations will not run (true)
+  rrule?: string; // Recurrence Rule (RRULE) as per the iCalendar (RFC 5545) specification for recurring events. DTSTART is not required, instance ids are calculated on the basis of startTime of the event. The rrule only be applied if ignoreFreeSlotValidation is true.
 };
 
 export type CalendarAppointmentSchemaResponseDTO = {
@@ -446,6 +450,8 @@ export type CalendarAppointmentSchemaResponseDTO = {
   appointmentStatus?: string; // Appointment Status (confirmed)
   assignedUserId?: string; // Assigned User ID (YlWd2wuCAZQzh2cH1fVZ)
   address?: string; // Calendar Event address (https://meet.google.com/yqp-gogr-wve)
+  isRecurring?: boolean; // Is Recurring (false)
+  rrule?: string; // Recurrence Rule (RRULE) as per the iCalendar (RFC 5545) specification for recurring events. DTSTART is not required, instance ids are calculated on the basis of startTime of the event. The rrule only be applied if ignoreFreeSlotValidation is true.
 };
 
 export type CalendarAppointmentEditSchemaDTO = {
@@ -469,7 +475,7 @@ export type CalendarBlockSlotCreateSchemaDTO = {
   assignedUserId?: string; // Assigned User ID (YlWd2wuCAZQzh2cH1fVZ)
 };
 
-export type CalendarCreateBookedSlotSuccessfulResponseDTO = {
+export type CalendarCreateUpdateBlockedSlotSuccessfulResponseDTO = {
   id: string; // Block Slot ID (0007BWpSzSwfiuSl0tR2)
   locationId: string; // Location ID (BqTwX8QFwXzpegMve9EQ)
   title: string; // Title (Block Slot)

@@ -24,7 +24,9 @@ const create = async (
     const response = await fetch(URL, {
       method: "POST",
       headers: {
-        Version: "2021-07-28",
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Version: "2021-04-15",
         Authorization: `Bearer ${authToken}`,
       },
       body: JSON.stringify(options),

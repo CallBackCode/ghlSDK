@@ -2,33 +2,34 @@ import {
   BadRequestDTO,
   UnauthorizedDTO,
   UnprocessableDTO,
-} from "../../types/_global";
+} from "../../../types/_global";
 import type {
-  UpdateBusinessDTO,
-  BusienssCreateUpdateResponseDTO,
-  BusinessDTO,
-} from "../../types/businesses";
-const baseUrl = "https://services.leadconnectorhq.com/businesses";
+  CalendarAppointmentCreateUpdateSchemaDTO,
+  CalendarCreateUpdateBlockedSlotSuccessfulResponseDTO,
+  CalendarEventDTO,
+} from "../../../types/calendars";
+const baseUrl =
+  "https://services.leadconnectorhq.com/calendars/events/appointments";
 
 type ResponseTypes =
-  | BusienssCreateUpdateResponseDTO
+  | CalendarCreateUpdateBlockedSlotSuccessfulResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
-const create = async (
-  businessId: BusinessDTO["id"],
-  options: UpdateBusinessDTO,
+const update = async (
+  eventId: CalendarEventDTO["id"],
+  options: Partial<CalendarAppointmentCreateUpdateSchemaDTO>,
   authToken: string
 ): Promise<ResponseTypes> | null => {
   try {
-    const URL = `${baseUrl}/${businessId}`;
+    const URL = `${baseUrl}/${eventId}`;
     const response = await fetch(URL, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Version: "2021-07-28",
+        Version: "2021-04-15",
         Authorization: `Bearer ${authToken}`,
       },
       body: JSON.stringify(options),
@@ -41,4 +42,4 @@ const create = async (
   }
 };
 
-export default create;
+export default update;

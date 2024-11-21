@@ -37,7 +37,8 @@ const get = async (
     const response = await fetch(URL, {
       method: "GET",
       headers: {
-        Version: "2021-07-28",
+        Accept: "application/json",
+        Version: "2021-04-15",
         Authorization: `Bearer ${authToken}`,
       },
     });

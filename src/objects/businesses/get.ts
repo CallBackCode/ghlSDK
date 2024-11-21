@@ -24,6 +24,7 @@ const get = async (
     const response = await fetch(URL, {
       method: "GET",
       headers: {
+        Accept: "application/json",
         Version: "2021-07-28",
         Authorization: `Bearer ${authToken}`,
       },

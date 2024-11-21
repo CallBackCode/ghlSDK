@@ -1,26 +1,29 @@
 import {
   BadRequestDTO,
-  SuccessDeleteDTO,
   UnauthorizedDTO,
   UnprocessableDTO,
-} from "../../types/_global";
-import type { CalendarDTO } from "../../types/calendars";
-const baseUrl = "https://services.leadconnectorhq.com/calendars";
+} from "../../../types/_global";
+import type {
+  CalendarGetEventSuccessfulResponseDTO,
+  CalendarEventDTO,
+} from "../../../types/calendars";
+const baseUrl =
+  "https://services.leadconnectorhq.com/calendars/events/appointments";
 
 type ResponseTypes =
-  | SuccessDeleteDTO
+  | CalendarGetEventSuccessfulResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
-const del = async (
-  calendarId: CalendarDTO["id"],
+const get = async (
+  calendarId: CalendarEventDTO["id"],
   authToken: string
 ): Promise<ResponseTypes> | null => {
   try {
     const URL = `${baseUrl}/${calendarId}`;
     const response = await fetch(URL, {
-      method: "DELETE",
+      method: "GET",
       headers: {
         Accept: "application/json",
         Version: "2021-04-15",
@@ -35,4 +38,4 @@ const del = async (
   }
 };
 
-export default del;
+export default get;
