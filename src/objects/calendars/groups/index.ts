@@ -1,8 +1,15 @@
+import search from "./search";
+import create from "./create";
+import update from "./update";
+import del from "./delete";
+import disable from "./disable";
+import validateSlug from "./validateSlug";
+
 export const CalendarGroups = {
-  get: () => {},
-  create: () => {},
-  update: () => {},
-  delete: () => {},
-  disable: () => {},
-  validateSlug: () => {},
+  search,
+  create,
+  update,
+  delete: del,
+  disable,
+  validateSlug,
 };
