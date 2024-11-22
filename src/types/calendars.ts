@@ -519,10 +519,12 @@ export type CalendarGetCreateUpdateNoteSuccessfulResponseDto = {
   note: CalendarGetNoteSchemaDTO; // the note object ({...})
 };
 
+export type CalendarResourceTypeDTO = "equipments" | "rooms";
+
 export type CalendarResourceByIdResponseDTO = {
   locationId: string; // Location ID of the resource (ocQHyuzHvysMo5N5VsXc)
   name: string; // Name of the resource (yoga room)
-  resourceType: string; // Resource Type (rooms)
+  resourceType: CalendarResourceTypeDTO; // Resource Type (rooms)
   isActive: boolean; // Is Active (true)
   calendarIds: string[]; // Calendar IDs (["Jsj0xnlDDjw0SuvX1J13","oCM5feFC86FAAbcO7lJK"])
   description?: string; // Description of the resource
@@ -531,11 +533,12 @@ export type CalendarResourceByIdResponseDTO = {
   capacity?: number; // Capacity of the resource
 };
 
-export type CalendarCalendarResourceDTO = {
-  locationId?: string; // Location ID of the resource (ocQHyuzHvysMo5N5VsXc)
-  name?: string; // Name of the resource (yoga room)
-  isActive?: boolean; // Is Active (true)
-  calendarIds?: string[]; // Calendar IDs (["Jsj0xnlDDjw0SuvX1J13","oCM5feFC86FAAbcO7lJK"])
+export type CalendarResourceDTO = {
+  locationId: string; // Location ID of the resource (ocQHyuzHvysMo5N5VsXc)
+  name: string; // Name of the resource (yoga room)
+  isActive: boolean; // Is Active (true)
+  resourceType: CalendarResourceTypeDTO; // Resource Type (rooms)
+  calendarIds: string[]; // Calendar IDs (["Jsj0xnlDDjw0SuvX1J13","oCM5feFC86FAAbcO7lJK"])
   description?: string; // Description of the resource
   quantity?: number; // Quantity of the resource
   outOfService?: number; // Indicates if the resource is out of service
@@ -545,7 +548,7 @@ export type CalendarCalendarResourceDTO = {
 export type CalendarResourceResponseDTO = {
   locationId: string; // Location ID of the resource (ocQHyuzHvysMo5N5VsXc)
   name: string; // Name of the resource (yoga room)
-  resourceType: string; // Resource Type (rooms)
+  resourceType: CalendarResourceTypeDTO; // Resource Type (rooms)
   isActive: boolean; // Is Active (true)
   description?: string; // Description of the resource
   quantity?: number; // Quantity of the resource
@@ -553,7 +556,7 @@ export type CalendarResourceResponseDTO = {
   capacity?: number; // Capacity of the resource
 };
 
-export type CalendarCreateCalendarResourceDTO = {
+export type CalendarCreateResourceDTO = {
   locationId: string; // Location ID of the resource (ocQHyuzHvysMo5N5VsXc)
   name: string; // Name of the resource (yoga room)
   description: string; // Description of the resource
