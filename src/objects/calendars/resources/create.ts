@@ -8,6 +8,8 @@ import type {
   CalendarResourceResponseDTO,
   CalendarResourceTypeDTO,
 } from "../../../types/calendars";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
+
 const baseUrl = "https://services.leadconnectorhq.com/calendars/resources";
 
 type ResponseTypes =
@@ -21,8 +23,9 @@ const create = async (
   options: CalendarCreateResourceDTO,
   authToken: string
 ): Promise<ResponseTypes> | null => {
-  try {
-    const URL = `${baseUrl}/${resourceType}`;
+  const URL = `${baseUrl}/${resourceType}`;
+
+  const createResource = async () => {
     const response = await fetch(URL, {
       method: "POST",
       headers: {
@@ -35,6 +38,10 @@ const create = async (
     });
     const data: ResponseTypes = await response.json();
     return data;
+  };
+
+  try {
+    return await withExponentialBackoff(createResource);
   } catch (error) {
     console.error(error);
     return null;

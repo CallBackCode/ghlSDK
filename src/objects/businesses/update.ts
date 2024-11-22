@@ -8,6 +8,8 @@ import type {
   BusienssCreateUpdateResponseDTO,
   BusinessDTO,
 } from "../../types/businesses";
+import { withExponentialBackoff } from "../../contexts/requestUtils";
+
 const baseUrl = "https://services.leadconnectorhq.com/businesses";
 
 type ResponseTypes =
@@ -16,13 +18,14 @@ type ResponseTypes =
   | UnauthorizedDTO
   | UnprocessableDTO;
 
-const create = async (
+const update = async (
   businessId: BusinessDTO["id"],
   options: UpdateBusinessDTO,
   authToken: string
-): Promise<ResponseTypes> | null => {
-  try {
-    const URL = `${baseUrl}/${businessId}`;
+): Promise<ResponseTypes | null> => {
+  const URL = `${baseUrl}/${businessId}`;
+
+  const executeRequest = async (): Promise<ResponseTypes> => {
     const response = await fetch(URL, {
       method: "PUT",
       headers: {
@@ -33,12 +36,23 @@ const create = async (
       },
       body: JSON.stringify(options),
     });
-    const data: ResponseTypes = await response.json();
+
+    if (!response.ok) {
+      const error = new Error(`Request failed with status ${response.status}`);
+      (error as any).response = response;
+      throw error;
+    }
+
+    return response.json();
+  };
+
+  try {
+    const data = await withExponentialBackoff(executeRequest);
     return data;
   } catch (error) {
-    console.error(error);
+    console.error("Failed after retries:", error);
     return null;
   }
 };
 
-export default create;
+export default update;

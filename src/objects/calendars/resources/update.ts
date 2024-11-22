@@ -8,6 +8,8 @@ import type {
   CalendarResourceResponseDTO,
   CalendarResourceTypeDTO,
 } from "../../../types/calendars";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
+
 const baseUrl = "https://services.leadconnectorhq.com/calendars/resources";
 
 type ResponseTypes =
@@ -21,9 +23,10 @@ const update = async (
   resourceType: CalendarResourceTypeDTO,
   options: Partial<CalendarCreateResourceDTO & { isActive: boolean }>,
   authToken: string
-): Promise<ResponseTypes> | null => {
-  try {
-    const URL = `${baseUrl}/${resourceType}/${resourceId}`;
+): Promise<ResponseTypes | null> => {
+  const URL = `${baseUrl}/${resourceType}/${resourceId}`;
+
+  const executeRequest = async (): Promise<ResponseTypes> => {
     const response = await fetch(URL, {
       method: "PUT",
       headers: {
@@ -34,10 +37,21 @@ const update = async (
       },
       body: JSON.stringify(options),
     });
-    const data: ResponseTypes = await response.json();
+
+    if (!response.ok) {
+      const error = new Error(`Request failed with status ${response.status}`);
+      (error as any).response = response;
+      throw error;
+    }
+
+    return response.json();
+  };
+
+  try {
+    const data = await withExponentialBackoff(executeRequest);
     return data;
   } catch (error) {
-    console.error(error);
+    console.error("Failed after retries:", error);
     return null;
   }
 };

@@ -4,6 +4,8 @@ import {
   UnprocessableDTO,
 } from "../../types/_global";
 import type { CalendarsGetSuccessfulResponseDTO } from "../../types/calendars";
+import { withExponentialBackoff } from "../../contexts/requestUtils";
+
 const baseUrl = "https://services.leadconnectorhq.com/calendars";
 
 type SearchOptions = {
@@ -24,16 +26,19 @@ type ResponseTypes =
   | UnauthorizedDTO
   | UnprocessableDTO;
 
-const get = async (
+const search = async (
   options: SearchOptions,
   authToken: string
-): Promise<ResponseTypes> | null => {
-  try {
-    let params: Params = { locationId: options.locationId };
-    if (options.showDrafted)
-      params.showDrafted = options.showDrafted.toString();
-    if (options.groupId) params.groupId = options.groupId.toString();
+): Promise<ResponseTypes | null> => {
+  const { locationId, showDrafted, groupId } = options;
+
+  const executeRequest = async (): Promise<ResponseTypes> => {
+    let params: Params = { locationId };
+    if (showDrafted) params.showDrafted = showDrafted.toString();
+    if (groupId) params.groupId = groupId.toString();
+
     const URL = `${baseUrl}?` + new URLSearchParams(params);
+
     const response = await fetch(URL, {
       method: "GET",
       headers: {
@@ -42,12 +47,23 @@ const get = async (
         Authorization: `Bearer ${authToken}`,
       },
     });
-    const data: ResponseTypes = await response.json();
+
+    if (!response.ok) {
+      const error = new Error(`Request failed with status ${response.status}`);
+      (error as any).response = response;
+      throw error;
+    }
+
+    return response.json();
+  };
+
+  try {
+    const data = await withExponentialBackoff(executeRequest);
     return data;
   } catch (error) {
-    console.error(error);
+    console.error("Failed after retries:", error);
     return null;
   }
 };
 
-export default get;
+export default search;

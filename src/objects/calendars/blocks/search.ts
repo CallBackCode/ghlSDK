@@ -4,6 +4,8 @@ import {
   UnprocessableDTO,
 } from "../../../types/_global";
 import type { CalendarGetEventsSuccessfulResponseDTO } from "../../../types/calendars";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
+
 const baseUrl = "https://services.leadconnectorhq.com/calendars/blocked-slots";
 
 type QueryOptions = {
@@ -25,7 +27,7 @@ const search = async (
   options: QueryOptions,
   authToken: string
 ): Promise<ResponseTypes> | null => {
-  try {
+  const fetchSearchResults = async () => {
     const query = new URLSearchParams(options).toString();
     const URL = `${baseUrl}?${query}`;
     const response = await fetch(URL, {
@@ -38,6 +40,10 @@ const search = async (
     });
     const data: ResponseTypes = await response.json();
     return data;
+  };
+
+  try {
+    return await withExponentialBackoff(fetchSearchResults);
   } catch (error) {
     console.error(error);
     return null;

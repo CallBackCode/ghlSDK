@@ -8,6 +8,8 @@ import type {
   CalendarCreateUpdateBlockedSlotSuccessfulResponseDTO,
   CalendarEventDTO,
 } from "../../../types/calendars";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
+
 const baseUrl =
   "https://services.leadconnectorhq.com/calendars/events/appointments";
 
@@ -22,7 +24,7 @@ const update = async (
   options: Partial<CalendarAppointmentCreateUpdateSchemaDTO>,
   authToken: string
 ): Promise<ResponseTypes> | null => {
-  try {
+  const updateAppointment = async () => {
     const URL = `${baseUrl}/${eventId}`;
     const response = await fetch(URL, {
       method: "PUT",
@@ -36,6 +38,10 @@ const update = async (
     });
     const data: ResponseTypes = await response.json();
     return data;
+  };
+
+  try {
+    return await withExponentialBackoff(updateAppointment);
   } catch (error) {
     console.error(error);
     return null;

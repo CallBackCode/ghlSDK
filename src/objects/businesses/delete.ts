@@ -5,6 +5,8 @@ import {
   UnprocessableDTO,
 } from "../../types/_global";
 import type { BusinessDTO } from "../../types/businesses";
+import { withExponentialBackoff } from "../../contexts/requestUtils";
+
 const baseUrl = "https://services.leadconnectorhq.com/businesses";
 
 type ResponseTypes =
@@ -13,12 +15,13 @@ type ResponseTypes =
   | UnauthorizedDTO
   | UnprocessableDTO;
 
-const create = async (
+const del = async (
   businessId: BusinessDTO["id"],
   authToken: string
-): Promise<ResponseTypes> | null => {
-  try {
-    const URL = `${baseUrl}/${businessId}`;
+): Promise<ResponseTypes | null> => {
+  const URL = `${baseUrl}/${businessId}`;
+
+  const executeRequest = async (): Promise<ResponseTypes> => {
     const response = await fetch(URL, {
       method: "DELETE",
       headers: {
@@ -28,12 +31,23 @@ const create = async (
         Authorization: `Bearer ${authToken}`,
       },
     });
-    const data: ResponseTypes = await response.json();
+
+    if (!response.ok) {
+      const error = new Error(`Request failed with status ${response.status}`);
+      (error as any).response = response;
+      throw error;
+    }
+
+    return response.json();
+  };
+
+  try {
+    const data = await withExponentialBackoff(executeRequest);
     return data;
   } catch (error) {
-    console.error(error);
+    console.error("Failed after retries:", error);
     return null;
   }
 };
 
-export default create;
+export default del;

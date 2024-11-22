@@ -8,6 +8,8 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../../types/_global";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
+
 const baseUrl = "https://services.leadconnectorhq.com/calendars/events";
 
 type ResponseTypes =
@@ -21,8 +23,9 @@ const del = async (
   noteId: CalendarGetNoteSchemaDTO["id"],
   authToken: string
 ): Promise<ResponseTypes> | null => {
-  try {
-    const URL = `${baseUrl}/${appointmentId}/notes/${noteId}`;
+  const URL = `${baseUrl}/${appointmentId}/notes/${noteId}`;
+
+  const deleteNote = async () => {
     const response = await fetch(URL, {
       method: "DELETE",
       headers: {
@@ -33,6 +36,10 @@ const del = async (
     });
     const data: ResponseTypes = await response.json();
     return data;
+  };
+
+  try {
+    return await withExponentialBackoff(deleteNote);
   } catch (error) {
     console.error(error);
     return null;

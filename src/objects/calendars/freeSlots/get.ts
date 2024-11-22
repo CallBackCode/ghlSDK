@@ -8,6 +8,8 @@ import {
   CalendarGetFreeSlotsDTO,
   CalendarGetSlotsSuccessfulResponseDto,
 } from "../../../types/calendars";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
+
 const baseUrl = "https://services.leadconnectorhq.com/calendars";
 
 type ResponseTypes =
@@ -21,7 +23,7 @@ const get = async (
   options: CalendarGetFreeSlotsDTO,
   authToken: string
 ): Promise<ResponseTypes> | null => {
-  try {
+  const getFreeSlots = async () => {
     let URL = `${baseUrl}/${calendarId}/free-slots`;
     if (options) {
       const params = new URLSearchParams();
@@ -34,6 +36,7 @@ const get = async (
       });
       URL += `?${params.toString()}`;
     }
+
     const response = await fetch(URL, {
       method: "GET",
       headers: {
@@ -43,6 +46,10 @@ const get = async (
     });
     const data: ResponseTypes = await response.json();
     return data;
+  };
+
+  try {
+    return await withExponentialBackoff(getFreeSlots);
   } catch (error) {
     console.error(error);
     return null;

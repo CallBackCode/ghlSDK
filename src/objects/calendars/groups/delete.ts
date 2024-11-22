@@ -5,6 +5,8 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../../types/_global";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
+
 const baseUrl = "https://services.leadconnectorhq.com/calendars/groups";
 
 type ResponseTypes =
@@ -17,8 +19,9 @@ const del = async (
   groupId: CalendarGroupDTO["id"],
   authToken: string
 ): Promise<ResponseTypes> | null => {
-  try {
-    const URL = `${baseUrl}/${groupId}`;
+  const URL = `${baseUrl}/${groupId}`;
+
+  const deleteRequest = async () => {
     const response = await fetch(URL, {
       method: "DELETE",
       headers: {
@@ -29,6 +32,10 @@ const del = async (
     });
     const data: ResponseTypes = await response.json();
     return data;
+  };
+
+  try {
+    return await withExponentialBackoff(deleteRequest);
   } catch (error) {
     console.error(error);
     return null;

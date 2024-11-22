@@ -7,6 +7,8 @@ import type {
   CalendarEventDTO,
   CalendarGetNotesDTO,
 } from "../../../types/calendars";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
+
 const baseUrl = "https://services.leadconnectorhq.com/calendars/appointments";
 
 type QueryOptions = {
@@ -25,16 +27,18 @@ const search = async (
   options: QueryOptions,
   authToken: string
 ): Promise<ResponseTypes> | null => {
-  try {
-    const query = new URLSearchParams(
-      Object.entries(options).reduce((acc, [key, value]) => {
-        if (value !== undefined) {
-          acc[key] = value.toString();
-        }
-        return acc;
-      }, {} as Record<string, string>)
-    ).toString();
-    const URL = `${baseUrl}/${appointmentId}/notes?${query}`;
+  const query = new URLSearchParams(
+    Object.entries(options).reduce((acc, [key, value]) => {
+      if (value !== undefined) {
+        acc[key] = value.toString();
+      }
+      return acc;
+    }, {} as Record<string, string>)
+  ).toString();
+
+  const URL = `${baseUrl}/${appointmentId}/notes?${query}`;
+
+  const fetchNotes = async () => {
     const response = await fetch(URL, {
       method: "GET",
       headers: {
@@ -45,6 +49,10 @@ const search = async (
     });
     const data: ResponseTypes = await response.json();
     return data;
+  };
+
+  try {
+    return await withExponentialBackoff(fetchNotes);
   } catch (error) {
     console.error(error);
     return null;

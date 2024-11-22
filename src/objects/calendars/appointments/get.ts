@@ -7,6 +7,8 @@ import type {
   CalendarGetEventSuccessfulResponseDTO,
   CalendarEventDTO,
 } from "../../../types/calendars";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
+
 const baseUrl =
   "https://services.leadconnectorhq.com/calendars/events/appointments";
 
@@ -20,7 +22,7 @@ const get = async (
   calendarId: CalendarEventDTO["id"],
   authToken: string
 ): Promise<ResponseTypes> | null => {
-  try {
+  const fetchEvent = async () => {
     const URL = `${baseUrl}/${calendarId}`;
     const response = await fetch(URL, {
       method: "GET",
@@ -32,6 +34,10 @@ const get = async (
     });
     const data: ResponseTypes = await response.json();
     return data;
+  };
+
+  try {
+    return await withExponentialBackoff(fetchEvent);
   } catch (error) {
     console.error(error);
     return null;

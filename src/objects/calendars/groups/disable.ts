@@ -7,6 +7,8 @@ import type {
   CalendarCreateUpdateBlockedSlotSuccessfulResponseDTO,
   CalendarGroupDTO,
 } from "../../../types/calendars";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
+
 const baseUrl = "https://services.leadconnectorhq.com/calendars/groups";
 
 type ResponseTypes =
@@ -20,8 +22,9 @@ const disable = async (
   options: { isActive: boolean },
   authToken: string
 ): Promise<ResponseTypes> | null => {
-  try {
-    const URL = `${baseUrl}/${groupId}/status`;
+  const URL = `${baseUrl}/${groupId}/status`;
+
+  const disableRequest = async () => {
     const response = await fetch(URL, {
       method: "PUT",
       headers: {
@@ -34,6 +37,10 @@ const disable = async (
     });
     const data: ResponseTypes = await response.json();
     return data;
+  };
+
+  try {
+    return await withExponentialBackoff(disableRequest);
   } catch (error) {
     console.error(error);
     return null;

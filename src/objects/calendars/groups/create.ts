@@ -7,6 +7,8 @@ import type {
   CalendarGroupCreateDTO,
   CalendarGroupCreateSuccessfulResponseDTO,
 } from "../../../types/calendars";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
+
 const baseUrl = "https://services.leadconnectorhq.com/calendars/groups";
 
 type ResponseTypes =
@@ -19,8 +21,9 @@ const create = async (
   options: CalendarGroupCreateDTO,
   authToken: string
 ): Promise<ResponseTypes> | null => {
-  try {
-    const URL = `${baseUrl}`;
+  const URL = `${baseUrl}`;
+
+  const createGroup = async () => {
     const response = await fetch(URL, {
       method: "POST",
       headers: {
@@ -33,6 +36,10 @@ const create = async (
     });
     const data: ResponseTypes = await response.json();
     return data;
+  };
+
+  try {
+    return await withExponentialBackoff(createGroup);
   } catch (error) {
     console.error(error);
     return null;

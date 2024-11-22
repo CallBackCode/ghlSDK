@@ -7,6 +7,8 @@ import type {
   CalendarDTO,
   CalendarByIdSuccessfulResponseDTO,
 } from "../../types/calendars";
+import { withExponentialBackoff } from "../../contexts/requestUtils";
+
 const baseUrl = "https://services.leadconnectorhq.com/calendars";
 
 type ResponseTypes =
@@ -18,9 +20,11 @@ type ResponseTypes =
 const get = async (
   calendarId: CalendarDTO["id"],
   authToken: string
-): Promise<ResponseTypes> | null => {
-  try {
-    const URL = `${baseUrl}/${calendarId}`;
+): Promise<ResponseTypes | null> => {
+  const URL = `${baseUrl}/${calendarId}`;
+
+  // Define the request logic
+  const executeRequest = async (): Promise<ResponseTypes> => {
     const response = await fetch(URL, {
       method: "GET",
       headers: {
@@ -29,10 +33,21 @@ const get = async (
         Authorization: `Bearer ${authToken}`,
       },
     });
-    const data: ResponseTypes = await response.json();
+
+    if (!response.ok) {
+      const error = new Error(`Request failed with status ${response.status}`);
+      (error as any).response = response;
+      throw error;
+    }
+
+    return response.json();
+  };
+
+  try {
+    const data = await withExponentialBackoff(executeRequest);
     return data;
   } catch (error) {
-    console.error(error);
+    console.error("Failed after retries:", error);
     return null;
   }
 };

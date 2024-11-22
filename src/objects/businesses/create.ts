@@ -7,6 +7,8 @@ import type {
   CreateBusinessDTO,
   BusienssCreateUpdateResponseDTO,
 } from "../../types/businesses";
+import { withExponentialBackoff } from "../../contexts/requestUtils";
+
 const baseUrl = "https://services.leadconnectorhq.com/businesses";
 
 type ResponseTypes =
@@ -18,9 +20,10 @@ type ResponseTypes =
 const create = async (
   options: CreateBusinessDTO,
   authToken: string
-): Promise<ResponseTypes> | null => {
-  try {
-    const URL = `${baseUrl}`;
+): Promise<ResponseTypes | null> => {
+  const URL = `${baseUrl}`;
+
+  const executeRequest = async (): Promise<ResponseTypes> => {
     const response = await fetch(URL, {
       method: "POST",
       headers: {
@@ -31,10 +34,21 @@ const create = async (
       },
       body: JSON.stringify(options),
     });
-    const data: ResponseTypes = await response.json();
+
+    if (!response.ok) {
+      const error = new Error(`Request failed with status ${response.status}`);
+      (error as any).response = response;
+      throw error;
+    }
+
+    return response.json();
+  };
+
+  try {
+    const data = await withExponentialBackoff(executeRequest);
     return data;
   } catch (error) {
-    console.error(error);
+    console.error("Failed after retries:", error);
     return null;
   }
 };

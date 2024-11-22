@@ -8,6 +8,8 @@ import type {
   CalendarGetCreateUpdateNoteSuccessfulResponseDto,
   CalendarEventDTO,
 } from "../../../types/calendars";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
+
 const baseUrl =
   "https://services.leadconnectorhq.com/calendars/events/appointments";
 
@@ -22,8 +24,9 @@ const create = async (
   options: CalendarBlockSlotCreateSchemaDTO,
   authToken: string
 ): Promise<ResponseTypes> | null => {
-  try {
-    const URL = `${baseUrl}/${appointmentId}/notes`;
+  const URL = `${baseUrl}/${appointmentId}/notes`;
+
+  const createNote = async () => {
     const response = await fetch(URL, {
       method: "POST",
       headers: {
@@ -36,6 +39,10 @@ const create = async (
     });
     const data: ResponseTypes = await response.json();
     return data;
+  };
+
+  try {
+    return await withExponentialBackoff(createNote);
   } catch (error) {
     console.error(error);
     return null;

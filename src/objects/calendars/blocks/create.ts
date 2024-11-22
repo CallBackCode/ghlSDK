@@ -7,6 +7,8 @@ import type {
   CalendarBlockSlotCreateSchemaDTO,
   CalendarCreateUpdateBlockedSlotSuccessfulResponseDTO,
 } from "../../../types/calendars";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
+
 const baseUrl =
   "https://services.leadconnectorhq.com/calendars/events/block-slots";
 
@@ -20,7 +22,7 @@ const create = async (
   options: CalendarBlockSlotCreateSchemaDTO,
   authToken: string
 ): Promise<ResponseTypes> | null => {
-  try {
+  const createBlockSlot = async () => {
     const URL = `${baseUrl}`;
     const response = await fetch(URL, {
       method: "POST",
@@ -34,6 +36,10 @@ const create = async (
     });
     const data: ResponseTypes = await response.json();
     return data;
+  };
+
+  try {
+    return await withExponentialBackoff(createBlockSlot);
   } catch (error) {
     console.error(error);
     return null;

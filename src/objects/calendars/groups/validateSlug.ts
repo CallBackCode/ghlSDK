@@ -7,6 +7,8 @@ import type {
   CalendarValidateGroupSlugPostBodyDTO,
   CalendarValidateGroupSlugSuccessResponseDTO,
 } from "../../../types/calendars";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
+
 const baseUrl =
   "https://services.leadconnectorhq.com/calendars/groups/validate-slug";
 
@@ -20,8 +22,9 @@ const validateSlug = async (
   options: CalendarValidateGroupSlugPostBodyDTO,
   authToken: string
 ): Promise<ResponseTypes> | null => {
-  try {
-    const URL = `${baseUrl}`;
+  const URL = `${baseUrl}`;
+
+  const validateSlugRequest = async () => {
     const response = await fetch(URL, {
       method: "POST",
       headers: {
@@ -34,6 +37,10 @@ const validateSlug = async (
     });
     const data: ResponseTypes = await response.json();
     return data;
+  };
+
+  try {
+    return await withExponentialBackoff(validateSlugRequest);
   } catch (error) {
     console.error(error);
     return null;

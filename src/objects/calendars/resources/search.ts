@@ -7,6 +7,8 @@ import type {
   CalendarResourceDTO,
   CalendarResourceTypeDTO,
 } from "../../../types/calendars";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
+
 const baseUrl = "https://services.leadconnectorhq.com/calendars/resources";
 
 type QueryOptions = {
@@ -26,14 +28,16 @@ const search = async (
   options: QueryOptions,
   authToken: string
 ): Promise<ResponseTypes> | null => {
-  try {
-    const query = new URLSearchParams(
-      Object.entries(options).reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, string>)
-    ).toString();
-    const URL = `${baseUrl}/${resourceType}?${query}`;
+  const query = new URLSearchParams(
+    Object.entries(options).reduce((acc, [key, value]) => {
+      acc[key] = value.toString();
+      return acc;
+    }, {} as Record<string, string>)
+  ).toString();
+
+  const URL = `${baseUrl}/${resourceType}?${query}`;
+
+  const executeRequest = async (): Promise<ResponseTypes> => {
     const response = await fetch(URL, {
       method: "GET",
       headers: {
@@ -42,10 +46,21 @@ const search = async (
         Authorization: `Bearer ${authToken}`,
       },
     });
-    const data: ResponseTypes = await response.json();
+
+    if (!response.ok) {
+      const error = new Error(`Request failed with status ${response.status}`);
+      (error as any).response = response;
+      throw error;
+    }
+
+    return response.json();
+  };
+
+  try {
+    const data = await withExponentialBackoff(executeRequest);
     return data;
   } catch (error) {
-    console.error(error);
+    console.error("Failed after retries:", error);
     return null;
   }
 };
