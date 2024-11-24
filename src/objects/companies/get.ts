@@ -3,34 +3,28 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../types/_global";
-import { CampaignsSuccessfulResponseDto } from "../../types/campaigns";
+import {
+  CompaniesGetByIdSuccessfulResponseDTO,
+  CompaniesGetByIdDTO,
+} from "../../types/companies";
 import { withExponentialBackoff } from "../../contexts/requestUtils";
 
-const baseUrl = "https://services.leadconnectorhq.com/campaigns";
-
-type SearchOptions = {
-  locationId: string;
-  status?: string;
-};
-
-type Params = Partial<SearchOptions>;
+const baseUrl = "https://services.leadconnectorhq.com/companies";
 
 type ResponseTypes =
-  | CampaignsSuccessfulResponseDto
+  | CompaniesGetByIdSuccessfulResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
-const search = async (
-  options: SearchOptions,
+const get = async (
+  companyId: CompaniesGetByIdDTO["id"],
   authToken: string
 ): Promise<ResponseTypes | null> => {
+  const URL = `${baseUrl}/${companyId}`;
+
+  // Define the request logic
   const executeRequest = async (): Promise<ResponseTypes> => {
-    let params: Params = { locationId: options.locationId };
-    if (options.status) params.status = status.toString();
-
-    const URL = `${baseUrl}?` + new URLSearchParams(params);
-
     const response = await fetch(URL, {
       method: "GET",
       headers: {
@@ -58,4 +52,4 @@ const search = async (
   }
 };
 
-export default search;
+export default get;
