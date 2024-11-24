@@ -1,12 +1,11 @@
 import { businesses } from "./objects/businesses";
 import { calendars } from "./objects/calendars";
+import { campaigns } from "./objects/campaigns";
 
 const GHL = {
   businesses,
   calendars,
-  campaigns: {
-    search: () => {},
-  },
+  campaigns,
   companies: {
     get: () => {},
   },
