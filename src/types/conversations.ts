@@ -354,3 +354,24 @@ export type ConverstationGetMessageTranscriptionResponseDTO = {
   transcript: string; // Transcript of the sentence (This call may be recorded for quality assurance purposes.)
   confidence: number; // Confidence of the transcription (0.5)
 };
+
+export type ConversationSearchParams = {
+  locationId: string; // Location Id (ABCHkzuJQ8ZMd4Te84GK)
+  assignedTo?: string; // Assigned to user Id. Multiple values are comma separated. "unassigned" is used to fetch all unassigned conversations (ABCHkzuJQ8ZMd4Te84GK,fGiae4CHkzoskh8thsik)
+  contactId?: string; // Contact Id (9VEmS0si86GW6gXWU89b)
+  followers?: string; // User Id of the follower. Multiple values are comma separated. (ABCHkzuJQ8ZMd4Te84GK,fGiae4CHkzoskh8thsik)
+  id?: string; // Id of the conversation (ABCHkzuJQ8ZMd4Te84GK)
+  lastMessageAction?: string; // Action of the last outbound message in the conversation as string (manual)
+  lastMessageDirection?: CanvasDirection; // Direction of the last message in the conversation as string (inbound)
+  lastMessageType?: ConversationMessageTypeString; // Type of the last message in the conversation as a string (TYPE_SMS)
+  limit?: number; // Limit of conversations (20)
+  query?: string; // Search paramater as a string (Search string)
+  scoreProfile?: string; // Id of score profile on which conversations should get filtered out, works with scoreProfileMin & scoreProfileMax (ABCHkzuJQ8ZMd4Te84GK)
+  scoreProfileMax?: number; // Maximum value for score (ABCHkzuJQ8ZMd4Te84GK)
+  scoreProfileMin?: number; // Minimum value for score (ABCHkzuJQ8ZMd4Te84GK)
+  sort?: "asc" | "desc"; // Sort paramater (asc)
+  sortBy?: "last_manual_message_date" | "last_message_date" | "score_profile"; // Sorting of the conversation to be filtered as - manual messages or all messages (last_message_date)
+  sortScoreProfile?: string; // Id of score profile on which sortBy.ScoreProfile should sort on (ABCHkzuJQ8ZMd4Te84GK)
+  startAfterDate?: number; // Search to begin after the specified date - should contain the sort value of the last document (1600854)
+  status?: "all" | "read" | "unread" | "starred" | "recents"; // The status of the conversation to be filtered - all, read, unread, starred (all)
+};
