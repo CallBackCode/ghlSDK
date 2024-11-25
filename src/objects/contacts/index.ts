@@ -1,6 +1,5 @@
 import { campaigns } from "../campaigns";
 import { appointments } from "./appointments";
-import { business } from "./business";
 import { followers } from "./followers";
 import { notes } from "./notes";
 import { tags } from "./tags";
@@ -22,7 +21,6 @@ export const contacts = {
   update,
   upsert,
   delete: del,
-  business,
   tasks,
   appointments,
   tags,
