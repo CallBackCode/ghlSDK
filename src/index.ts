@@ -2,60 +2,14 @@ import { businesses } from "./objects/businesses";
 import { calendars } from "./objects/calendars";
 import { campaigns } from "./objects/campaigns";
 import { companies } from "./objects/companies";
+import { contacts } from "./objects/contacts";
 
 const GHL = {
   businesses,
   calendars,
   campaigns,
   companies,
-  contacts: {
-    get: () => {},
-    search: () => {},
-    findDuplicates: () => {},
-    create: () => {},
-    update: () => {},
-    upsert: () => {},
-    delete: () => {},
-    business: {
-      search: () => {},
-      addOrRemove: () => {},
-    },
-    tasks: {
-      get: () => {},
-      search: () => {},
-      create: () => {},
-      update: () => {},
-      updateStatus: () => {},
-      delete: () => {},
-    },
-    appointments: {
-      get: () => {},
-    },
-    tags: {
-      add: () => {},
-      remove: () => {},
-    },
-    notes: {
-      get: () => {},
-      search: () => {},
-      create: () => {},
-      update: () => {},
-      delete: () => {},
-    },
-    campaigns: {
-      add: () => {},
-      remove: () => {},
-      removeAll: () => {},
-    },
-    workflows: {
-      add: () => {},
-      remove: () => {},
-    },
-    followers: {
-      add: () => {},
-      remove: () => {},
-    },
-  },
+  contacts,
   conversations: {
     get: () => {},
     search: () => {},
