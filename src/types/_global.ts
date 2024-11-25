@@ -18,3 +18,7 @@ export type UnprocessableDTO = {
 export type SuccessDeleteDTO = {
   success?: boolean; // Success Status (true)
 };
+
+export type SuccededDeleteDTO = {
+  succeded?: boolean; // Success Status (true)
+};

@@ -1,7 +1,7 @@
 import { CalendarEventDTO } from "../../../types/calendars";
 import {
   BadRequestDTO,
-  SuccessDeleteDTO,
+  SuccededDeleteDTO,
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../../types/_global";
@@ -10,7 +10,7 @@ import { withExponentialBackoff } from "../../../contexts/requestUtils";
 const baseUrl = "https://services.leadconnectorhq.com/calendars/events";
 
 type ResponseTypes =
-  | SuccessDeleteDTO
+  | SuccededDeleteDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
