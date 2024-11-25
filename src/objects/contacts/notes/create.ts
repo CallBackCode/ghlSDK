@@ -2,28 +2,30 @@ import {
   BadRequestDTO,
   UnauthorizedDTO,
   UnprocessableDTO,
-} from "../../types/_global";
+} from "../../../types/_global";
 import type {
-  ContactSearchOptions,
-  ContactSearchSuccessResponseDTO,
-} from "../../types/contacts";
-import { withExponentialBackoff } from "../../contexts/requestUtils";
+  ContactGetCreateUpdateNoteSuccessfulResponseDto,
+  ContactNotesDTO,
+  ContactDTO,
+} from "../../../types/contacts";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
 
-const baseUrl = "https://services.leadconnectorhq.com/contacts/search";
+const baseUrl = "https://services.leadconnectorhq.com/contacts";
 
 type ResponseTypes =
-  | ContactSearchSuccessResponseDTO
+  | ContactGetCreateUpdateNoteSuccessfulResponseDto
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
-const search = async (
-  options: ContactSearchOptions,
+const create = async (
+  contactId: ContactDTO["id"],
+  options: ContactNotesDTO,
   authToken: string
 ): Promise<ResponseTypes | null> => {
-  const executeRequest = async (): Promise<ResponseTypes> => {
-    const URL = `${baseUrl}`;
+  const URL = `${baseUrl}/${contactId}/notes`;
 
+  const executeRequest = async (): Promise<ResponseTypes> => {
     const response = await fetch(URL, {
       method: "POST",
       headers: {
@@ -53,4 +55,4 @@ const search = async (
   }
 };
 
-export default search;
+export default create;

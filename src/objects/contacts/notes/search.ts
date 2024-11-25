@@ -2,37 +2,35 @@ import {
   BadRequestDTO,
   UnauthorizedDTO,
   UnprocessableDTO,
-} from "../../types/_global";
+} from "../../../types/_global";
 import type {
-  ContactSearchOptions,
-  ContactSearchSuccessResponseDTO,
-} from "../../types/contacts";
-import { withExponentialBackoff } from "../../contexts/requestUtils";
+  ContactDTO,
+  ContactGetCreateUpdateNoteSuccessfulResponseDto,
+} from "../../../types/contacts";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
 
-const baseUrl = "https://services.leadconnectorhq.com/contacts/search";
+const baseUrl = "https://services.leadconnectorhq.com/contacts";
 
 type ResponseTypes =
-  | ContactSearchSuccessResponseDTO
+  | ContactGetCreateUpdateNoteSuccessfulResponseDto
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
 const search = async (
-  options: ContactSearchOptions,
+  contactId: ContactDTO["id"],
   authToken: string
 ): Promise<ResponseTypes | null> => {
   const executeRequest = async (): Promise<ResponseTypes> => {
-    const URL = `${baseUrl}`;
+    const URL = `${baseUrl}/${contactId}/notes`;
 
     const response = await fetch(URL, {
-      method: "POST",
+      method: "GET",
       headers: {
-        "Content-Type": "application/json",
         Accept: "application/json",
         Version: "2021-07-28",
         Authorization: `Bearer ${authToken}`,
       },
-      body: JSON.stringify(options),
     });
 
     if (!response.ok) {
