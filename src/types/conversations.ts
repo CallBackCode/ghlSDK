@@ -279,10 +279,10 @@ type ConversationCallDataDTO = {
 
 export type ConversationProcessMessageBodyDTO = {
   conversationProviderId: string; // Conversation Provider Id (ABCHkzuJQ8ZMd4Te84GK)
+  conversationId: string; // Conversation Id (ABCHkzuJQ8ZMd4Te84GK)
   type: ConversationMessageType; // Type of the message (SMS)
   attachments?: string[]; // List of attachment URLs (["https://www.example.com/attachment1.pdf"])
   message?: string; // Body of the message (Hi there)
-  conversationId: string; // Conversation Id (ABCHkzuJQ8ZMd4Te84GK)
   html?: string; // HTML content of the email (Hi there)
   subject?: string; // Subject of the email (Order confirm)
   emailFrom?: string; // Email From (john@does.com)
@@ -321,6 +321,8 @@ export type ConversationUploadFilesDTO = {
   locationId: "string"; // Location Id (ABCHkzuJQ8ZMd4Te84GK)
   attachmentUrls: string; // Attachment URLs (https://www.example.com/attachment1.pdf)
 };
+
+export type ConversationUploadFilesResponseDTO = { uploadedFiles: object };
 
 export type ConversationUploadFilesErrorResponseDto = {
   status: number; // HTTP Status code of the request (404)
