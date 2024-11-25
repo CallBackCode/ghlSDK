@@ -3,6 +3,7 @@ import { calendars } from "./objects/calendars";
 import { campaigns } from "./objects/campaigns";
 import { companies } from "./objects/companies";
 import { contacts } from "./objects/contacts";
+import { conversations } from "./objects/conversations";
 
 const GHL = {
   businesses,
@@ -10,30 +11,7 @@ const GHL = {
   campaigns,
   companies,
   contacts,
-  conversations: {
-    get: () => {},
-    search: () => {},
-    create: () => {},
-    update: () => {},
-    delete: () => {},
-    emails: {
-      get: () => {},
-      cancelScheduled: () => {},
-    },
-    messages: {
-      get: () => {},
-      search: () => {},
-      send: () => {},
-      addInbound: () => {},
-      addExternalOutboundCall: () => {},
-      cancelScheduled: () => {},
-      uploadFileAttachments: () => {},
-      updateStatus: () => {},
-      getRecording: () => {},
-      getTranscript: () => {},
-      downloadTranscript: () => {},
-    },
-  },
+  conversations,
   courses: {
     import: () => {},
   },
