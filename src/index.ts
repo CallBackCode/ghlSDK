@@ -4,6 +4,8 @@ import { campaigns } from "./objects/campaigns";
 import { companies } from "./objects/companies";
 import { contacts } from "./objects/contacts";
 import { conversations } from "./objects/conversations";
+import { courses } from "./objects/courses";
+import { emails } from "./objects/emails";
 
 const GHL = {
   businesses,
@@ -12,9 +14,8 @@ const GHL = {
   companies,
   contacts,
   conversations,
-  courses: {
-    import: () => {},
-  },
+  courses,
+  emails,
   forms: {
     get: () => {},
     uploadFiles: () => {},
