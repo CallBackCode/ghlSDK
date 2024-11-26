@@ -6,6 +6,7 @@ import { contacts } from "./objects/contacts";
 import { conversations } from "./objects/conversations";
 import { courses } from "./objects/courses";
 import { emails } from "./objects/emails";
+import { forms } from "./objects/forms";
 
 const GHL = {
   businesses,
@@ -16,13 +17,7 @@ const GHL = {
   conversations,
   courses,
   emails,
-  forms: {
-    get: () => {},
-    uploadFiles: () => {},
-    submissions: {
-      get: () => {},
-    },
-  },
+  forms,
   invoices: {
     generateInvoiceNumber: () => {},
     get: () => {},
