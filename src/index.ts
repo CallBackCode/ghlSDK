@@ -7,6 +7,7 @@ import { conversations } from "./objects/conversations";
 import { courses } from "./objects/courses";
 import { emails } from "./objects/emails";
 import { forms } from "./objects/forms";
+import { invoices } from "./objects/invoices";
 
 const GHL = {
   businesses,
@@ -18,37 +19,7 @@ const GHL = {
   courses,
   emails,
   forms,
-  invoices: {
-    generateInvoiceNumber: () => {},
-    get: () => {},
-    search: () => {},
-    create: () => {},
-    update: () => {},
-    delete: () => {},
-    send: () => {},
-    void: () => {},
-    recordPayment: () => {},
-    template: {
-      get: () => {},
-      search: () => {},
-      create: () => {},
-      update: () => {},
-      delete: () => {},
-    },
-    schedule: {
-      get: () => {},
-      search: () => {},
-      create: () => {},
-      update: () => {},
-      delete: () => {},
-      startSchedule: () => {},
-      manageAutoPay: () => {},
-      cancelScheduled: () => {},
-    },
-    text2pay: {
-      createAndSend: () => {},
-    },
-  },
+  invoices,
   triggerLinks: {
     get: () => {},
     create: () => {},
