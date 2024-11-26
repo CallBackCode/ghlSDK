@@ -8,6 +8,7 @@ import { courses } from "./objects/courses";
 import { emails } from "./objects/emails";
 import { forms } from "./objects/forms";
 import { invoices } from "./objects/invoices";
+import { triggerLinks } from "./objects/triggerLinks";
 
 const GHL = {
   businesses,
@@ -20,12 +21,7 @@ const GHL = {
   emails,
   forms,
   invoices,
-  triggerLinks: {
-    get: () => {},
-    create: () => {},
-    update: () => {},
-    delete: () => {},
-  },
+  triggerLinks,
   subaccounts: {
     get: () => {},
     search: () => {},
