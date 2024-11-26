@@ -1,39 +1,35 @@
 import {
   BadRequestDTO,
+  SuccessDeleteDTO,
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../../types/_global";
-import type {
-  InvoicesUpdateScheduleDTO,
-  InvoicesUpdateScheduleResponseDTO,
-} from "../../../types/invoices";
+import type { InvoicesVoidDTO } from "../../../types/invoices";
 import { withExponentialBackoff } from "../../../contexts/requestUtils";
 
-const baseUrl = "https://services.leadconnectorhq.com/invoices/schedule";
+const baseUrl = "https://services.leadconnectorhq.com/invoices/template";
 
 type ResponseTypes =
-  | InvoicesUpdateScheduleResponseDTO
+  | SuccessDeleteDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
-const update = async (
-  scheduleId: string,
-  options: InvoicesUpdateScheduleDTO,
+const del = async (
+  templateId: string,
+  options: InvoicesVoidDTO,
   authToken: string
 ): Promise<ResponseTypes | null> => {
-  const URL = `${baseUrl}/${scheduleId}`;
+  const URL = `${baseUrl}/${templateId}?` + new URLSearchParams(options);
 
   const executeRequest = async (): Promise<ResponseTypes> => {
     const response = await fetch(URL, {
-      method: "PUT",
+      method: "DELETE",
       headers: {
-        "Content-Type": "application/json",
         Accept: "application/json",
         Version: "2021-07-28",
         Authorization: `Bearer ${authToken}`,
       },
-      body: JSON.stringify(options),
     });
 
     if (!response.ok) {
@@ -54,4 +50,4 @@ const update = async (
   }
 };
 
-export default update;
+export default del;

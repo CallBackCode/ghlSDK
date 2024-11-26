@@ -4,36 +4,53 @@ import {
   UnprocessableDTO,
 } from "../../../types/_global";
 import type {
-  InvoicesUpdateScheduleDTO,
-  InvoicesUpdateScheduleResponseDTO,
+  InvoicesListTemplatesResponseDTO,
+  InvoicesScheduleSearchOptions,
+  InvoicesSearchParams,
 } from "../../../types/invoices";
 import { withExponentialBackoff } from "../../../contexts/requestUtils";
 
-const baseUrl = "https://services.leadconnectorhq.com/invoices/schedule";
+const baseUrl = "https://services.leadconnectorhq.com/invoices/template";
 
 type ResponseTypes =
-  | InvoicesUpdateScheduleResponseDTO
+  | InvoicesListTemplatesResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
-const update = async (
-  scheduleId: string,
-  options: InvoicesUpdateScheduleDTO,
+const search = async (
+  options: InvoicesScheduleSearchOptions,
   authToken: string
 ): Promise<ResponseTypes | null> => {
-  const URL = `${baseUrl}/${scheduleId}`;
+  const {
+    endAt,
+    paymentMode,
+    search,
+    startAt,
+    status,
+    altId,
+    altType,
+    limit,
+    offset,
+  } = options;
 
   const executeRequest = async (): Promise<ResponseTypes> => {
+    let params: InvoicesSearchParams = { altId, altType, limit, offset };
+    if (endAt) params.endAt = endAt.toString();
+    if (paymentMode) params.paymentMode = paymentMode.toString();
+    if (search) params.search = search.toString();
+    if (startAt) params.startAt = startAt.toString();
+    if (status) params.status = status.toString();
+
+    const URL = `${baseUrl}?` + new URLSearchParams(params);
+
     const response = await fetch(URL, {
-      method: "PUT",
+      method: "GET",
       headers: {
-        "Content-Type": "application/json",
         Accept: "application/json",
         Version: "2021-07-28",
         Authorization: `Bearer ${authToken}`,
       },
-      body: JSON.stringify(options),
     });
 
     if (!response.ok) {
@@ -54,4 +71,4 @@ const update = async (
   }
 };
 
-export default update;
+export default search;

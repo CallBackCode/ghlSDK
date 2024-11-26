@@ -10,7 +10,7 @@ import type {
 } from "../../../types/invoices";
 import { withExponentialBackoff } from "../../../contexts/requestUtils";
 
-const baseUrl = "https://services.leadconnectorhq.com/invoices";
+const baseUrl = "https://services.leadconnectorhq.com/invoices/schedule";
 
 type ResponseTypes =
   | InvoicesListSchedulesResponseDTO

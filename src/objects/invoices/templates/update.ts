@@ -4,25 +4,25 @@ import {
   UnprocessableDTO,
 } from "../../../types/_global";
 import type {
-  InvoicesUpdateScheduleDTO,
-  InvoicesUpdateScheduleResponseDTO,
+  InvoicesUpdateTemplateDTO,
+  InvoicesUpdateTemplateResponseDTO,
 } from "../../../types/invoices";
 import { withExponentialBackoff } from "../../../contexts/requestUtils";
 
-const baseUrl = "https://services.leadconnectorhq.com/invoices/schedule";
+const baseUrl = "https://services.leadconnectorhq.com/invoices/template";
 
 type ResponseTypes =
-  | InvoicesUpdateScheduleResponseDTO
+  | InvoicesUpdateTemplateResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
 const update = async (
-  scheduleId: string,
-  options: InvoicesUpdateScheduleDTO,
+  templateId: string,
+  options: InvoicesUpdateTemplateDTO,
   authToken: string
 ): Promise<ResponseTypes | null> => {
-  const URL = `${baseUrl}/${scheduleId}`;
+  const URL = `${baseUrl}/${templateId}`;
 
   const executeRequest = async (): Promise<ResponseTypes> => {
     const response = await fetch(URL, {
