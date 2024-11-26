@@ -449,3 +449,32 @@ export type InvoicesRecordPaymentResponseDTO = {
   success: boolean; // Success Status (true)
   invoice: InvoicesTTPInvoiceDTO; // Invoice Details
 };
+
+export type InvoicesScheduleSearchOptions = {
+  altId: string; // location Id / company Id based on altType (6578278e879ad2646715ba9c)
+  altType: "location"; // Alt Type (location)
+  limit: string; // Limit the number of items to return (10)
+  offset: string; // Number of items to skip (10)
+  endAt?: string; // endAt in YYYY-MM-DD format (2023-01-01)
+  paymentMode?: "default" | "live"; // Payment Mode (live)
+  search?: string; // To search for an invoice by id / name / email / phoneNo (Alex)
+  startAt?: string; // startAt in YYYY-MM-DD format (2023-01-01)
+  status?: string; // status to be filtered
+};
+
+export interface InvoicesSearchOptions extends InvoicesScheduleSearchOptions {
+  contactId?: string; // Contact ID for the invoice (AmuzcoPBpgKeccNsFlib)
+}
+
+export type InvoicesSearchParams = {
+  altId: string; // location Id / company Id based on altType (6578278e879ad2646715ba9c)
+  altType: string; // Alt Type (location)
+  limit: string; // Limit the number of items to return (10)
+  offset: string; // Number of items to skip (10)
+  contactId?: string; // Contact ID for the invoice (AmuzcoPBpgKeccNsFlib)
+  endAt?: string; // endAt in YYYY-MM-DD format (2023-01-01)
+  paymentMode?: string; // Payment Mode (live)
+  search?: string; // To search for an invoice by id / name / email / phoneNo (Alex)
+  startAt?: string; // startAt in YYYY-MM-DD format (2023-01-01)
+  status?: string; // status to be filtered
+};
