@@ -11,8 +11,7 @@ import type {
 } from "../../../types/calendars";
 import { withExponentialBackoff } from "../../../contexts/requestUtils";
 
-const baseUrl =
-  "https://services.leadconnectorhq.com/calendars/events/appointments";
+const baseUrl = "https://services.leadconnectorhq.com/calendars/appointments";
 
 type ResponseTypes =
   | CalendarGetCreateUpdateNoteSuccessfulResponseDto

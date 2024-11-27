@@ -10,7 +10,7 @@ import {
 } from "../../../types/_global";
 import { withExponentialBackoff } from "../../../contexts/requestUtils";
 
-const baseUrl = "https://services.leadconnectorhq.com/calendars/events";
+const baseUrl = "https://services.leadconnectorhq.com/calendars/appointments";
 
 type ResponseTypes =
   | SuccessDeleteDTO
