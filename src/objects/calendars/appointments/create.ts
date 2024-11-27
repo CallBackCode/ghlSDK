@@ -4,7 +4,7 @@ import {
   UnprocessableDTO,
 } from "../../../types/_global";
 import type {
-  CalendarBlockSlotCreateSchemaDTO,
+  CalendarAppointmentCreateUpdateSchemaDTO,
   CalendarCreateUpdateBlockedSlotSuccessfulResponseDTO,
 } from "../../../types/calendars";
 import { withExponentialBackoff } from "../../../contexts/requestUtils"; // Assuming this function is defined
@@ -19,7 +19,7 @@ type ResponseTypes =
   | UnprocessableDTO;
 
 const create = async (
-  options: CalendarBlockSlotCreateSchemaDTO,
+  options: CalendarAppointmentCreateUpdateSchemaDTO,
   authToken: string
 ): Promise<ResponseTypes> | null => {
   const createAppointment = async () => {
