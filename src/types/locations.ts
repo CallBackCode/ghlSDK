@@ -380,3 +380,19 @@ export type LocationsTemplateResponseDTO = {
 export type LocationsCFSearchParamsDTO = {
   model: LocationsCFModal;
 };
+
+export type LocationsSearchOptions = {
+  companyId?: string; // The company/agency id on which you want to perform the search
+  email?: string; // The email of the location
+  limit?: string; // The value by which the results should be limited. Default will be 10
+  order?: "asc" | "desc"; // The order in which the results should be returned - Allowed values asc, desc. Default will be asc
+  skip?: string; // The value by which the results should be skipped. Default will be 0
+};
+
+export type LocationsSearchParams = {
+  companyId?: string; // The company/agency id on which you want to perform the search
+  email?: string; // The email of the location
+  limit?: string; // The value by which the results should be limited. Default will be 10
+  order?: string; // The order in which the results should be returned - Allowed values asc, desc. Default will be asc
+  skip?: string; // The value by which the results should be skipped. Default will be 0
+};

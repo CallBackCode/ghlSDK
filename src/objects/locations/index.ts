@@ -4,13 +4,18 @@ import { customValues } from "./customValues";
 import { tags } from "./tags";
 import { tasks } from "./tasks";
 import { timezones } from "./timezones";
+import get from "./get";
+import search from "./search";
+import create from "./create";
+import update from "./update";
+import del from "./delete";
 
 export const locations = {
-  get: () => {},
-  search: () => {},
-  create: () => {},
-  update: () => {},
-  delete: () => {},
+  get,
+  search,
+  create,
+  update,
+  delete: del,
   customFields,
   customValues,
   // snippets,
