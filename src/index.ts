@@ -9,6 +9,7 @@ import { emails } from "./objects/emails";
 import { forms } from "./objects/forms";
 import { invoices } from "./objects/invoices";
 import { triggerLinks } from "./objects/triggerLinks";
+import { locations } from "./objects/locations";
 
 const GHL = {
   businesses,
@@ -22,45 +23,7 @@ const GHL = {
   forms,
   invoices,
   triggerLinks,
-  subaccounts: {
-    get: () => {},
-    search: () => {},
-    create: () => {},
-    update: () => {},
-    delete: () => {},
-    customFields: {
-      get: () => {},
-      search: () => {},
-      create: () => {},
-      update: () => {},
-      delete: () => {},
-      uploadFile: () => {},
-    },
-    customValues: {
-      get: () => {},
-      search: () => {},
-      create: () => {},
-      update: () => {},
-      delete: () => {},
-    },
-    snippets: {
-      search: () => {},
-      delete: () => {},
-    },
-    tags: {
-      get: () => {},
-      search: () => {},
-      create: () => {},
-      update: () => {},
-      delete: () => {},
-    },
-    tasks: {
-      search: () => {},
-    },
-    timezones: {
-      list: () => {},
-    },
-  },
+  locations,
   media: {
     list: () => {},
     upload: () => {},
