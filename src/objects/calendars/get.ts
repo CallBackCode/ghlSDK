@@ -21,7 +21,7 @@ const get = async (
   calendarId: CalendarDTO["id"],
   authToken: string
 ): Promise<ResponseTypes | null> => {
-  const URL = `${baseUrl}/${calendarId}`;
+  const URL = `${baseUrl}/${calendarId}/`;
 
   // Define the request logic
   const executeRequest = async (): Promise<ResponseTypes> => {

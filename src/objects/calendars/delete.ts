@@ -19,7 +19,7 @@ const del = async (
   calendarId: CalendarDTO["id"],
   authToken: string
 ): Promise<ResponseTypes | null> => {
-  const URL = `${baseUrl}/${calendarId}`;
+  const URL = `${baseUrl}/${calendarId}/`;
 
   const executeRequest = async (): Promise<ResponseTypes> => {
     const response = await fetch(URL, {

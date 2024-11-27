@@ -22,7 +22,7 @@ const update = async (
   options: Partial<CalendarDTO>,
   authToken: string
 ): Promise<ResponseTypes | null> => {
-  const URL = `${baseUrl}/${calendarId}`;
+  const URL = `${baseUrl}/${calendarId}/`;
 
   const executeRequest = async (): Promise<ResponseTypes> => {
     const response = await fetch(URL, {

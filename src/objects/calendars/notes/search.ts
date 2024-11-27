@@ -12,8 +12,8 @@ import { withExponentialBackoff } from "../../../contexts/requestUtils";
 const baseUrl = "https://services.leadconnectorhq.com/calendars/appointments";
 
 type QueryOptions = {
-  limit?: number;
-  offset?: number;
+  limit: number;
+  offset: number;
 };
 
 type ResponseTypes =

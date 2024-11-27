@@ -21,7 +21,7 @@ const create = async (
   options: CalendarDTO,
   authToken: string
 ): Promise<ResponseTypes | null> => {
-  const URL = `${baseUrl}`;
+  const URL = `${baseUrl}/`;
 
   const executeRequest = async (): Promise<ResponseTypes> => {
     const response = await fetch(URL, {

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const requestUtils_1 = require("../../contexts/requestUtils");
 const baseUrl = "https://services.leadconnectorhq.com/calendars";
 const del = async (calendarId, authToken) => {
-    const URL = `${baseUrl}/${calendarId}`;
+    const URL = `${baseUrl}/${calendarId}/`;
     const executeRequest = async () => {
         const response = await fetch(URL, {
             method: "DELETE",

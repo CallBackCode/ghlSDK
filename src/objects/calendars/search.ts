@@ -37,7 +37,7 @@ const search = async (
     if (showDrafted) params.showDrafted = showDrafted.toString();
     if (groupId) params.groupId = groupId.toString();
 
-    const URL = `${baseUrl}?` + new URLSearchParams(params);
+    const URL = `${baseUrl}/?` + new URLSearchParams(params);
 
     const response = await fetch(URL, {
       method: "GET",
