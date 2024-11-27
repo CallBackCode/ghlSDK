@@ -46,14 +46,7 @@ const GHL = {
   snapshots,
   // socialPlanner,
   surveys,
-  users: {
-    get: () => {},
-    search: () => {},
-    listByLocation: () => {},
-    create: () => {},
-    update: () => {},
-    delete: () => {},
-  },
+  users,
   workflows: {
     get: () => {},
   },
