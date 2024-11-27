@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.GHL = void 0;
 const businesses_1 = require("./objects/businesses");
 const calendars_1 = require("./objects/calendars");
 const campaigns_1 = require("./objects/campaigns");
@@ -23,7 +24,7 @@ const snapshots_1 = require("./objects/snapshots");
 const surveys_1 = require("./objects/surveys");
 const users_1 = require("./objects/users");
 const workflows_1 = require("./objects/workflows");
-const GHL = {
+exports.GHL = {
     businesses: businesses_1.businesses,
     calendars: calendars_1.calendars,
     campaigns: campaigns_1.campaigns,
@@ -50,5 +51,5 @@ const GHL = {
     users: users_1.users,
     workflows: workflows_1.workflows,
 };
-exports.default = GHL;
+exports.default = exports.GHL;
 //# sourceMappingURL=index.js.map

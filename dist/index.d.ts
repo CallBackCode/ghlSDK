@@ -1,4 +1,4 @@
-declare const GHL: {
+export declare const GHL: {
     businesses: {
         get: (businessId: import("./types/businesses").BusinessDTO["id"], authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/businesses").BusinessGetResponseDTO) | null>;
         listByLocation: (locationId: import("./types/businesses").BusinessDTO["locationId"], authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/businesses").BusinessSearchResponseDTO) | null>;

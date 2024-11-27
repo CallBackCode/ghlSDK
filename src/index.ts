@@ -24,7 +24,7 @@ import { surveys } from "./objects/surveys";
 import { users } from "./objects/users";
 import { workflows } from "./objects/workflows";
 
-const GHL = {
+export const GHL = {
   businesses,
   calendars,
   campaigns,
