@@ -21,6 +21,8 @@ import { saas } from "./objects/saas";
 import { snapshots } from "./objects/snapshots";
 import { socialPlanner } from "./objects/socialPlanner";
 import { surveys } from "./objects/surveys";
+import { users } from "./objects/users";
+import { workflows } from "./objects/workflows";
 
 const GHL = {
   businesses,
@@ -47,9 +49,7 @@ const GHL = {
   // socialPlanner,
   surveys,
   users,
-  workflows: {
-    get: () => {},
-  },
+  workflows,
 };
 
 export default GHL;
