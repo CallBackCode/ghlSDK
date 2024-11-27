@@ -1,6 +1,6 @@
 import { customFields } from "./customFields";
 import { customValues } from "./customValues";
-import { snippets } from "./snippets";
+// import { snippets } from "./snippets";
 import { tags } from "./tags";
 import { tasks } from "./tasks";
 import { timezones } from "./timezones";
@@ -13,7 +13,7 @@ export const locations = {
   delete: () => {},
   customFields,
   customValues,
-  snippets,
+  // snippets,
   tags,
   tasks,
   timezones,
