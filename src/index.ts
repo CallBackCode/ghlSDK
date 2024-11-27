@@ -38,16 +38,7 @@ const GHL = {
   pipelines,
   payments,
   products,
-  saas: {
-    get: () => {},
-    update: () => {},
-    enable: () => {},
-    disable: () => {},
-    pause: () => {},
-    rebilling: {
-      update: () => {},
-    },
-  },
+  saas,
   snapshots: {
     get: () => {},
     getLastPush: () => {},
