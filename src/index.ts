@@ -11,6 +11,8 @@ import { invoices } from "./objects/invoices";
 import { triggerLinks } from "./objects/triggerLinks";
 import { locations } from "./objects/locations";
 import { blogs } from "./objects/blogs";
+import { media } from "./objects/media";
+import { funnels } from "./objects/funnels";
 
 const GHL = {
   businesses,
@@ -25,23 +27,9 @@ const GHL = {
   invoices,
   triggerLinks,
   locations,
-  // media: {
-  //   list: () => {},
-  //   upload: () => {},
-  //   delete: () => {},
-  // },
+  // media,
   blogs,
-  funnels: {
-    listFunnels: () => {},
-    listPages: () => {},
-    countPages: () => {},
-    redirects: {
-      list: () => {},
-      create: () => {},
-      update: () => {},
-      delete: () => {},
-    },
-  },
+  funnels,
   opportunities: {
     get: () => {},
     search: () => {},
