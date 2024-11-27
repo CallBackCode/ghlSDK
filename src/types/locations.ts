@@ -376,3 +376,7 @@ export type LocationsTemplateResponseDTO = {
   >; // The list of templates
   totalCount: number; // The total count of templates
 };
+
+export type LocationsCFSearchParamsDTO = {
+  model: LocationsCFModal;
+};
