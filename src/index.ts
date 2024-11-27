@@ -17,6 +17,8 @@ import { opportunities } from "./objects/opportunites";
 import { pipelines } from "./objects/pipelines";
 import { payments } from "./objects/payments";
 import { products } from "./objects/products";
+import { saas } from "./objects/saas";
+import { snapshots } from "./objects/snapshots";
 
 const GHL = {
   businesses,
@@ -39,12 +41,7 @@ const GHL = {
   payments,
   products,
   saas,
-  snapshots: {
-    get: () => {},
-    getLastPush: () => {},
-    getPushByDates: () => {},
-    createShareLink: () => {},
-  },
+  snapshots,
   socialPlanner: {
     oauth: {
       google: {
