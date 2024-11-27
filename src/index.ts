@@ -16,6 +16,7 @@ import { funnels } from "./objects/funnels";
 import { opportunities } from "./objects/opportunites";
 import { pipelines } from "./objects/pipelines";
 import { payments } from "./objects/payments";
+import { products } from "./objects/products";
 
 const GHL = {
   businesses,
@@ -36,20 +37,7 @@ const GHL = {
   opportunities,
   pipelines,
   payments,
-  products: {
-    get: () => {},
-    search: () => {},
-    create: () => {},
-    update: () => {},
-    delete: () => {},
-    prices: {
-      get: () => {},
-      search: () => {},
-      create: () => {},
-      update: () => {},
-      delete: () => {},
-    },
-  },
+  products,
   saas: {
     get: () => {},
     update: () => {},
