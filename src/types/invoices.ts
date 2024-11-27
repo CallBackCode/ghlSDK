@@ -1,4 +1,4 @@
-import { CountryCodes } from "./_global";
+import { CountryCodes, ScheduleOptionsDTO } from "./_global";
 
 export type InvoicesAddressDTO = {
   addressLine1?: string; // The address line 1 (123 Main St)
@@ -96,86 +96,8 @@ export type InvoicesContactDetailsDTO = {
   customFields?: string[]; // Custom Values
 };
 
-type InvoicesIntervalType =
-  | "yearly"
-  | "monthly"
-  | "weekly"
-  | "daily"
-  | "hourly"
-  | "minutely"
-  | "secondly";
-
-type InvoicesDayOfMonth =
-  | -1
-  | 1
-  | 2
-  | 3
-  | 4
-  | 5
-  | 6
-  | 7
-  | 8
-  | 9
-  | 10
-  | 11
-  | 12
-  | 13
-  | 14
-  | 15
-  | 16
-  | 17
-  | 18
-  | 19
-  | 20
-  | 21
-  | 22
-  | 23
-  | 24
-  | 25
-  | 26
-  | 27
-  | 28;
-
-type InvoicesDayOfWeek = "mo" | "tu" | "we" | "th" | "fr" | "sa" | "su";
-
-type InvoicesNumOfWeek = -1 | 1 | 2 | 3 | 4;
-
-type InvoicesMonthOfYear =
-  | "jan"
-  | "feb"
-  | "mar"
-  | "apr"
-  | "may"
-  | "jun"
-  | "jul"
-  | "aug"
-  | "sep"
-  | "oct"
-  | "nov"
-  | "dec";
-
-export type InvoicesCustomRRuleOptionsDTO = {
-  intervalType: InvoicesIntervalType; // Interval Type (monthly)
-  interval: number; // Interval (2)
-  startDate: string; // Start Date (2023-01-01)
-  startTime?: string; // Start Time (20:45:00)
-  endDate?: string; // End Date (2029-11-01)
-  endTime?: string; // End Time (18:45:00)
-  dayOfMonth?: InvoicesDayOfMonth; // Day of Month (15)
-  dayOfWeek?: InvoicesDayOfWeek; // Day of Week (mo)
-  numOfWeek?: InvoicesNumOfWeek; // Number of Week (1)
-  monthOfYear?: InvoicesMonthOfYear; // Month of Year (jan)
-  count?: number; // Count (10)
-  daysBefore?: number; // Days Before (5)
-};
-
-export type InvoicesScheduleOptionsDTO = {
-  executeAt: string; // Execute At (2023-01-01T20:45:00)
-  rrule: InvoicesCustomRRuleOptionsDTO; // Custom RRule Options
-};
-
 export interface InvoicesCreateScheduleDTO extends InvoicesCreateTemplateDTO {
-  schedule: InvoicesScheduleOptionsDTO; // Schedule Options
+  schedule: ScheduleOptionsDTO; // Schedule Options
   liveMode: boolean; // Live Mode (true)
 }
 
@@ -211,7 +133,7 @@ export type InvoicesDefaultResponseDTO = {
 
 export interface InvoicesGetScheduleResponseDTO
   extends InvoicesDefaultResponseDTO {
-  schedule: InvoicesScheduleOptionsDTO; // Schedule Options
+  schedule: ScheduleOptionsDTO; // Schedule Options
 }
 
 export type InvoicesCreateScheduleResponseDTO = InvoicesGetScheduleResponseDTO;
@@ -226,7 +148,7 @@ export type InvoicesUpdateScheduleDTO = {
   altType: "location"; // Alt Type (location)
   name: string; // Name of the Schedule (New Schedule)
   contactDetails: InvoicesContactDetailsDTO; // Contact Details
-  schedule: InvoicesScheduleOptionsDTO; // Schedule Options
+  schedule: ScheduleOptionsDTO; // Schedule Options
   liveMode: boolean; // Live Mode (true)
   businessDetails: InvoicesBusinessDetailsDTO; // Business Details
   currency: string; // Currency
