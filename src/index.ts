@@ -13,6 +13,8 @@ import { locations } from "./objects/locations";
 import { blogs } from "./objects/blogs";
 import { media } from "./objects/media";
 import { funnels } from "./objects/funnels";
+import { opportunities } from "./objects/opportunites";
+import { pipelines } from "./objects/pipelines";
 
 const GHL = {
   businesses,
@@ -30,22 +32,8 @@ const GHL = {
   // media,
   blogs,
   funnels,
-  opportunities: {
-    get: () => {},
-    search: () => {},
-    create: () => {},
-    update: () => {},
-    updateStatus: () => {},
-    upsert: () => {},
-    delete: () => {},
-    pipelines: {
-      list: () => {},
-    },
-    followers: {
-      add: () => {},
-      remove: () => {},
-    },
-  },
+  opportunities,
+  pipelines,
   payments: {
     integrations: {
       create: () => {},
