@@ -15,10 +15,11 @@ type ResponseTypes =
   | UnprocessableDTO;
 
 const listByLocation = async (
+  locationId: string,
   authToken: string
 ): Promise<ResponseTypes | null> => {
   const executeRequest = async (): Promise<ResponseTypes> => {
-    const URL = `${baseUrl}`;
+    const URL = `${baseUrl}/location/${locationId}`;
 
     const response = await fetch(URL, {
       method: "POST",

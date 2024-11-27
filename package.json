@@ -1,8 +1,8 @@
 {
-  "name": "@callback/ghl",
+  "name": "@cllbk/ghl",
   "version": "1.0.0",
   "description": "A public Node.js compatible SDK for working with HighLevel's (GHL's) Version 2 API.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "rimraf ./dist && tsc",
     "start": "npm run build && node dist/index.js"

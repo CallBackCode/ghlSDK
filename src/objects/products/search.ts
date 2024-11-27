@@ -2,9 +2,9 @@ import {
   BadRequestDTO,
   UnauthorizedDTO,
   UnprocessableDTO,
-} from "../../../types/_global";
-import type { ProductsPriceListResponseDTO } from "../../../types/products";
-import { withExponentialBackoff } from "../../../contexts/requestUtils";
+} from "../../types/_global";
+import type { ProductsPriceListResponseDTO } from "../../types/products";
+import { withExponentialBackoff } from "../../contexts/requestUtils";
 
 const baseUrl = "https://services.leadconnectorhq.com/products";
 
