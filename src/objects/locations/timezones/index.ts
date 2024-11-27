@@ -1,3 +1,5 @@
+import search from "./search";
+
 export const timezones = {
-  list: () => {},
+  search,
 };
