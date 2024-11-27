@@ -1,0 +1,4 @@
+export declare const emails: {
+    get: (emailMessageId: import("../../../types/conversations").ConversationGetEmailMessageResponseDTO["id"], authToken: string) => Promise<(import("../../../types/_global").BadRequestDTO | import("../../../types/_global").UnauthorizedDTO | import("../../../types/_global").UnprocessableDTO | import("../../../types/conversations").ConversationGetEmailMessageResponseDTO) | null>;
+    cancelScheduled: (emailMessageId: import("../../../types/conversations").ConversationGetEmailMessageResponseDTO["id"], authToken: string) => Promise<(import("../../../types/_global").BadRequestDTO | import("../../../types/_global").UnauthorizedDTO | import("../../../types/_global").UnprocessableDTO | import("../../../types/conversations").ConversationCancelScheduledResponseDTO) | null>;
+};

@@ -1,0 +1,34 @@
+export declare const locations: {
+    get: (locationId: string, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsGetByIdResponseDTO) | null>;
+    search: (options: import("../../types/locations").LocationsSearchOptions, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsSearchResponseDTO) | null>;
+    create: (options: import("../../types/locations").LocationsCreateDTO, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsCreateResponseDTO) | null>;
+    update: (locationId: string, options: import("../../types/locations").LocationsUpdateDTO, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsCreateResponseDTO) | null>;
+    delete: (locationId: string, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsDeleteResponseDTO) | null>;
+    customFields: {
+        get: (locationId: string, customFieldId: string, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsCFResponseDTO> | null;
+        search: (locationId: string, options: import("../../types/locations").LocationsCFSearchParamsDTO, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsCFsResponseDTO> | null;
+        create: (locationId: string, options: import("../../types/locations").LocationsCFCreateDTO, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsCVResponseDTO> | null;
+        update: (locationId: string, customFieldId: string, options: import("../../types/locations").LocationsCFUpdateDTO, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsCFResponseDTO> | null;
+        delete: (locationId: string, customFieldId: string, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/_global").SuccededDeleteDTO> | null;
+    };
+    customValues: {
+        get: (locationId: string, customValueId: string, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsCVResponseDTO> | null;
+        search: (locationId: string, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsCFsResponseDTO> | null;
+        create: (locationId: string, options: import("../../types/locations").LocationsCVDTO, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsCVResponseDTO> | null;
+        update: (locationId: string, customValueId: string, options: import("../../types/locations").LocationsCVDTO, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsCVResponseDTO> | null;
+        delete: (locationId: string, customValueId: string, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/_global").SuccededDeleteDTO> | null;
+    };
+    tags: {
+        get: (locationId: string, tagId: string, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsTagResponseDTO> | null;
+        search: (locationId: string, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsTagsResponseDTO> | null;
+        create: (locationId: string, options: import("../../types/locations").LocationsTagBodySchema, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsTagResponseDTO> | null;
+        update: (locationId: string, tagId: string, options: import("../../types/locations").LocationsTagBodySchema, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsTagResponseDTO> | null;
+        delete: (locationId: string, tagId: string, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/_global").SuccededDeleteDTO> | null;
+    };
+    tasks: {
+        search: (locationId: string, options: import("../../types/locations").LocationsTaskSearchParamsDTO, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/locations").LocationsTaskListResponseDTO> | null;
+    };
+    timezones: {
+        search: (locationId: string, authToken: string) => Promise<any> | null;
+    };
+};

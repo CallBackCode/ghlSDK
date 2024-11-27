@@ -1,0 +1,6 @@
+export declare const emails: {
+    search: (options: import("../../types/emails").EmailsSearchOptions, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/emails").EmailsFetchBuilderSuccesfulResponseDTO) | null>;
+    create: (options: import("../../types/emails").EmailsCreateBuilderDTO, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/emails").EmailsCreateBuilderSuccesfulResponseDTO) | null>;
+    update: (options: import("../../types/emails").EmailsSaveBuilderDataDTO, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/emails").EmailsBuilderUpdateSuccessfulDTO) | null>;
+    delete: (locationId: string, templateId: string, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/emails").EmailsDeleteBuilderSuccesfulResponseDTO) | null>;
+};
