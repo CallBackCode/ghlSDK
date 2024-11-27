@@ -4,21 +4,21 @@ import {
   UnprocessableDTO,
 } from "../../types/_global";
 import type {
-  ContactUpsertSuccessfulResponseDTO,
-  ContactUpsertDTO,
-} from "../../types/contacts";
+  OpportunitiesUpsertDTO,
+  OpportunitiesUpsertResponseDTO,
+} from "../../types/opportunities";
 import { withExponentialBackoff } from "../../contexts/requestUtils";
 
-const baseUrl = "https://services.leadconnectorhq.com/contacts/upsert";
+const baseUrl = "https://services.leadconnectorhq.com/opportunities/upsert";
 
 type ResponseTypes =
-  | ContactUpsertSuccessfulResponseDTO
+  | OpportunitiesUpsertResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
 const upsert = async (
-  options: ContactUpsertDTO,
+  options: OpportunitiesUpsertDTO,
   authToken: string
 ): Promise<ResponseTypes | null> => {
   const URL = `${baseUrl}`;

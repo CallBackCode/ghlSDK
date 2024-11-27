@@ -60,7 +60,7 @@ export type OpportunitiesCreateResponseDTO = {
 export type OpportunitiesStatusSchema = "open" | "won" | "lost" | "abandoned";
 
 export type OpportunitiesUpdateStatusDTO = {
-  status: OpportunitiesStatusSchema | "all";
+  status: OpportunitiesStatusSchema;
 };
 
 export type OpportunitiesCFInputArraySchema = {
@@ -140,4 +140,50 @@ export type OpportunitiesAddFollowersResponseDTO = {
 export type OpportunitiesRemoveFollowersResponseDTO = {
   followers: string[]; // Array of user IDs
   followersRemoved: string[]; // Array of user IDs removed
+};
+
+export type OpportunitiesSearchOptions = {
+  location_id: string;
+  assigned_to?: string;
+  campaignId?: string;
+  contact_id?: string;
+  country?: string;
+  date?: string;
+  endDate?: string;
+  getCalendarEvents?: boolean;
+  getNotes?: boolean;
+  getTasks?: boolean;
+  id?: string;
+  limit?: number;
+  order?: string;
+  page?: number;
+  pipeline_id?: string;
+  pipeline_stage_id?: string;
+  q?: string;
+  startAfter?: string;
+  startAfterId?: string;
+  status?: OpportunitiesStatusSchema | "all";
+};
+
+export type OpportunitiesSearchParams = {
+  location_id: string;
+  assigned_to?: string;
+  campaignId?: string;
+  contact_id?: string;
+  country?: string;
+  date?: string;
+  endDate?: string;
+  getCalendarEvents?: string;
+  getNotes?: string;
+  getTasks?: string;
+  id?: string;
+  limit?: string;
+  order?: string;
+  page?: string;
+  pipeline_id?: string;
+  pipeline_stage_id?: string;
+  q?: string;
+  startAfter?: string;
+  startAfterId?: string;
+  status?: string;
 };

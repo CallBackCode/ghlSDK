@@ -2,26 +2,27 @@ import {
   BadRequestDTO,
   UnauthorizedDTO,
   UnprocessableDTO,
-} from "../../types/_global";
+} from "../../../types/_global";
 import type {
-  ContactUpsertSuccessfulResponseDTO,
-  ContactUpsertDTO,
-} from "../../types/contacts";
-import { withExponentialBackoff } from "../../contexts/requestUtils";
+  OpportunitiesAddFollowersResponseDTO,
+  OpportunitiesFollowersDTO,
+} from "../../../types/opportunities";
+import { withExponentialBackoff } from "../../../contexts/requestUtils";
 
-const baseUrl = "https://services.leadconnectorhq.com/contacts/upsert";
+const baseUrl = "https://services.leadconnectorhq.com/opportunities";
 
 type ResponseTypes =
-  | ContactUpsertSuccessfulResponseDTO
+  | OpportunitiesAddFollowersResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
-const upsert = async (
-  options: ContactUpsertDTO,
+const add = async (
+  opportunityId: string,
+  options: OpportunitiesFollowersDTO,
   authToken: string
 ): Promise<ResponseTypes | null> => {
-  const URL = `${baseUrl}`;
+  const URL = `${baseUrl}/${opportunityId}/followers`;
 
   const executeRequest = async (): Promise<ResponseTypes> => {
     const response = await fetch(URL, {
@@ -53,4 +54,4 @@ const upsert = async (
   }
 };
 
-export default upsert;
+export default add;

@@ -3,36 +3,33 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../types/_global";
-import type {
-  ContactUpsertSuccessfulResponseDTO,
-  ContactUpsertDTO,
-} from "../../types/contacts";
+import type { PipelinesGetResponseDTO } from "../../types/pipelines";
 import { withExponentialBackoff } from "../../contexts/requestUtils";
 
-const baseUrl = "https://services.leadconnectorhq.com/contacts/upsert";
+const baseUrl = "https://services.leadconnectorhq.com/opportunities/pipelines";
 
 type ResponseTypes =
-  | ContactUpsertSuccessfulResponseDTO
+  | PipelinesGetResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
-const upsert = async (
-  options: ContactUpsertDTO,
+const list = async (
+  locationId: string,
   authToken: string
 ): Promise<ResponseTypes | null> => {
-  const URL = `${baseUrl}`;
-
   const executeRequest = async (): Promise<ResponseTypes> => {
+    let params = { locationId };
+
+    const URL = `${baseUrl}?` + new URLSearchParams(params);
+
     const response = await fetch(URL, {
-      method: "POST",
+      method: "GET",
       headers: {
-        "Content-Type": "application/json",
         Accept: "application/json",
         Version: "2021-07-28",
         Authorization: `Bearer ${authToken}`,
       },
-      body: JSON.stringify(options),
     });
 
     if (!response.ok) {
@@ -53,4 +50,4 @@ const upsert = async (
   }
 };
 
-export default upsert;
+export default list;
