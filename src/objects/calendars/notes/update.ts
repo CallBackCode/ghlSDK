@@ -4,12 +4,12 @@ import {
   UnprocessableDTO,
 } from "../../../types/_global";
 import type {
-  CalendarBlockSlotCreateSchemaDTO,
   CalendarGetCreateUpdateNoteSuccessfulResponseDto,
   CalendarEventDTO,
   CalendarGetNoteSchemaDTO,
 } from "../../../types/calendars";
 import { withExponentialBackoff } from "../../../contexts/requestUtils";
+import { ContactNotesDTO } from "../../../types/contacts";
 
 const baseUrl = "https://services.leadconnectorhq.com/calendars/appointments";
 
@@ -22,7 +22,7 @@ type ResponseTypes =
 const update = async (
   appointmentId: CalendarEventDTO["id"],
   noteId: CalendarGetNoteSchemaDTO["id"],
-  options: CalendarBlockSlotCreateSchemaDTO,
+  options: ContactNotesDTO,
   authToken: string
 ): Promise<ResponseTypes> | null => {
   const URL = `${baseUrl}/${appointmentId}/notes/${noteId}`;
