@@ -10,6 +10,7 @@ import { forms } from "./objects/forms";
 import { invoices } from "./objects/invoices";
 import { triggerLinks } from "./objects/triggerLinks";
 import { locations } from "./objects/locations";
+import { blogs } from "./objects/blogs";
 
 const GHL = {
   businesses,
@@ -24,18 +25,12 @@ const GHL = {
   invoices,
   triggerLinks,
   locations,
-  media: {
-    list: () => {},
-    upload: () => {},
-    delete: () => {},
-  },
-  blogs: {
-    getAuthors: () => {},
-    getCategories: () => {},
-    checkSlug: () => {},
-    create: () => {},
-    update: () => {},
-  },
+  // media: {
+  //   list: () => {},
+  //   upload: () => {},
+  //   delete: () => {},
+  // },
+  blogs,
   funnels: {
     listFunnels: () => {},
     listPages: () => {},
