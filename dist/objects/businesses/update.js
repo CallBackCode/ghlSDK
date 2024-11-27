@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const requestUtils_1 = require("../../contexts/requestUtils");
 const baseUrl = "https://services.leadconnectorhq.com/businesses";
 const update = async (businessId, options, authToken) => {
-    const URL = `${baseUrl}/${businessId}`;
+    const URL = `${baseUrl}/${businessId}/`;
     const executeRequest = async () => {
         const response = await fetch(URL, {
             method: "PUT",

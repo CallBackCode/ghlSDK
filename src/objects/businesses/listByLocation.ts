@@ -21,7 +21,7 @@ const listByLocation = async (
   locationId: BusinessDTO["locationId"],
   authToken: string
 ): Promise<ResponseTypes | null> => {
-  const URL = `${baseUrl}?` + new URLSearchParams({ locationId });
+  const URL = `${baseUrl}/?` + new URLSearchParams({ locationId });
 
   const executeRequest = async (): Promise<ResponseTypes> => {
     const response = await fetch(URL, {

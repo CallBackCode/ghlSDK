@@ -23,7 +23,7 @@ const update = async (
   options: UpdateBusinessDTO,
   authToken: string
 ): Promise<ResponseTypes | null> => {
-  const URL = `${baseUrl}/${businessId}`;
+  const URL = `${baseUrl}/${businessId}/`;
 
   const executeRequest = async (): Promise<ResponseTypes> => {
     const response = await fetch(URL, {
