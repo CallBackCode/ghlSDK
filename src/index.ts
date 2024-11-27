@@ -19,6 +19,8 @@ import { payments } from "./objects/payments";
 import { products } from "./objects/products";
 import { saas } from "./objects/saas";
 import { snapshots } from "./objects/snapshots";
+import { socialPlanner } from "./objects/socialPlanner";
+import { surveys } from "./objects/surveys";
 
 const GHL = {
   businesses,
@@ -42,74 +44,8 @@ const GHL = {
   products,
   saas,
   snapshots,
-  socialPlanner: {
-    oauth: {
-      google: {
-        start: () => {},
-        getLocations: () => {},
-        setLocations: () => {},
-      },
-      facebook: {
-        start: () => {},
-        getPages: () => {},
-        attachPages: () => {},
-      },
-      instagram: {
-        start: () => {},
-        getAccounts: () => {},
-        attachAccounts: () => {},
-      },
-      linkedin: {
-        start: () => {},
-        getPages: () => {},
-        attachPages: () => {},
-      },
-      twitter: {
-        start: () => {},
-        getProfile: () => {},
-        attachProfile: () => {},
-      },
-      tiktok: {
-        startPersonal: () => {},
-        getPersonal: () => {},
-        startBusiness: () => {},
-        getBusienss: () => {},
-        attachProfile: () => {},
-      },
-    },
-    post: {
-      get: () => {},
-      search: () => {},
-      create: () => {},
-      update: () => {},
-      delete: () => {},
-    },
-    account: {
-      get: () => {},
-      delete: () => {},
-    },
-    csv: {
-      uploadCSV: () => {},
-      getStatus: () => {},
-      getPost: () => {},
-      setAccounts: () => {},
-      startFinalize: () => {},
-      deleteCSV: () => {},
-      deletePost: () => {},
-    },
-    categories: {
-      get: () => {},
-      search: () => {},
-    },
-    tag: {
-      get: () => {},
-      search: () => {},
-    },
-  },
-  surveys: {
-    get: () => {},
-    getSubmissions: () => {},
-  },
+  // socialPlanner,
+  surveys,
   users: {
     get: () => {},
     search: () => {},
