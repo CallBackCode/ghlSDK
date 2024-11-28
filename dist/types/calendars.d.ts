@@ -121,11 +121,11 @@ export type CalendarLookBusyConfigurationDTO = {
     LookBusyPercentage: number;
 };
 export type CalendarEventType = "RoundRobin_OptimizeForAvailability" | "RoundRobin_OptimizeForEqualDistribution";
-export type CalendarUserAssignedType = "round_robin" | "collective" | "class" | "service";
+export type CalendarUserAssignedType = "round_robin" | "collective" | "class" | "service" | "personal";
 export type CalendarNonUserAssignedType = "event";
 export type CalendarWidgetType = "default" | "classic";
 export type CalendarBaseDTO = {
-    id?: string;
+    id: string;
     name: string;
     locationId: string;
     notifications?: CalendarNotificationDTO[];
@@ -243,15 +243,16 @@ export type CalendarBaseCreateUpdateDTO = {
     calendarCoverImage?: string;
     lookBusyConfig?: CalendarLookBusyConfigurationDTO;
 };
-export interface CalendarCreateUpdateUserAssignedDTO extends CalendarBaseDTO {
+export interface CalendarCreateUserAssignedDTO extends CalendarBaseDTO {
     teamMembers: CalendarTeamMemberDTO[];
     calendarType: CalendarUserAssignedType;
 }
-export interface CalendarCreateUpdateNonUserAssignedDTO extends CalendarBaseDTO {
+export interface CalendarCreateNonUserAssignedDTO extends CalendarBaseDTO {
     calendarType: CalendarNonUserAssignedType;
     meetingLocation: string;
 }
-export type CalendarCreateUpdateDTO = CalendarCreateUpdateUserAssignedDTO | CalendarCreateUpdateNonUserAssignedDTO;
+export type CalendarCreateDTO = CalendarCreateUserAssignedDTO | CalendarCreateNonUserAssignedDTO;
+export type CalendarUpdateDTO = Partial<CalendarCreateUserAssignedDTO> | Partial<CalendarCreateNonUserAssignedDTO>;
 export type CalendarByIdSuccessfulResponseDTO = {
     calendar: CalendarDTO;
 };

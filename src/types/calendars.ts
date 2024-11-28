@@ -264,12 +264,13 @@ export type CalendarUserAssignedType =
   | "round_robin"
   | "collective"
   | "class"
-  | "service";
+  | "service"
+  | "personal";
 export type CalendarNonUserAssignedType = "event";
 export type CalendarWidgetType = "default" | "classic"; // Calendar widget type. Choose "default" for "neo" and "classic" for "classic" layout.
 
 export type CalendarBaseDTO = {
-  id?: string; // Calendar Id (ocQHyuzHvysMo5N5VsXc)
+  id: string; // Calendar Id (ocQHyuzHvysMo5N5VsXc)
   name: string; // Name (test calendar)
   locationId: string; // Location Id (ocQHyuzHvysMo5N5VsXc)
   notifications?: CalendarNotificationDTO[]; // Calendar Notifications ([{...}])
@@ -393,20 +394,23 @@ export type CalendarBaseCreateUpdateDTO = {
   lookBusyConfig?: CalendarLookBusyConfigurationDTO; // Look Busy Configuration ({...})
 };
 
-export interface CalendarCreateUpdateUserAssignedDTO extends CalendarBaseDTO {
+export interface CalendarCreateUserAssignedDTO extends CalendarBaseDTO {
   teamMembers: CalendarTeamMemberDTO[]; // Team Members ([{...}])
   calendarType: CalendarUserAssignedType; // Calendar Type (round_robin)
 }
 
-export interface CalendarCreateUpdateNonUserAssignedDTO
-  extends CalendarBaseDTO {
+export interface CalendarCreateNonUserAssignedDTO extends CalendarBaseDTO {
   calendarType: CalendarNonUserAssignedType; // Calendar Type (event)
   meetingLocation: string; // Meeting Location (https://meet.google.com/yqp-gogr-wve)
 }
 
-export type CalendarCreateUpdateDTO =
-  | CalendarCreateUpdateUserAssignedDTO
-  | CalendarCreateUpdateNonUserAssignedDTO;
+export type CalendarCreateDTO =
+  | CalendarCreateUserAssignedDTO
+  | CalendarCreateNonUserAssignedDTO;
+
+export type CalendarUpdateDTO =
+  | Partial<CalendarCreateUserAssignedDTO>
+  | Partial<CalendarCreateNonUserAssignedDTO>;
 
 export type CalendarByIdSuccessfulResponseDTO = {
   calendar: CalendarDTO; // the calendar object ({...})
