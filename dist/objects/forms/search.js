@@ -12,7 +12,7 @@ const search = async (options, authToken) => {
             params.skip = skip.toString();
         if (type)
             params.type = type.toString();
-        const URL = `${baseUrl}?` + new URLSearchParams(params);
+        const URL = `${baseUrl}/?` + new URLSearchParams(params);
         const response = await fetch(URL, {
             method: "GET",
             headers: {
