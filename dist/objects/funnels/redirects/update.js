@@ -4,7 +4,7 @@ const requestUtils_1 = require("../../../contexts/requestUtils");
 const baseUrl = "https://services.leadconnectorhq.com/funnels/lookup/redirect";
 const update = async (redirectId, options, authToken) => {
     const updateAppointment = async () => {
-        const URL = `${baseUrl}/${redirectId}`;
+        const URL = `${baseUrl}/${redirectId}/`;
         const response = await fetch(URL, {
             method: "PUT",
             headers: {

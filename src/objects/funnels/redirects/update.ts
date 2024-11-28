@@ -23,7 +23,7 @@ const update = async (
   authToken: string
 ): Promise<ResponseTypes> | null => {
   const updateAppointment = async () => {
-    const URL = `${baseUrl}/${redirectId}`;
+    const URL = `${baseUrl}/${redirectId}/`;
     const response = await fetch(URL, {
       method: "PUT",
       headers: {
