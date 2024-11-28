@@ -7,7 +7,7 @@ import type { ConrtactSearchDuplicatesDTO } from "../../types/contacts";
 import { withExponentialBackoff } from "../../contexts/requestUtils";
 
 const baseUrl =
-  "https://services.leadconnectorhq.com/contacts/search/duplicates";
+  "https://services.leadconnectorhq.com/contacts/search/duplicate";
 
 type SearchOptions = {
   locationId: string;

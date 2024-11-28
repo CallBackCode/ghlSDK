@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const requestUtils_1 = require("../../contexts/requestUtils");
-const baseUrl = "https://services.leadconnectorhq.com/contacts/search/duplicates";
+const baseUrl = "https://services.leadconnectorhq.com/contacts/search/duplicate";
 const findDuplicates = async (options, authToken) => {
     const { locationId, email, phone } = options;
     const executeRequest = async () => {
