@@ -10,7 +10,7 @@ const findDuplicates = async (options, authToken) => {
             params.email = email.toString();
         if (phone)
             params.phone = phone.toString();
-        const URL = `${baseUrl}?` + new URLSearchParams(params);
+        const URL = `${baseUrl}/?` + new URLSearchParams(params);
         const response = await fetch(URL, {
             method: "GET",
             headers: {
