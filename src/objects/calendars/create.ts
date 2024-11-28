@@ -5,7 +5,7 @@ import {
 } from "../../types/_global";
 import type {
   CalendarByIdSuccessfulResponseDTO,
-  CalendarDTO,
+  CalendarCreateUpdateDTO,
 } from "../../types/calendars";
 import { withExponentialBackoff } from "../../contexts/requestUtils";
 
@@ -18,7 +18,7 @@ type ResponseTypes =
   | UnprocessableDTO;
 
 const create = async (
-  options: CalendarDTO,
+  options: CalendarCreateUpdateDTO,
   authToken: string
 ): Promise<ResponseTypes | null> => {
   const URL = `${baseUrl}/`;

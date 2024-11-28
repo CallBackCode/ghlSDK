@@ -269,7 +269,7 @@ export type CalendarNonUserAssignedType = "event";
 export type CalendarWidgetType = "default" | "classic"; // Calendar widget type. Choose "default" for "neo" and "classic" for "classic" layout.
 
 export type CalendarBaseDTO = {
-  id: string; // Calendar Id (ocQHyuzHvysMo5N5VsXc)
+  id?: string; // Calendar Id (ocQHyuzHvysMo5N5VsXc)
   name: string; // Name (test calendar)
   locationId: string; // Location Id (ocQHyuzHvysMo5N5VsXc)
   notifications?: CalendarNotificationDTO[]; // Calendar Notifications ([{...}])

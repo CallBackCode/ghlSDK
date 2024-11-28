@@ -125,7 +125,7 @@ export type CalendarUserAssignedType = "round_robin" | "collective" | "class" | 
 export type CalendarNonUserAssignedType = "event";
 export type CalendarWidgetType = "default" | "classic";
 export type CalendarBaseDTO = {
-    id: string;
+    id?: string;
     name: string;
     locationId: string;
     notifications?: CalendarNotificationDTO[];
