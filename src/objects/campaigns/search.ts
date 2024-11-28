@@ -29,7 +29,7 @@ const search = async (
     let params: Params = { locationId: options.locationId };
     if (options.status) params.status = status.toString();
 
-    const URL = `${baseUrl}?` + new URLSearchParams(params);
+    const URL = `${baseUrl}/?` + new URLSearchParams(params);
 
     const response = await fetch(URL, {
       method: "GET",
