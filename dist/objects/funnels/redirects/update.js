@@ -6,7 +6,7 @@ const update = async (redirectId, options, authToken) => {
     const updateAppointment = async () => {
         const URL = `${baseUrl}/${redirectId}/`;
         const response = await fetch(URL, {
-            method: "PUT",
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
