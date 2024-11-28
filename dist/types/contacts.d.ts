@@ -85,7 +85,7 @@ export type ContactTaskByIsSuccessfulResponseDTO = {
 };
 export type ContactCreateTaskParamsDTO = {
     title: string;
-    body: string;
+    body?: string;
     dueDate: string;
     completed: boolean;
     assignedTo?: string;

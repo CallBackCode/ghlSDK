@@ -96,7 +96,7 @@ export type ContactTaskByIsSuccessfulResponseDTO = {
 
 export type ContactCreateTaskParamsDTO = {
   title: string; // The title of the task (Call John)
-  body: string; // The body of the task (Call John at 123456789)
+  body?: string; // The body of the task (Call John at 123456789)
   dueDate: string; // The due date of the task (2024-06-06T18:54:57.221Z)
   completed: boolean; // The completion status of the task (false)
   assignedTo?: string; // The ID of the user the task is assigned to (182goXVW3lIExEQPOnd3)
