@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const requestUtils_1 = require("../../contexts/requestUtils");
 const baseUrl = "https://services.leadconnectorhq.com/invoices";
-const generateInvoiceNumber = async (invoiceId, options, authToken) => {
-    const URL = `${baseUrl}/${invoiceId}?` + new URLSearchParams(options);
+const generateInvoiceNumber = async (options, authToken) => {
+    const URL = `${baseUrl}/generate-invoice-number?` + new URLSearchParams(options);
     // Define the request logic
     const executeRequest = async () => {
         const response = await fetch(URL, {

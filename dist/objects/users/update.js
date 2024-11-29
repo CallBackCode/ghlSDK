@@ -16,11 +16,13 @@ const update = async (userId, options, authToken) => {
             body: JSON.stringify(options),
         });
         if (!response.ok) {
-            const error = new Error(`Request failed with status ${response.status}`);
+            let text = await response.text();
+            const error = new Error(`Request failed with status ${response.status}. ${text}`);
             error.response = response;
             throw error;
         }
-        return response.json();
+        let data = await response.json();
+        return data;
     };
     try {
         const data = await (0, requestUtils_1.withExponentialBackoff)(executeRequest);

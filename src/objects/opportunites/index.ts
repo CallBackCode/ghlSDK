@@ -9,7 +9,7 @@ import del from "./delete";
 
 export const opportunities = {
   get,
-  search,
+  // search, /** Route not yet supported by IAM */
   create,
   update,
   updateStatus,

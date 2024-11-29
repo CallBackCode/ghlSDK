@@ -1,22 +1,23 @@
+export type StrictOmit<T, K extends keyof T> = Omit<T, K>;
 export type BadRequestDTO = {
-    statusCode?: number;
-    message?: string;
+    statusCode?: number /** Status Code (400) */;
+    message?: string /** Error Message (Bad Request) */;
 };
 export type UnauthorizedDTO = {
-    statusCode?: number;
-    message?: string;
-    error?: string;
+    statusCode?: number /** Status Code (401) */;
+    message?: string /** Error Message (Invalid token: access token is invalid) */;
+    error?: string /** Error Type (Unauthorized) */;
 };
 export type UnprocessableDTO = {
-    statusCode?: number;
-    message?: string;
-    error?: string;
+    statusCode?: number /** Status Code (422) */;
+    message?: string /** Error Message (["Unprocessable Entity"]) */;
+    error?: string /** Error Type (Unprocessable Entity) */;
 };
 export type SuccessDeleteDTO = {
-    success?: boolean;
+    success?: boolean /** Success Status (true) */;
 };
 export type SuccededDeleteDTO = {
-    succeded?: boolean;
+    succeded?: boolean /** Success Status (true) */;
 };
 type IntervalType = "yearly" | "monthly" | "weekly" | "daily" | "hourly" | "minutely" | "secondly";
 type DayOfMonth = -1 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28;
@@ -24,22 +25,22 @@ type DayOfWeek = "mo" | "tu" | "we" | "th" | "fr" | "sa" | "su";
 type NumOfWeek = -1 | 1 | 2 | 3 | 4;
 type MonthOfYear = "jan" | "feb" | "mar" | "apr" | "may" | "jun" | "jul" | "aug" | "sep" | "oct" | "nov" | "dec";
 export type CustomRRuleOptionsDTO = {
-    intervalType: IntervalType;
-    interval: number;
-    startDate: string;
-    startTime?: string;
-    endDate?: string;
-    endTime?: string;
-    dayOfMonth?: DayOfMonth;
-    dayOfWeek?: DayOfWeek;
-    numOfWeek?: NumOfWeek;
-    monthOfYear?: MonthOfYear;
-    count?: number;
-    daysBefore?: number;
+    intervalType: IntervalType /** Interval Type (monthly) */;
+    interval: number /** Interval (2) */;
+    startDate: string /** Start Date (2023-01-01) */;
+    startTime?: string /** Start Time (20:45:00) */;
+    endDate?: string /** End Date (2029-11-01) */;
+    endTime?: string /** End Time (18:45:00) */;
+    dayOfMonth?: DayOfMonth /** Day of Month (15) */;
+    dayOfWeek?: DayOfWeek /** Day of Week (mo) */;
+    numOfWeek?: NumOfWeek /** Number of Week (1) */;
+    monthOfYear?: MonthOfYear /** Month of Year (jan) */;
+    count?: number /** Count (10) */;
+    daysBefore?: number /** Days Before (5) */;
 };
 export type ScheduleOptionsDTO = {
-    executeAt: string;
-    rrule: CustomRRuleOptionsDTO;
+    executeAt: string /** Execute At (2023-01-01T20:45:00) */;
+    rrule: CustomRRuleOptionsDTO /** Custom RRule Options */;
 };
 export declare enum CountryCodes {
     Afghanistan = "AF",

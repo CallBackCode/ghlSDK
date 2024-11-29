@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const requestUtils_1 = require("../../contexts/requestUtils");
 const baseUrl = "https://services.leadconnectorhq.com/invoices";
 const create = async (options, authToken) => {
-    const URL = `${baseUrl}`;
+    const URL = `${baseUrl}/`;
     const executeRequest = async () => {
         const response = await fetch(URL, {
             method: "POST",
@@ -16,7 +16,8 @@ const create = async (options, authToken) => {
             body: JSON.stringify(options),
         });
         if (!response.ok) {
-            const error = new Error(`Request failed with status ${response.status}`);
+            let text = await response.text();
+            const error = new Error(`Request failed with status ${response.status}. Text: ${text}`);
             error.response = response;
             throw error;
         }

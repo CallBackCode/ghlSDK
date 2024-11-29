@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const requestUtils_1 = require("../../../contexts/requestUtils");
-const baseUrl = "https://services.leadconnectorhq.com/calendars/funnels/lookup/redirect";
+const baseUrl = "https://services.leadconnectorhq.com/funnels/lookup/redirect";
 const del = async (locationId, redirectId, authToken) => {
     const deleteFunnel = async () => {
-        const URL = `${baseUrl}/${redirectId}?` + new URLSearchParams({ locationId });
+        const URL = `${baseUrl}/${redirectId}/?` + new URLSearchParams({ locationId });
         const response = await fetch(URL, {
             method: "DELETE",
             headers: {

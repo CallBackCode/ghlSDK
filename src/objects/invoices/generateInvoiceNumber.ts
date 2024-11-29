@@ -18,11 +18,11 @@ type ResponseTypes =
   | UnprocessableDTO;
 
 const generateInvoiceNumber = async (
-  invoiceId: string,
   options: InvoicesVoidDTO,
   authToken: string
 ): Promise<ResponseTypes | null> => {
-  const URL = `${baseUrl}/${invoiceId}?` + new URLSearchParams(options);
+  const URL =
+    `${baseUrl}/generate-invoice-number?` + new URLSearchParams(options);
 
   // Define the request logic
   const executeRequest = async (): Promise<ResponseTypes> => {

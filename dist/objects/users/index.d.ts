@@ -57,7 +57,7 @@ export declare const users: {
         deleted?: boolean;
     }) | null>;
     search: (options: import("../../types/users").UsersSearchOptions, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/users").UsersSearchResponseDTO) | null>;
-    listByLocation: (locationId: string, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/users").UsersGetResponseDTO) | null>;
+    listByLocation: (companyId: string, locationId: string, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/users").UsersGetResponseDTO) | null>;
     create: (options: import("../../types/users").UsersCreateDTO, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | {
         id?: string;
         name?: string;

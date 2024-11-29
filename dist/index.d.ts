@@ -185,11 +185,14 @@ export declare const GHL: {
         search: (options: import("./types/invoices").InvoicesSearchOptions, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/invoices").InvoicesListResponseDTO) | null>;
         create: (options: import("./types/invoices").InvoicesCreateDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/invoices").InvoicesCreateResponseDTO) | null>;
         update: (invoiceId: string, options: import("./types/invoices").InvoicesUpdateDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/invoices").InvoicesCreateResponseDTO) | null>;
-        delete: (invoiceId: string, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/invoices").InvoicesCreateResponseDTO) | null>;
+        delete: (invoiceId: string, options: {
+            altId: string;
+            altType: "location";
+        }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/invoices").InvoicesCreateResponseDTO) | null>;
         send: (invoiceId: string, options: import("./types/invoices").InvoicesSendDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/invoices").InvoicesSendResponseDTO) | null>;
         void: (invoiceId: string, options: import("./types/invoices").InvoicesVoidDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/invoices").InvoicesCreateResponseDTO) | null>;
         recordPayment: (invoiceId: string, options: import("./types/invoices").InvoicesRecordPaymentDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/invoices").InvoicesRecordPaymentResponseDTO) | null>;
-        generateInvoiceNumber: (invoiceId: string, options: import("./types/invoices").InvoicesVoidDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/invoices").InvoicesGenerateNumberResponseDTO) | null>;
+        generateInvoiceNumber: (options: import("./types/invoices").InvoicesVoidDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/invoices").InvoicesGenerateNumberResponseDTO) | null>;
         templates: {
             get: (templateId: string, options: import("./types/invoices").InvoicesVoidDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/invoices").InvoicesGetTemplateResponseDTO) | null>;
             search: (options: import("./types/invoices").InvoicesScheduleSearchOptions, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/invoices").InvoicesListTemplatesResponseDTO) | null>;
@@ -308,7 +311,6 @@ export declare const GHL: {
     };
     opportunities: {
         get: (opportuniyId: string, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/opportunities").OpportunitiesCreateResponseDTO) | null>;
-        search: (options: import("./types/opportunities").OpportunitiesSearchOptions, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/opportunities").OpportunitiesSearchResponseDTO) | null>;
         create: (options: import("./types/opportunities").OpportunitiesCreateDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/opportunities").OpportunitiesCreateResponseDTO) | null>;
         update: (opportunityId: string, options: import("./types/opportunities").OpportunityUpdateDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/opportunities").OpportunitiesCreateResponseDTO) | null>;
         updateStatus: (opportunityId: string, options: import("./types/opportunities").OpportunitiesUpdateStatusDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/opportunities").OpportunitiesCreateResponseDTO) | null>;
@@ -490,7 +492,7 @@ export declare const GHL: {
             deleted?: boolean;
         }) | null>;
         search: (options: import("./types/users").UsersSearchOptions, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/users").UsersSearchResponseDTO) | null>;
-        listByLocation: (locationId: string, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/users").UsersGetResponseDTO) | null>;
+        listByLocation: (companyId: string, locationId: string, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/users").UsersGetResponseDTO) | null>;
         create: (options: import("./types/users").UsersCreateDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | {
             id?: string;
             name?: string;

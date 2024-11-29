@@ -1,22 +1,22 @@
 export type LinksSchema = {
-    id?: string;
-    name?: string;
-    redirectTo?: string;
-    fieldKey?: string;
-    locationId?: string;
+    id?: string /** The unique identifier of the link. */;
+    name?: string /** The name of the link. */;
+    redirectTo?: string /** The URL to redirect to when the link is clicked. */;
+    fieldKey?: string /** The key of the field that the link is associated with. */;
+    locationId?: string /** The unique identifier of the location that the link is associated with. */;
 };
 export type LinksSearchResponseDTO = {
-    links: LinksSchema[];
+    links: LinksSchema[] /** The list of links. */;
 };
 export type LinksGetResponseDTO = {
-    link: LinksSchema;
+    link: LinksSchema /** The link. */;
 };
 export type LinksDTO = {
-    locationId: string;
-    name: string;
-    redirectTo: string;
+    locationId: string /** The unique identifier of the location that the link is associated with. */;
+    name: string /** The name of the link. */;
+    redirectTo: string /** The URL to redirect to when the link is clicked. */;
 };
 export type LinksUpdateDTO = {
-    name: string;
-    redirectTo: string;
+    name: string /** The name of the link. */;
+    redirectTo: string /** The URL to redirect to when the link is clicked. */;
 };

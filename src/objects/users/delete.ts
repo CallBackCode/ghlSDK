@@ -18,7 +18,7 @@ const del = async (
   userId: string,
   authToken: string
 ): Promise<ResponseTypes | null> => {
-  const URL = `${baseUrl}/${userId}`;
+  const URL = `${baseUrl}/${userId}/`;
 
   const executeRequest = async (): Promise<ResponseTypes> => {
     const response = await fetch(URL, {
@@ -36,7 +36,9 @@ const del = async (
       throw error;
     }
 
-    return response.json();
+    let data: ResponseTypes = await response.json();
+
+    return data;
   };
 
   try {

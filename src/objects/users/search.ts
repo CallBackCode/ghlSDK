@@ -49,26 +49,29 @@ const search = async (
     if (sortDirection) params.sortDirection = sortDirection.toString();
     if (type) params.type = type.toString();
 
-    const URL = `${baseUrl}?` + new URLSearchParams(params);
+    const URL = `${baseUrl}/?` + new URLSearchParams(params);
 
     const response = await fetch(URL, {
-      method: "POST",
+      method: "GET",
       headers: {
-        "Content-Type": "application/json",
         Accept: "application/json",
         Version: "2021-07-28",
         Authorization: `Bearer ${authToken}`,
       },
-      body: JSON.stringify(options),
     });
 
     if (!response.ok) {
-      const error = new Error(`Request failed with status ${response.status}`);
+      let text = await response.text();
+      const error = new Error(
+        `Request failed with status ${response.status}. ${text}`
+      );
       (error as any).response = response;
       throw error;
     }
 
-    return response.json();
+    let data: ResponseTypes = await response.json();
+
+    return data;
   };
 
   try {

@@ -44,11 +44,10 @@ const search = async (options, authToken) => {
             params.startAfterId = startAfterId.toString();
         if (status)
             params.status = status.toString();
-        const URL = `${baseUrl}`;
+        const URL = `${baseUrl}?` + new URLSearchParams(params);
         const response = await fetch(URL, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
                 Accept: "application/json",
                 Version: "2021-07-28",
                 Authorization: `Bearer ${authToken}`,
@@ -56,7 +55,8 @@ const search = async (options, authToken) => {
             body: JSON.stringify(options),
         });
         if (!response.ok) {
-            const error = new Error(`Request failed with status ${response.status}`);
+            let text = await response.text();
+            const error = new Error(`Request failed with status ${response.status}. ${text}`);
             error.response = response;
             throw error;
         }

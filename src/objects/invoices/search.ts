@@ -35,8 +35,15 @@ const search = async (
     offset,
   } = options;
 
+  console.log("options:", options);
+
   const executeRequest = async (): Promise<ResponseTypes> => {
-    let params: InvoicesSearchParams = { altId, altType, limit, offset };
+    let params: InvoicesSearchParams = {
+      altId,
+      altType,
+      limit: limit.toString(),
+      offset: offset.toString(),
+    };
     if (contactId) params.contactId = contactId.toString();
     if (endAt) params.endAt = endAt.toString();
     if (paymentMode) params.paymentMode = paymentMode.toString();
@@ -44,7 +51,9 @@ const search = async (
     if (startAt) params.startAt = startAt.toString();
     if (status) params.status = status.toString();
 
-    const URL = `${baseUrl}?` + new URLSearchParams(params);
+    console.log("params:", params);
+
+    const URL = `${baseUrl}/?` + new URLSearchParams(params);
 
     const response = await fetch(URL, {
       method: "GET",

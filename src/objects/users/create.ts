@@ -18,7 +18,7 @@ const create = async (
   options: UsersCreateDTO,
   authToken: string
 ): Promise<ResponseTypes | null> => {
-  const URL = `${baseUrl}`;
+  const URL = `${baseUrl}/`;
 
   const executeRequest = async (): Promise<ResponseTypes> => {
     const response = await fetch(URL, {
@@ -33,12 +33,17 @@ const create = async (
     });
 
     if (!response.ok) {
-      const error = new Error(`Request failed with status ${response.status}`);
+      let text = await response.text();
+      const error = new Error(
+        `Request failed with status ${response.status}. ${text}`
+      );
       (error as any).response = response;
       throw error;
     }
 
-    return response.json();
+    let data: ResponseTypes = await response.json();
+
+    return data;
   };
 
   try {

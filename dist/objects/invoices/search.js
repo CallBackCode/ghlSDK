@@ -4,8 +4,14 @@ const requestUtils_1 = require("../../contexts/requestUtils");
 const baseUrl = "https://services.leadconnectorhq.com/invoices";
 const search = async (options, authToken) => {
     const { contactId, endAt, paymentMode, search, startAt, status, altId, altType, limit, offset, } = options;
+    console.log("options:", options);
     const executeRequest = async () => {
-        let params = { altId, altType, limit, offset };
+        let params = {
+            altId,
+            altType,
+            limit: limit.toString(),
+            offset: offset.toString(),
+        };
         if (contactId)
             params.contactId = contactId.toString();
         if (endAt)
@@ -18,7 +24,8 @@ const search = async (options, authToken) => {
             params.startAt = startAt.toString();
         if (status)
             params.status = status.toString();
-        const URL = `${baseUrl}?` + new URLSearchParams(params);
+        console.log("params:", params);
+        const URL = `${baseUrl}/?` + new URLSearchParams(params);
         const response = await fetch(URL, {
             method: "GET",
             headers: {

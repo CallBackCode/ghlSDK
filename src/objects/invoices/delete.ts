@@ -8,6 +8,16 @@ import { withExponentialBackoff } from "../../contexts/requestUtils";
 
 const baseUrl = "https://services.leadconnectorhq.com/invoices";
 
+type SearchOptions = {
+  altId: string; // The Location ID
+  altType: "location";
+};
+
+type Params = {
+  altId: string;
+  altType: string;
+};
+
 type ResponseTypes =
   | InvoicesDeleteResponseDTO
   | BadRequestDTO
@@ -16,11 +26,14 @@ type ResponseTypes =
 
 const del = async (
   invoiceId: string,
+  options: SearchOptions,
   authToken: string
 ): Promise<ResponseTypes | null> => {
-  const URL = `${baseUrl}/${invoiceId}`;
+  const { altId, altType } = options;
 
   const executeRequest = async (): Promise<ResponseTypes> => {
+    const params: Params = { altId, altType };
+    const URL = `${baseUrl}/${invoiceId}?` + new URLSearchParams(params);
     const response = await fetch(URL, {
       method: "DELETE",
       headers: {

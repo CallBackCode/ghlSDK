@@ -2,9 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const requestUtils_1 = require("../../contexts/requestUtils");
 const baseUrl = "https://services.leadconnectorhq.com/invoices";
-const del = async (invoiceId, authToken) => {
-    const URL = `${baseUrl}/${invoiceId}`;
+const del = async (invoiceId, options, authToken) => {
+    const { altId, altType } = options;
     const executeRequest = async () => {
+        const params = { altId, altType };
+        const URL = `${baseUrl}/${invoiceId}?` + new URLSearchParams(params);
         const response = await fetch(URL, {
             method: "DELETE",
             headers: {

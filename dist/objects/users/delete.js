@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const requestUtils_1 = require("../../contexts/requestUtils");
 const baseUrl = "https://services.leadconnectorhq.com/users";
 const del = async (userId, authToken) => {
-    const URL = `${baseUrl}/${userId}`;
+    const URL = `${baseUrl}/${userId}/`;
     const executeRequest = async () => {
         const response = await fetch(URL, {
             method: "DELETE",
@@ -18,7 +18,8 @@ const del = async (userId, authToken) => {
             error.response = response;
             throw error;
         }
-        return response.json();
+        let data = await response.json();
+        return data;
     };
     try {
         const data = await (0, requestUtils_1.withExponentialBackoff)(executeRequest);

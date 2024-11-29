@@ -6,8 +6,7 @@ import {
 import { withExponentialBackoff } from "../../../contexts/requestUtils";
 import { FunnelsRedirectDeleteResponseDTO } from "../../../types/funnels";
 
-const baseUrl =
-  "https://services.leadconnectorhq.com/calendars/funnels/lookup/redirect";
+const baseUrl = "https://services.leadconnectorhq.com/funnels/lookup/redirect";
 
 type ResponseTypes =
   | FunnelsRedirectDeleteResponseDTO
@@ -22,7 +21,7 @@ const del = async (
 ): Promise<ResponseTypes> | null => {
   const deleteFunnel = async () => {
     const URL =
-      `${baseUrl}/${redirectId}?` + new URLSearchParams({ locationId });
+      `${baseUrl}/${redirectId}/?` + new URLSearchParams({ locationId });
     const response = await fetch(URL, {
       method: "DELETE",
       headers: {

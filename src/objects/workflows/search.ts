@@ -37,7 +37,9 @@ const search = async (
       throw error;
     }
 
-    return response.json();
+    let data: ResponseTypes = await response.json();
+
+    return data;
   };
 
   try {

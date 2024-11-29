@@ -1,26 +1,28 @@
+export type StrictOmit<T, K extends keyof T> = Omit<T, K>;
+
 export type BadRequestDTO = {
-  statusCode?: number; // Status Code (400)
-  message?: string; // Error Message (Bad Request)
+  statusCode?: number /** Status Code (400) */;
+  message?: string /** Error Message (Bad Request) */;
 };
 
 export type UnauthorizedDTO = {
-  statusCode?: number; // Status Code (401)
-  message?: string; // Error Message (Invalid token: access token is invalid)
-  error?: string; // Error Type (Unauthorized)
+  statusCode?: number /** Status Code (401) */;
+  message?: string /** Error Message (Invalid token: access token is invalid) */;
+  error?: string /** Error Type (Unauthorized) */;
 };
 
 export type UnprocessableDTO = {
-  statusCode?: number; // Status Code (422)
-  message?: string; // Error Message (["Unprocessable Entity"])
-  error?: string; // Error Type (Unprocessable Entity)
+  statusCode?: number /** Status Code (422) */;
+  message?: string /** Error Message (["Unprocessable Entity"]) */;
+  error?: string /** Error Type (Unprocessable Entity) */;
 };
 
 export type SuccessDeleteDTO = {
-  success?: boolean; // Success Status (true)
+  success?: boolean /** Success Status (true) */;
 };
 
 export type SuccededDeleteDTO = {
-  succeded?: boolean; // Success Status (true)
+  succeded?: boolean /** Success Status (true) */;
 };
 
 type IntervalType =
@@ -82,23 +84,23 @@ type MonthOfYear =
   | "dec";
 
 export type CustomRRuleOptionsDTO = {
-  intervalType: IntervalType; // Interval Type (monthly)
-  interval: number; // Interval (2)
-  startDate: string; // Start Date (2023-01-01)
-  startTime?: string; // Start Time (20:45:00)
-  endDate?: string; // End Date (2029-11-01)
-  endTime?: string; // End Time (18:45:00)
-  dayOfMonth?: DayOfMonth; // Day of Month (15)
-  dayOfWeek?: DayOfWeek; // Day of Week (mo)
-  numOfWeek?: NumOfWeek; // Number of Week (1)
-  monthOfYear?: MonthOfYear; // Month of Year (jan)
-  count?: number; // Count (10)
-  daysBefore?: number; // Days Before (5)
+  intervalType: IntervalType /** Interval Type (monthly) */;
+  interval: number /** Interval (2) */;
+  startDate: string /** Start Date (2023-01-01) */;
+  startTime?: string /** Start Time (20:45:00) */;
+  endDate?: string /** End Date (2029-11-01) */;
+  endTime?: string /** End Time (18:45:00) */;
+  dayOfMonth?: DayOfMonth /** Day of Month (15) */;
+  dayOfWeek?: DayOfWeek /** Day of Week (mo) */;
+  numOfWeek?: NumOfWeek /** Number of Week (1) */;
+  monthOfYear?: MonthOfYear /** Month of Year (jan) */;
+  count?: number /** Count (10) */;
+  daysBefore?: number /** Days Before (5) */;
 };
 
 export type ScheduleOptionsDTO = {
-  executeAt: string; // Execute At (2023-01-01T20:45:00)
-  rrule: CustomRRuleOptionsDTO; // Custom RRule Options
+  executeAt: string /** Execute At (2023-01-01T20:45:00) */;
+  rrule: CustomRRuleOptionsDTO /** Custom RRule Options */;
 };
 
 export enum CountryCodes {

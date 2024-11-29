@@ -16,7 +16,8 @@ const update = async (invoiceId, options, authToken) => {
             body: JSON.stringify(options),
         });
         if (!response.ok) {
-            const error = new Error(`Request failed with status ${response.status}`);
+            let text = await response.text();
+            const error = new Error(`Request failed with status ${response.status}. Text: ${text}`);
             error.response = response;
             throw error;
         }

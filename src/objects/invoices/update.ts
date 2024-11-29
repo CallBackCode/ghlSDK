@@ -37,7 +37,10 @@ const update = async (
     });
 
     if (!response.ok) {
-      const error = new Error(`Request failed with status ${response.status}`);
+      let text = await response.text();
+      const error = new Error(
+        `Request failed with status ${response.status}. Text: ${text}`
+      );
       (error as any).response = response;
       throw error;
     }
