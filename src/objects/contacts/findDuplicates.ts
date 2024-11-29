@@ -3,7 +3,7 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../types/_global";
-import type { ConrtactSearchDuplicatesDTO } from "../../types/contacts";
+import type { ContactsSearchDuplicatesDTO } from "../../types/contacts";
 import { withExponentialBackoff } from "../../contexts/requestUtils";
 
 const baseUrl =
@@ -22,7 +22,7 @@ type Params = {
 };
 
 type ResponseTypes =
-  | ConrtactSearchDuplicatesDTO
+  | ContactsSearchDuplicatesDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;

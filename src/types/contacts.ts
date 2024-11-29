@@ -1023,11 +1023,11 @@ export type ContactSearchOptions = {
   page: number;
   pageLimit: number;
   searchAfter?: Array<string | number>;
-  filters?: SearchFilter[];
+  filters?: Array<SearchFilter | SearchFilterConfig>;
   sort?: SearchSort[];
 };
 
-export type ConrtactSearchDuplicatesDTO = {
+export type ContactsSearchDuplicatesDTO = {
   contact: ContactUpdateSuccessfulResponseSchema;
   matchingField: "number" | "email";
   traceId: string;

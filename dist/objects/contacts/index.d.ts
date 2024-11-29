@@ -5,7 +5,7 @@ export declare const contacts: {
         locationId: string;
         email?: string;
         phone?: string;
-    }, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/contacts").ConrtactSearchDuplicatesDTO) | null>;
+    }, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/contacts").ContactsSearchDuplicatesDTO) | null>;
     create: (options: import("../../types/contacts").ContactCreateDTO, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/contacts").ContactByIdSuccessfulResponseDTO) | null>;
     update: (contactId: import("../../types/contacts").ContactDTO["id"], options: import("../../types/contacts").ContactUpdateDTO, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/contacts").ContactUpdateSuccessfulResponseDTO) | null>;
     upsert: (options: import("../../types/contacts").ContactUpsertDTO, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/contacts").ContactUpsertSuccessfulResponseDTO) | null>;
