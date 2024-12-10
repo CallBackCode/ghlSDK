@@ -20,7 +20,7 @@ npm i @cllbk/ghl
 To get started, use a **named import** to access the `GHL` object from the library:
 
 ```typescript
-import { GHL } from "@ampcllbk/ghl";
+import { GHL } from "@cllbk/ghl";
 
 // Example: Using a GHL method with chaining
 await ghl.contacts
