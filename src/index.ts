@@ -1,3 +1,4 @@
+import { blogs } from "./objects/blogs";
 import { businesses } from "./objects/businesses";
 import { calendars } from "./objects/calendars";
 import { campaigns } from "./objects/campaigns";
@@ -7,12 +8,10 @@ import { conversations } from "./objects/conversations";
 import { courses } from "./objects/courses";
 import { emails } from "./objects/emails";
 import { forms } from "./objects/forms";
-import { invoices } from "./objects/invoices";
-import { triggerLinks } from "./objects/triggerLinks";
-import { locations } from "./objects/locations";
-import { blogs } from "./objects/blogs";
-import { media } from "./objects/media";
 import { funnels } from "./objects/funnels";
+import { invoices } from "./objects/invoices";
+import { locations } from "./objects/locations";
+import { media } from "./objects/media";
 import { opportunities } from "./objects/opportunites";
 import { pipelines } from "./objects/pipelines";
 import { payments } from "./objects/payments";
@@ -21,10 +20,12 @@ import { saas } from "./objects/saas";
 import { snapshots } from "./objects/snapshots";
 import { socialPlanner } from "./objects/socialPlanner";
 import { surveys } from "./objects/surveys";
+import { triggerLinks } from "./objects/triggerLinks";
 import { users } from "./objects/users";
 import { workflows } from "./objects/workflows";
 
 export const GHL = {
+  blogs,
   businesses,
   calendars,
   campaigns,
@@ -34,12 +35,10 @@ export const GHL = {
   courses,
   emails,
   forms,
+  funnels,
   invoices,
-  triggerLinks,
   locations,
   // media,
-  blogs,
-  funnels,
   opportunities,
   pipelines,
   payments,
@@ -48,6 +47,7 @@ export const GHL = {
   snapshots,
   // socialPlanner,
   surveys,
+  triggerLinks,
   users,
   workflows,
 };
