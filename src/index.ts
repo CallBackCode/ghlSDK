@@ -11,14 +11,15 @@ import { forms } from "./objects/forms";
 import { funnels } from "./objects/funnels";
 import { invoices } from "./objects/invoices";
 import { locations } from "./objects/locations";
-import { media } from "./objects/media";
+// import { media } from "./objects/media";
+import { oauth } from "./objects/oauth";
 import { opportunities } from "./objects/opportunites";
 import { pipelines } from "./objects/pipelines";
 import { payments } from "./objects/payments";
 import { products } from "./objects/products";
 import { saas } from "./objects/saas";
 import { snapshots } from "./objects/snapshots";
-import { socialPlanner } from "./objects/socialPlanner";
+// import { socialPlanner } from "./objects/socialPlanner";
 import { surveys } from "./objects/surveys";
 import { triggerLinks } from "./objects/triggerLinks";
 import { users } from "./objects/users";
@@ -39,6 +40,7 @@ export const GHL = {
   invoices,
   locations,
   // media,
+  oauth,
   opportunities,
   pipelines,
   payments,
