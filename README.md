@@ -112,6 +112,14 @@ This project is licensed under the [ISC License](https://opensource.org/licenses
 
 Here's an overview of the available routes. For detailed usage, refer to the [HighLevel documentation](https://highlevel.stoplight.io/docs/integrations/0443d7d1a4bd0-overview).
 
+### OAUTH
+
+```typescript
+GHL.oauth.getAccessToken();
+GHL.oauth.getLocationsInstalled();
+GHL.oauth.getLocationTokenFromCompany();
+```
+
 ### Blogs
 
 ```typescript
