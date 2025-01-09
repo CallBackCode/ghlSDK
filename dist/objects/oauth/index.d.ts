@@ -1,0 +1,5 @@
+export declare const oauth: {
+    getAccessToken: (options: import("../../types/oauth").GetAccessCodeBodyDTO) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/oauth").GetAccessCodeSuccessfulResponseDTO) | null>;
+    getLocationsInstalled: (options: import("../../types/oauth").OAuthSearchOptions) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/oauth").GetInstalledLocationsSuccessfulResponseDTO) | null>;
+    getLocationTokenFromCompany: (options: import("../../types/oauth").GetLocationAccessCodeBodyDTO, authToken: string) => Promise<(import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/oauth").GetLocationAccessTokenSuccessfulResponseDTO) | null>;
+};

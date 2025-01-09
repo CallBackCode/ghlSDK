@@ -315,8 +315,8 @@ export type ContactUpdateSuccessfulResponseSchema = {
     lastActivity?: string /** The last activity of the contact (2021-07-16T11:39:30.564Z) */;
     customFields?: CustomField[] /** The custom fields of the contact ([{ id: "MgobCB14YMVKuE4Ka8p1", value: "name" }]) */;
     businessId?: string /** The ID of the business (282goXVW3lIExEQPOnd3) */;
-    attributionSource?: ContactAttributionSourceDTO /** The attribution source of the contact */;
-    lastAttributionSource?: ContactAttributionSourceDTO /** The last attribution source of the contact */;
+    createdBy?: ContactAttributionSourceDTO /** The attribution source of the contact */;
+    lastUpdatedBy?: ContactAttributionSourceDTO /** The last attribution source of the contact */;
 };
 export type ContactUpdateSuccessfulResponseDTO = {
     succeded?: boolean /** The success status of the update (true) */;
