@@ -1,5 +1,11 @@
 export declare const products: {
     get: (locationId: string, productId: string, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/products").ProductsGetResponseDTO> | null;
+    list: (options: {
+        limit?: string;
+        offset?: string;
+        search?: string;
+        locationId: string;
+    }, authToken: string) => Promise<import("../../types/_global").BadRequestDTO | import("../../types/_global").UnauthorizedDTO | import("../../types/_global").UnprocessableDTO | import("../../types/products").ProductsListResponseDTO> | null;
     search: (productId: string, options: {
         locationId: string;
         ids?: string;
