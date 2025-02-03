@@ -3,22 +3,19 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../types/_global";
-import type {
-  BusinessDTO,
-  BusinessSearchResponseDTO,
-} from "../../types/businesses";
+import type { Businesses } from "../../types/businesses";
 import { withExponentialBackoff } from "../../contexts/requestUtils";
 
 const baseUrl = "https://services.leadconnectorhq.com/businesses";
 
 type ResponseTypes =
-  | BusinessSearchResponseDTO
+  | Businesses.SearchResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
 const listByLocation = async (
-  locationId: BusinessDTO["locationId"],
+  locationId: Businesses.DTO["locationId"],
   authToken: string
 ): Promise<ResponseTypes | null> => {
   const URL = `${baseUrl}/?` + new URLSearchParams({ locationId });

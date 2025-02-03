@@ -1,46 +1,217 @@
 export type StrictOmit<T, K extends keyof T> = Omit<T, K>;
+/**
+ * Represents a Bad Request Data Transfer Object (DTO).
+ * This type is used to convey information about a bad request error.
+ *
+ * @property {number} [statusCode] - The HTTP status code of the response.
+ * @property {string} [message] - The provided error message, giving context for the reason of the error.
+ *
+ * @example { statusCode: 400, message: "Bad Request" }
+ */
 export type BadRequestDTO = {
-    statusCode?: number /** Status Code (400) */;
-    message?: string /** Error Message (Bad Request) */;
+    statusCode?: number;
+    message?: string;
 };
+/**
+ * Represents an Unauthorized Data Transfer Object (DTO).
+ * This type is used to convey information about an unauthorized error.
+ *
+ * @property {number} [statusCode] - The HTTP status code of the response.
+ * @property {string} [message] - The provided error message, giving context for the reason of the error.
+ * @property {string} [error] - The type of error received.
+ *
+ * @example { statusCode: 401, message: "Invalid token: access token is invalid", error: "Unauthorized" }
+ */
 export type UnauthorizedDTO = {
-    statusCode?: number /** Status Code (401) */;
-    message?: string /** Error Message (Invalid token: access token is invalid) */;
-    error?: string /** Error Type (Unauthorized) */;
+    statusCode?: number;
+    message?: string;
+    error?: string;
 };
+/**
+ * Represents an Unprocessable Data Transfer Object (DTO).
+ * This type is used to convey information about an unprocessable entity error.
+ *
+ * @property {number} [statusCode] - The HTTP status code of the response.
+ * @property {string} [message] - The provided error message, giving context for the reason of the error.
+ * @property {string} [error] - The type of error received.
+ *
+ * @example { statusCode: 422, message: "Unprocessable Entity", error: "Unprocessable Entity" }
+ */
 export type UnprocessableDTO = {
-    statusCode?: number /** Status Code (422) */;
-    message?: string /** Error Message (["Unprocessable Entity"]) */;
-    error?: string /** Error Type (Unprocessable Entity) */;
+    statusCode?: number;
+    message?: string;
+    error?: string;
 };
+/**
+ * Represents a Success Delete Data Transfer Object (DTO).
+ * This type is used to convey information about a successful deletion.
+ *
+ * @property {boolean} [success] - The status of the deletion.
+ *
+ * @example { success: true }
+ */
 export type SuccessDeleteDTO = {
-    success?: boolean /** Success Status (true) */;
+    success?: boolean;
 };
+/**
+ * Represents a Succeded Delete Data Transfer Object (DTO).
+ * This type is used to convey information about a successful deletion.
+ *
+ * @property {boolean} [succeded] - The status of the deletion.
+ *
+ * @example { succeded: true }
+ */
 export type SuccededDeleteDTO = {
-    succeded?: boolean /** Success Status (true) */;
+    succeded?: boolean;
 };
+/**
+ * Represents a Custom Recurrence Rule Options Data Transfer Object (DTO).
+ *
+ * @property {IntervalType} intervalType - The type of interval for the recurrence rule.
+ */
 type IntervalType = "yearly" | "monthly" | "weekly" | "daily" | "hourly" | "minutely" | "secondly";
+/**
+ * Represents a Day of Month.
+ * This type is used to represent the day of the month.
+ * The day of the month can be any number between 1 and 28, or -1.
+ * -1 is used to represent the last day of the month.
+ *
+ * @property {number} - The day of the month. (1-28, -1)
+ *
+ * @example -1
+ */
 type DayOfMonth = -1 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28;
+/**
+ * Represents a Day of Week.
+ * This type is used to represent the day of the week in English.
+ * "mo" represents Monday
+ * "tu" represents Tuesday
+ * "we" represents Wednesday
+ * "th" represents Thursday
+ * "fr" represents Friday
+ * "sa" represents Saturday
+ * "su" represents Sunday.
+ *
+ * @property {string} - The day of the week. ("mo", "tu", "we", "th", "fr", "sa", "su")
+ *
+ * @example "mo"
+ */
 type DayOfWeek = "mo" | "tu" | "we" | "th" | "fr" | "sa" | "su";
+/**
+ * Represents a Number of Week.
+ * This type is used to represent the number of the week.
+ * -1 is used to represent the last week of the month.
+ * 1 is used to represent the first week of the month.
+ * 2 is used to represent the second week of the month.
+ * 3 is used to represent the third week of the month.
+ * 4 is used to represent the fourth week of the month.
+ *
+ * @property {number} - The number of the week. (-1, 1, 2, 3, 4)
+ *
+ * @example 1
+ */
 type NumOfWeek = -1 | 1 | 2 | 3 | 4;
+/**
+ * Represents a Month of Year.
+ * This type is used to represent the month of the year in English.
+ * "jan" represents January
+ * "feb" represents February
+ * "mar" represents March
+ * "apr" represents April
+ * "may" represents May
+ * "jun" represents June
+ * "jul" represents July
+ * "aug" represents August
+ * "sep" represents September
+ * "oct" represents October
+ * "nov" represents November
+ * "dec" represents December.
+ *
+ * @property {string} - The month of the year. ("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec")
+ *
+ * @example "jan"
+ */
 type MonthOfYear = "jan" | "feb" | "mar" | "apr" | "may" | "jun" | "jul" | "aug" | "sep" | "oct" | "nov" | "dec";
+/**
+ * Represents a Custom Recurrence Rule Options Data Transfer Object (DTO).
+ * This type is used to convey information about a custom recurrence rule.
+ *
+ * @property {IntervalType} [intervalType] - The type of interval for the recurrence rule.
+ * @example "monthly"
+ *
+ * @property {number} [interval] - How many times the interval type passes between occurrences. (intervalType: "monthly", interval: 2 means every 2 months)
+ * @example 2
+ *
+ * @property {string} [startDate] - The start date for the recurrence rule (YYYY-MM-DD).
+ * @example "2023-01-01"
+ *
+ * @property {string} [startTime] - The start time for the recurrence rule (HH:mm:ss).
+ * @example "20:45:00"
+ *
+ * @property {string} [endDate] - The end date for the recurrence rule (YYYY-MM-DD).
+ * @example "2029-11-01"
+ *
+ * @property {string} [endTime] - The end time for the recurrence rule (HH:mm:ss).
+ * @example "18:45:00"
+ *
+ * @property {DayOfMonth} [dayOfMonth] - The day of the month for the recurrence rule.
+ * @example 15
+ *
+ * @property {DayOfWeek} [dayOfWeek] - The day of the week for the recurrence rule.
+ * @example "mo"
+ *
+ * @property {NumOfWeek} [numOfWeek] - The number of the week within the month for the recurrence rule.
+ * @example 1
+ *
+ * @property {MonthOfYear} [monthOfYear] - The month of the year for the recurrence rule.
+ * @example "jan"
+ *
+ * @property {number} [count] - The count for the recurrence rule.
+ * @example 10
+ *
+ * @property {number} [daysBefore] - The days before for the recurrence rule.
+ * @example 5
+ */
 export type CustomRRuleOptionsDTO = {
-    intervalType: IntervalType /** Interval Type (monthly) */;
-    interval: number /** Interval (2) */;
-    startDate: string /** Start Date (2023-01-01) */;
-    startTime?: string /** Start Time (20:45:00) */;
-    endDate?: string /** End Date (2029-11-01) */;
-    endTime?: string /** End Time (18:45:00) */;
-    dayOfMonth?: DayOfMonth /** Day of Month (15) */;
-    dayOfWeek?: DayOfWeek /** Day of Week (mo) */;
-    numOfWeek?: NumOfWeek /** Number of Week (1) */;
-    monthOfYear?: MonthOfYear /** Month of Year (jan) */;
-    count?: number /** Count (10) */;
-    daysBefore?: number /** Days Before (5) */;
+    intervalType: IntervalType;
+    interval: number;
+    startDate: string;
+    startTime?: string;
+    endDate?: string;
+    endTime?: string;
+    dayOfMonth?: DayOfMonth;
+    dayOfWeek?: DayOfWeek;
+    numOfWeek?: NumOfWeek;
+    monthOfYear?: MonthOfYear;
+    count?: number;
+    daysBefore?: number;
 };
+/**
+ * Represents a Schedule Options Data Transfer Object (DTO).
+ * This type is used to convey information about a schedule options.
+ *
+ * @property {string} [executeAt]
+ * @example "2023-01-01T20:45:00"
+ *
+ * @property {CustomRRuleOptionsDTO} [rrule] - Custom Recurrence Rule Options.
+ * @example {
+ *              intervalType: "monthly",
+ *              interval: 2,
+ *              startDate: "2023-01-01",
+ *              startTime: "20:45:00",
+ *              endDate: "2029-11-01",
+ *              endTime: "18:45:00",
+ *              dayOfMonth: 15,
+ *              dayOfWeek: "mo",
+ *              numOfWeek: 1,
+ *              monthOfYear: "jan",
+ *              count: 10,
+ *              daysBefore: 5
+ *         }
+ */
 export type ScheduleOptionsDTO = {
-    executeAt: string /** Execute At (2023-01-01T20:45:00) */;
-    rrule: CustomRRuleOptionsDTO /** Custom RRule Options */;
+    executeAt: string;
+    rrule: CustomRRuleOptionsDTO;
 };
 export declare enum CountryCodes {
     Afghanistan = "AF",

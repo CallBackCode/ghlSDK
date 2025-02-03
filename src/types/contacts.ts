@@ -258,7 +258,7 @@ type ContactCreateSuccessfulResponseSchema = {
   dateAdded?: string /** The date the contact was added (2024-06-06T18:54:57.221Z) */;
   dateUpdated?: string /** The date the contact was updated (2024-06-06T18:54:57.221Z) */;
   deleted?: boolean /** The deletion status of the contact (false) */;
-  tags?: string[][] /** The tags of the contact (["tag-1","tag-2"]) */;
+  tags?: string[] /** The tags of the contact (["tag-1","tag-2"]) */;
   type?: string /** The type of the contact (lead) */;
   customFields?: CustomField[] /** The custom fields of the contact ([{ id: "MgobCB14YMVKuE4Ka8p1", value: "name" }]) */;
   locationId?: string /** The ID of the location (502goXVW3lIExEQPOnd3) */;
@@ -351,7 +351,7 @@ export type ContactUpdateSuccessfulResponseSchema = {
   country?: string /** The country of the contact (US) */;
   postalCode?: string /** The postal code of the contact (35061) */;
   website?: string /** The website of the contact (https://www.tesla.com) */;
-  tags?: string[][] /** The tags of the contact (["nisi sint commodo amet","consequat"]) */;
+  tags?: string[] /** The tags of the contact (["nisi sint commodo amet","consequat"]) */;
   dateOfBirth?: string /** The date of birth of the contact (1990-09-25T00:00:00.000Z) */;
   dateAdded?: string /** The date the contact was added (2021-07-02T05:18:26.704Z) */;
   dateUpdated?: string /** The date the contact was updated (2021-07-02T05:18:26.704Z) */;
@@ -387,7 +387,7 @@ export type ContactSearchDTO = {
   source?: string /** The source of the contact (public api) */;
   dateAdded?: string /** The date the contact was added (2021-07-02T05:18:26.704Z) */;
   customFields?: CustomField[] /** The custom fields of the contact ([{ id: "MgobCB14YMVKuE4Ka8p1", value: "name" }]) */;
-  tags?: string[][] /** The tags of the contact (["nisi sint commodo amet","consequat"]) */;
+  tags?: string[] /** The tags of the contact (["nisi sint commodo amet","consequat"]) */;
   businessId?: string /** The ID of the business (282goXVW3lIExEQPOnd3) */;
   attributions?: ContactAttributionSourceDTO[] /** The attributions of the contact */;
   followers?: string[] /** The IDs of the users following the contact (["682goXVW3lIExEQPOnd3","582goXVW3lIExEQPOnd3"]) */;

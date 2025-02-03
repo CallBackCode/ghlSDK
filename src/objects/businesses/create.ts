@@ -3,22 +3,19 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../types/_global";
-import type {
-  CreateBusinessDTO,
-  BusienssCreateUpdateResponseDTO,
-} from "../../types/businesses";
+import type { Businesses } from "../../types/businesses";
 import { withExponentialBackoff } from "../../contexts/requestUtils";
 
 const baseUrl = "https://services.leadconnectorhq.com/businesses";
 
 type ResponseTypes =
-  | BusienssCreateUpdateResponseDTO
+  | Businesses.CreateUpdateResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
 const create = async (
-  options: CreateBusinessDTO,
+  options: Businesses.CreateDTO,
   authToken: string
 ): Promise<ResponseTypes | null> => {
   const URL = `${baseUrl}/`;

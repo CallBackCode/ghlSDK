@@ -4,7 +4,7 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../types/_global";
-import type { BusinessDTO } from "../../types/businesses";
+import type { Businesses } from "../../types/businesses";
 import { withExponentialBackoff } from "../../contexts/requestUtils";
 
 const baseUrl = "https://services.leadconnectorhq.com/businesses";
@@ -16,7 +16,7 @@ type ResponseTypes =
   | UnprocessableDTO;
 
 const del = async (
-  businessId: BusinessDTO["id"],
+  businessId: Businesses.DTO["id"],
   authToken: string
 ): Promise<ResponseTypes | null> => {
   const URL = `${baseUrl}/${businessId}/`;

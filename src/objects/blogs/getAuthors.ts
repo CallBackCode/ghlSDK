@@ -3,7 +3,7 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../types/_global";
-import type { BlogsAuthorsResponseDTO } from "../../types/blogs";
+import type { Blogs } from "../../types/blogs";
 import { withExponentialBackoff } from "../../contexts/requestUtils";
 
 const baseUrl = "https://services.leadconnectorhq.com/blogs/authors";
@@ -21,7 +21,7 @@ type Params = {
 };
 
 type ResponseTypes =
-  | BlogsAuthorsResponseDTO
+  | Blogs.AuthorsResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;

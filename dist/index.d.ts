@@ -1,4 +1,23 @@
 export declare const GHL: {
+    blogs: {
+        getAuthors: (options: {
+            locationId: string;
+            limit: number;
+            offset: number;
+        }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/blogs").BlogsAuthorsResponseDTO) | null>;
+        getCategories: (options: {
+            locationId: string;
+            limit: number;
+            offset: number;
+        }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/blogs").BlogsCategoriesResponseDTO) | null>;
+        checkSlug: (options: {
+            locationId: string;
+            urlSlug: string;
+            postId?: string;
+        }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/blogs").BlogsCheckUrlSlugResponseDTO) | null>;
+        create: (options: import("./types/blogs").BlogsCreatePostParams, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/blogs").BlogsCreatePostResponseDTO) | null>;
+        update: (postId: string, options: import("./types/blogs").BlogsUpdatePostParams, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/blogs").BlogsUpdatePostResponseDTO) | null>;
+    };
     businesses: {
         get: (businessId: import("./types/businesses").BusinessDTO["id"], authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/businesses").BusinessGetResponseDTO) | null>;
         listByLocation: (locationId: import("./types/businesses").BusinessDTO["locationId"], authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/businesses").BusinessSearchResponseDTO) | null>;
@@ -180,6 +199,40 @@ export declare const GHL: {
             search: (options: import("./types/forms").FormsSubmissionsSearchOptions, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/forms").FormsSubmissionsSuccessfulResponseDTO) | null>;
         };
     };
+    funnels: {
+        listFunnels: (options: {
+            locationId: string;
+            category?: string;
+            limit?: string;
+            name?: string;
+            offset?: string;
+            parentId?: string;
+            type?: string;
+        }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/funnels").FunnelsListResponseDTO) | null>;
+        listPages: (options: {
+            locationId: string;
+            funnelId: string;
+            limit: number;
+            offset: number;
+            name?: string;
+        }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/funnels").FunnelsPageResponseDTO) | null>;
+        countPages: (options: {
+            locationId: string;
+            funnelId: string;
+            name?: string;
+        }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/funnels").FunnelsPageCountResponseDTO) | null>;
+        redirects: {
+            search: (options: {
+                locationId: string;
+                limit: number;
+                offset: number;
+                search?: string;
+            }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/funnels").FunnelsRedirectListResponseDTO) | null>;
+            create: (options: import("./types/funnels").FunnelsRedirectCreateParams, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/funnels").FunnelsRedirectCreateResponseDTO> | null;
+            update: (redirectId: string, options: import("./types/funnels").FunnelsRedirectUpdateParams, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/funnels").FunnelsRedirectCreateResponseDTO> | null;
+            delete: (locationId: string, redirectId: string, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/funnels").FunnelsRedirectDeleteResponseDTO> | null;
+        };
+    };
     invoices: {
         get: (invoiceId: string, options: import("./types/invoices").InvoicesVoidDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/invoices").InvoicesGetResponseDTO) | null>;
         search: (options: import("./types/invoices").InvoicesSearchOptions, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/invoices").InvoicesListResponseDTO) | null>;
@@ -213,14 +266,6 @@ export declare const GHL: {
         text2pay: {
             createAndSend: (options: import("./types/invoices").InvoicesTTPDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/invoices").InvoicesTTPResponseDTO) | null>;
         };
-    };
-    triggerLinks: {
-        search: (options: {
-            locationId: string;
-        }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/triggerLinks").LinksSearchResponseDTO) | null>;
-        create: (options: import("./types/triggerLinks").LinksDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/triggerLinks").LinksGetResponseDTO) | null>;
-        update: (linkId: string, options: import("./types/triggerLinks").LinksUpdateDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/triggerLinks").LinksGetResponseDTO) | null>;
-        delete: (linkId: string, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/_global").SuccededDeleteDTO) | null>;
     };
     locations: {
         get: (locationId: string, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/locations").LocationsGetByIdResponseDTO) | null>;
@@ -256,58 +301,10 @@ export declare const GHL: {
             search: (locationId: string, authToken: string) => Promise<any> | null;
         };
     };
-    blogs: {
-        getAuthors: (options: {
-            locationId: string;
-            limit: number;
-            offset: number;
-        }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/blogs").BlogsAuthorsResponseDTO) | null>;
-        getCategories: (options: {
-            locationId: string;
-            limit: number;
-            offset: number;
-        }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/blogs").BlogsCategoriesResponseDTO) | null>;
-        checkSlug: (options: {
-            locationId: string;
-            urlSlug: string;
-            postId?: string;
-        }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/blogs").BlogsCheckUrlSlugResponseDTO) | null>;
-        create: (options: import("./types/blogs").BlogsCreatePostParams, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/blogs").BlogsCreatePostResponseDTO) | null>;
-        update: (postId: string, options: import("./types/blogs").BlogsUpdatePostParams, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/blogs").BlogsUpdatePostResponseDTO) | null>;
-    };
-    funnels: {
-        listFunnels: (options: {
-            locationId: string;
-            category?: string;
-            limit?: string;
-            name?: string;
-            offset?: string;
-            parentId?: string;
-            type?: string;
-        }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/funnels").FunnelsListResponseDTO) | null>;
-        listPages: (options: {
-            locationId: string;
-            funnelId: string;
-            limit: number;
-            offset: number;
-            name?: string;
-        }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/funnels").FunnelsPageResponseDTO) | null>;
-        countPages: (options: {
-            locationId: string;
-            funnelId: string;
-            name?: string;
-        }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/funnels").FunnelsPageCountResponseDTO) | null>;
-        redirects: {
-            search: (options: {
-                locationId: string;
-                limit: number;
-                offset: number;
-                search?: string;
-            }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/funnels").FunnelsRedirectListResponseDTO) | null>;
-            create: (options: import("./types/funnels").FunnelsRedirectCreateParams, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/funnels").FunnelsRedirectCreateResponseDTO> | null;
-            update: (redirectId: string, options: import("./types/funnels").FunnelsRedirectUpdateParams, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/funnels").FunnelsRedirectCreateResponseDTO> | null;
-            delete: (locationId: string, redirectId: string, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/funnels").FunnelsRedirectDeleteResponseDTO> | null;
-        };
+    oauth: {
+        getAccessToken: (options: import("./types/oauth").GetAccessCodeBodyDTO) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/oauth").GetAccessCodeSuccessfulResponseDTO) | null>;
+        getLocationsInstalled: (options: import("./types/oauth").OAuthSearchOptions) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/oauth").GetInstalledLocationsSuccessfulResponseDTO) | null>;
+        getLocationTokenFromCompany: (options: import("./types/oauth").GetLocationAccessCodeBodyDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/oauth").GetLocationAccessTokenSuccessfulResponseDTO) | null>;
     };
     opportunities: {
         get: (opportuniyId: string, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/opportunities").OpportunitiesCreateResponseDTO) | null>;
@@ -326,13 +323,13 @@ export declare const GHL: {
     };
     payments: {
         integrations: {
-            create: (options: import("./types/payments").PaymentsWLProviderCreateDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/payments").PaymentsIntegrationProviderSchema> | null;
             search: (options: {
                 altId: string;
                 altType: "location";
                 limit?: number;
                 offset?: number;
             }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/payments").PaymentsWLProviderListResponseDTO) | null>;
+            create: (options: import("./types/payments").PaymentsWLProviderCreateDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/payments").PaymentsIntegrationProviderSchema> | null;
         };
         orders: {
             get: (orderId: string, options: import("./types/payments").PaymentsOrderFullfillmentsGetOptions, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/payments").PaymentsOrderGetResponseDTO> | null;
@@ -433,6 +430,14 @@ export declare const GHL: {
             surveyId?: string;
         }, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/surveys").SurveySubmissionsGetResponseDTO> | null;
     };
+    triggerLinks: {
+        search: (options: {
+            locationId: string;
+        }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/triggerLinks").LinksSearchResponseDTO) | null>;
+        create: (options: import("./types/triggerLinks").LinksDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/triggerLinks").LinksGetResponseDTO) | null>;
+        update: (linkId: string, options: import("./types/triggerLinks").LinksUpdateDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/triggerLinks").LinksGetResponseDTO) | null>;
+        delete: (linkId: string, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/_global").SuccededDeleteDTO) | null>;
+    };
     users: {
         get: (userId: string, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | {
             id?: string;
@@ -482,7 +487,7 @@ export declare const GHL: {
                 communitiesEnabled?: boolean;
                 exportPaymentsEnabled?: boolean;
             };
-            scopes?: "campaigns.readonly" | "campaigns.write" | "calendars/events.write" | "calendars/events.readonly" | "contacts.write" | "contacts/bulkActions.write" | "workflows.readonly" | "workflows.write" | "triggers.write" | "funnels.write" | "websites.write" | "medias.write" | "medias.readonly" | "opportunities.write" | "opportunities/leadValue.readonly" | "reporting/phone.readonly" | "reporting/adwords.readonly" | "reporting/facebookAds.readonly" | "reporting/attributions.readonly" | "reporting/agent.write" | "reporting/agent.readonly" | "reporting/reports.write" | "reporting/reports.readonly" | "payments.write" | "payments/refunds.write" | "payments/records.write" | "payments/exports.write" | "payments/subscriptionsCancel.write" | "invoices.write" | "invoices.readonly" | "invoices/schedule.readonly" | "invoices/schedule.write" | "invoices/template.readonly" | "invoices/template.write" | "reputation/review.write" | "reputation/listing.write" | "conversations.write" | "conversations.readonly" | "conversations/message.readonly" | "conversations/message.write" | "contentAI.write" | "dashboard/stats.readonly" | "locations/tags.write" | "locations/tags.readonly" | "marketing.write" | "eliza.write" | "settings.write" | "socialplanner/post.write" | "marketing/affiliate.write" | "blogs.write" | "membership.write" | "communities.write" | "certificates.write" | "certificates.readonly" | "adPublishing.write" | "adPublishing.readonly" | "private-integration-location.readonly" | "private-integration-location.write" | "private-integration-company.readonly" | "private-integration-company.write" | "native-integrations.readonly" | "native-integrations.write" | "wordpress.write" | "wordpress.read" | "custom-menu-link.readonly" | "custom-menu-link.write";
+            scopes?: "calendars/events.readonly" | "calendars/events.write" | "campaigns.readonly" | "contacts.write" | "conversations.readonly" | "conversations.write" | "conversations/message.readonly" | "conversations/message.write" | "invoices.readonly" | "invoices.write" | "invoices/schedule.readonly" | "invoices/schedule.write" | "invoices/template.readonly" | "invoices/template.write" | "locations/tags.readonly" | "locations/tags.write" | "medias.readonly" | "medias.write" | "opportunities.write" | "socialplanner/post.write" | "workflows.readonly" | "campaigns.write" | "contacts/bulkActions.write" | "workflows.write" | "triggers.write" | "funnels.write" | "websites.write" | "opportunities/leadValue.readonly" | "reporting/phone.readonly" | "reporting/adwords.readonly" | "reporting/facebookAds.readonly" | "reporting/attributions.readonly" | "reporting/agent.write" | "reporting/agent.readonly" | "reporting/reports.write" | "reporting/reports.readonly" | "payments.write" | "payments/refunds.write" | "payments/records.write" | "payments/exports.write" | "payments/subscriptionsCancel.write" | "reputation/review.write" | "reputation/listing.write" | "contentAI.write" | "dashboard/stats.readonly" | "marketing.write" | "eliza.write" | "settings.write" | "marketing/affiliate.write" | "blogs.write" | "membership.write" | "communities.write" | "certificates.write" | "certificates.readonly" | "adPublishing.write" | "adPublishing.readonly" | "private-integration-location.readonly" | "private-integration-location.write" | "private-integration-company.readonly" | "private-integration-company.write" | "native-integrations.readonly" | "native-integrations.write" | "wordpress.write" | "wordpress.read" | "custom-menu-link.readonly" | "custom-menu-link.write";
             roles?: {
                 type?: "account" | "agency";
                 role?: "admin" | "user";
@@ -541,7 +546,7 @@ export declare const GHL: {
                 communitiesEnabled?: boolean;
                 exportPaymentsEnabled?: boolean;
             };
-            scopes?: "campaigns.readonly" | "campaigns.write" | "calendars/events.write" | "calendars/events.readonly" | "contacts.write" | "contacts/bulkActions.write" | "workflows.readonly" | "workflows.write" | "triggers.write" | "funnels.write" | "websites.write" | "medias.write" | "medias.readonly" | "opportunities.write" | "opportunities/leadValue.readonly" | "reporting/phone.readonly" | "reporting/adwords.readonly" | "reporting/facebookAds.readonly" | "reporting/attributions.readonly" | "reporting/agent.write" | "reporting/agent.readonly" | "reporting/reports.write" | "reporting/reports.readonly" | "payments.write" | "payments/refunds.write" | "payments/records.write" | "payments/exports.write" | "payments/subscriptionsCancel.write" | "invoices.write" | "invoices.readonly" | "invoices/schedule.readonly" | "invoices/schedule.write" | "invoices/template.readonly" | "invoices/template.write" | "reputation/review.write" | "reputation/listing.write" | "conversations.write" | "conversations.readonly" | "conversations/message.readonly" | "conversations/message.write" | "contentAI.write" | "dashboard/stats.readonly" | "locations/tags.write" | "locations/tags.readonly" | "marketing.write" | "eliza.write" | "settings.write" | "socialplanner/post.write" | "marketing/affiliate.write" | "blogs.write" | "membership.write" | "communities.write" | "certificates.write" | "certificates.readonly" | "adPublishing.write" | "adPublishing.readonly" | "private-integration-location.readonly" | "private-integration-location.write" | "private-integration-company.readonly" | "private-integration-company.write" | "native-integrations.readonly" | "native-integrations.write" | "wordpress.write" | "wordpress.read" | "custom-menu-link.readonly" | "custom-menu-link.write";
+            scopes?: "calendars/events.readonly" | "calendars/events.write" | "campaigns.readonly" | "contacts.write" | "conversations.readonly" | "conversations.write" | "conversations/message.readonly" | "conversations/message.write" | "invoices.readonly" | "invoices.write" | "invoices/schedule.readonly" | "invoices/schedule.write" | "invoices/template.readonly" | "invoices/template.write" | "locations/tags.readonly" | "locations/tags.write" | "medias.readonly" | "medias.write" | "opportunities.write" | "socialplanner/post.write" | "workflows.readonly" | "campaigns.write" | "contacts/bulkActions.write" | "workflows.write" | "triggers.write" | "funnels.write" | "websites.write" | "opportunities/leadValue.readonly" | "reporting/phone.readonly" | "reporting/adwords.readonly" | "reporting/facebookAds.readonly" | "reporting/attributions.readonly" | "reporting/agent.write" | "reporting/agent.readonly" | "reporting/reports.write" | "reporting/reports.readonly" | "payments.write" | "payments/refunds.write" | "payments/records.write" | "payments/exports.write" | "payments/subscriptionsCancel.write" | "reputation/review.write" | "reputation/listing.write" | "contentAI.write" | "dashboard/stats.readonly" | "marketing.write" | "eliza.write" | "settings.write" | "marketing/affiliate.write" | "blogs.write" | "membership.write" | "communities.write" | "certificates.write" | "certificates.readonly" | "adPublishing.write" | "adPublishing.readonly" | "private-integration-location.readonly" | "private-integration-location.write" | "private-integration-company.readonly" | "private-integration-company.write" | "native-integrations.readonly" | "native-integrations.write" | "wordpress.write" | "wordpress.read" | "custom-menu-link.readonly" | "custom-menu-link.write";
             roles?: {
                 type?: "account" | "agency";
                 role?: "admin" | "user";
@@ -598,7 +603,7 @@ export declare const GHL: {
                 communitiesEnabled?: boolean;
                 exportPaymentsEnabled?: boolean;
             };
-            scopes?: "campaigns.readonly" | "campaigns.write" | "calendars/events.write" | "calendars/events.readonly" | "contacts.write" | "contacts/bulkActions.write" | "workflows.readonly" | "workflows.write" | "triggers.write" | "funnels.write" | "websites.write" | "medias.write" | "medias.readonly" | "opportunities.write" | "opportunities/leadValue.readonly" | "reporting/phone.readonly" | "reporting/adwords.readonly" | "reporting/facebookAds.readonly" | "reporting/attributions.readonly" | "reporting/agent.write" | "reporting/agent.readonly" | "reporting/reports.write" | "reporting/reports.readonly" | "payments.write" | "payments/refunds.write" | "payments/records.write" | "payments/exports.write" | "payments/subscriptionsCancel.write" | "invoices.write" | "invoices.readonly" | "invoices/schedule.readonly" | "invoices/schedule.write" | "invoices/template.readonly" | "invoices/template.write" | "reputation/review.write" | "reputation/listing.write" | "conversations.write" | "conversations.readonly" | "conversations/message.readonly" | "conversations/message.write" | "contentAI.write" | "dashboard/stats.readonly" | "locations/tags.write" | "locations/tags.readonly" | "marketing.write" | "eliza.write" | "settings.write" | "socialplanner/post.write" | "marketing/affiliate.write" | "blogs.write" | "membership.write" | "communities.write" | "certificates.write" | "certificates.readonly" | "adPublishing.write" | "adPublishing.readonly" | "private-integration-location.readonly" | "private-integration-location.write" | "private-integration-company.readonly" | "private-integration-company.write" | "native-integrations.readonly" | "native-integrations.write" | "wordpress.write" | "wordpress.read" | "custom-menu-link.readonly" | "custom-menu-link.write";
+            scopes?: "calendars/events.readonly" | "calendars/events.write" | "campaigns.readonly" | "contacts.write" | "conversations.readonly" | "conversations.write" | "conversations/message.readonly" | "conversations/message.write" | "invoices.readonly" | "invoices.write" | "invoices/schedule.readonly" | "invoices/schedule.write" | "invoices/template.readonly" | "invoices/template.write" | "locations/tags.readonly" | "locations/tags.write" | "medias.readonly" | "medias.write" | "opportunities.write" | "socialplanner/post.write" | "workflows.readonly" | "campaigns.write" | "contacts/bulkActions.write" | "workflows.write" | "triggers.write" | "funnels.write" | "websites.write" | "opportunities/leadValue.readonly" | "reporting/phone.readonly" | "reporting/adwords.readonly" | "reporting/facebookAds.readonly" | "reporting/attributions.readonly" | "reporting/agent.write" | "reporting/agent.readonly" | "reporting/reports.write" | "reporting/reports.readonly" | "payments.write" | "payments/refunds.write" | "payments/records.write" | "payments/exports.write" | "payments/subscriptionsCancel.write" | "reputation/review.write" | "reputation/listing.write" | "contentAI.write" | "dashboard/stats.readonly" | "marketing.write" | "eliza.write" | "settings.write" | "marketing/affiliate.write" | "blogs.write" | "membership.write" | "communities.write" | "certificates.write" | "certificates.readonly" | "adPublishing.write" | "adPublishing.readonly" | "private-integration-location.readonly" | "private-integration-location.write" | "private-integration-company.readonly" | "private-integration-company.write" | "native-integrations.readonly" | "native-integrations.write" | "wordpress.write" | "wordpress.read" | "custom-menu-link.readonly" | "custom-menu-link.write";
             roles?: {
                 type?: "account" | "agency";
                 role?: "admin" | "user";

@@ -3,22 +3,19 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../types/_global";
-import type {
-  BlogsCreatePostParams,
-  BlogsCreatePostResponseDTO,
-} from "../../types/blogs";
+import type { Blogs } from "../../types/blogs";
 import { withExponentialBackoff } from "../../contexts/requestUtils";
 
 const baseUrl = "https://services.leadconnectorhq.com/blogs/posts";
 
 type ResponseTypes =
-  | BlogsCreatePostResponseDTO
+  | Blogs.CreatePostResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
 const create = async (
-  options: BlogsCreatePostParams,
+  options: Blogs.CreatePostParams,
   authToken: string
 ): Promise<ResponseTypes | null> => {
   const URL = `${baseUrl}`;

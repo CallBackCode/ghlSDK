@@ -3,7 +3,7 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../types/_global";
-import type { BlogsCheckUrlSlugResponseDTO } from "../../types/blogs";
+import type { Blogs } from "../../types/blogs";
 import { withExponentialBackoff } from "../../contexts/requestUtils";
 
 const baseUrl =
@@ -16,7 +16,7 @@ type SearchOptions = {
 };
 
 type ResponseTypes =
-  | BlogsCheckUrlSlugResponseDTO
+  | Blogs.CheckUrlSlugResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
