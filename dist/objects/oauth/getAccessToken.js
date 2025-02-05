@@ -10,6 +10,7 @@ const getAccessToken = async (options) => {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
                 Accept: "application/json",
+                Version: "2021-07-28",
             },
             body: new URLSearchParams(options),
         });

@@ -18,7 +18,7 @@ type ResponseTypes =
   | UnprocessableDTO;
 
 const getAccessToken = async (
-  options: GetAccessCodeBodyDTO
+  options: GetAccessCodeBodyDTO,
 ): Promise<ResponseTypes | null> => {
   const URL = `${baseUrl}/`;
 
@@ -28,6 +28,7 @@ const getAccessToken = async (
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         Accept: "application/json",
+        Version: "2021-07-28",
       },
       body: new URLSearchParams(options),
     });
