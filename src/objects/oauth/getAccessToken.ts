@@ -20,15 +20,12 @@ type ResponseTypes =
 const getAccessToken = async (
   options: GetAccessCodeBodyDTO,
 ): Promise<ResponseTypes | null> => {
-  const URL = `${baseUrl}/`;
-
   const executeRequest = async (): Promise<ResponseTypes> => {
-    const response = await fetch(URL, {
+    const response = await fetch(baseUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         Accept: "application/json",
-        Version: "2021-07-28",
       },
       body: new URLSearchParams(options),
     });

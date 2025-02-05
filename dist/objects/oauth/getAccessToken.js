@@ -3,14 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const requestUtils_1 = require("../../contexts/requestUtils");
 const baseUrl = "https://services.leadconnectorhq.com/oauth/token";
 const getAccessToken = async (options) => {
-    const URL = `${baseUrl}/`;
     const executeRequest = async () => {
-        const response = await fetch(URL, {
+        const response = await fetch(baseUrl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
                 Accept: "application/json",
-                Version: "2021-07-28",
             },
             body: new URLSearchParams(options),
         });
