@@ -1102,4 +1102,191 @@ export namespace Objects {
       id: string;
     };
   }
+
+  /**
+   * Objects: The namespace for custom objects in the application.
+   *
+   * @memberof Objects
+   * @description This namespace contains types and interfaces related to custom objects, including object schemas and records.
+   *
+   * @example
+   * ```ts
+   * const customObject: Objects.ObjectLabels = {
+   *  singular: 'Customer',
+   *  plural: 'Customers'
+   * };
+   * ```
+   *
+   * @property {string} singular - The singular label for the custom object.
+   * @example 'Customer'
+   *
+   * @property {string} plural - The plural label for the custom object.
+   * @example 'Customers'
+   */
+  type ObjectLabels = {
+    /**
+     * singular: The singular label for the custom object.
+     *
+     * @type {string}
+     * @example 'Customer'
+     */
+    singular: string;
+
+    /**
+     * plural: The plural label for the custom object.
+     *
+     * @type {string}
+     * @example 'Customers'
+     */
+    plural: string;
+  };
+
+  /**
+   * CustomObjectDTO: The structure of a custom object data transfer object (DTO).
+   *
+   * @memberof Objects
+   * @requires id: The unique identifier of the custom object.
+   * @requires standard: Indicates whether the custom object is a standard object.
+   * @requires key: The internal key of the custom object.
+   * @requires labels: The labels for the custom object, including singular and plural forms.
+   * @requires locationId: The ID of the location where the custom object is stored.
+   * @requires primaryDisplayProperty: The primary property used to display the custom object.
+   * @requires dateAdded: The date and time when the custom object was added, in ISO 8601 format.
+   * @requires dateUpdated: The date and time when the custom object was last updated, in ISO 8601 format.
+   *
+   * @example
+   * ```ts
+   * const customObject: Objects.CustomObjectDTO = {
+   *  id: '1234567890abcdef',
+   * standard: true,
+   * key: 'customer',
+   * labels: {
+   *   singular: 'Customer',
+   *  plural: 'Customers'
+   * },
+   * locationId: '502goXVW3lIExEQPOnd3',
+   * primaryDisplayProperty: 'customer_name',
+   * dateAdded: '2024-07-11T10:00:00Z',
+   * dateUpdated: '2024-07-11T10:00:00Z',
+   * description: 'This object represents a customer in the system.',
+   * type: 'USER DEFINED' // or 'SYSTEM_DEFINED'
+   * };
+   * ```
+   *
+   * @property {string} id - The unique identifier of the custom object.
+   * @example '1234567890abcdef'
+   *
+   * @property {boolean} standard - Indicates whether the custom object is a standard object.
+   * @example true
+   *
+   * @property {string} key - The internal key of the custom object.
+   * @example 'customer'
+   *
+   * @property {ObjectLabels} labels - The labels for the custom object, including singular and plural forms.
+   *
+   * @property {string} locationId - The ID of the location where the custom object is stored.
+   * @example '502goXVW3lIExEQPOnd3'
+   *
+   * @property {string} primaryDisplayProperty - The primary property used to display the custom object.
+   * @example 'customer_name'
+   *
+   * @property {string} dateAdded - The date and time when the custom object was added, in ISO 8601 format.
+   * @example '2024-07-11T10:00:00Z'
+   *
+   * @property {string} dateUpdated - The date and time when the custom object was last updated, in ISO 8601 format.
+   * @example '2024-07-11T10:00:00Z'
+   *
+   * @property {string} [description] - An optional description of the custom object.
+   * @example 'This object represents a customer in the system.'
+   *
+   * @property {'USER DEFINED' | 'SYSTEM_DEFINED'} [type] - The type of the custom object, indicating whether it is user-defined or system-defined.
+   * @example 'USER DEFINED' // or 'SYSTEM_DEFINED'
+   */
+  export type CustomObjectDTO = {
+    /**
+     * id: The unique identifier of the custom object.
+     *
+     * @type {string}
+     * @example '1234567890abcdef'
+     */
+    id: string;
+
+    /**
+     * standard: Indicates whether the custom object is a standard object.
+     *
+     * @type {boolean}
+     * @example true
+     */
+    standard: boolean;
+
+    /**
+     * key: The internal key of the custom object.
+     *
+     * @type {string}
+     * @example 'customer'
+     */
+    key: string;
+
+    /**
+     * labels: The labels for the custom object, including singular and plural forms.
+     *
+     * @type {ObjectLabels}
+     * @example
+     * ```ts
+     * labels: {
+     *   singular: 'Customer',
+     *   plural: 'Customers'
+     * }
+     * ```
+     */
+    labels: ObjectLabels;
+
+    /**
+     * locationId: The ID of the location where the custom object is stored.
+     *
+     * @type {string}
+     * @example '502goXVW3lIExEQPOnd3'
+     */
+    locationId: string;
+
+    /**
+     * primaryDisplayProperty: The primary property used to display the custom object.
+     *
+     * @type {string}
+     * @example 'customer_name'
+     */
+    primaryDisplayProperty: string;
+
+    /**
+     * dateAdded: The date and time when the custom object was added, in ISO 8601 format.
+     *
+     * @type {string}
+     * @example '2024-07-11T10:00:00Z'
+     */
+    dateAdded: string;
+
+    /**
+     * dateUpdated: The date and time when the custom object was last updated, in ISO 8601 format.
+     *
+     * @type {string}
+     * @example '2024-07-11T10:00:00Z'
+     */
+    dateUpdated: string;
+
+    /**
+     * description: An optional description of the custom object.
+     *
+     * @type {string}
+     * @example 'This object represents a customer in the system.'
+     */
+    description?: string;
+
+    /**
+     * type: The type of the custom object, indicating whether it is user-defined or system-defined.
+     *
+     * @type {'USER DEFINED' | 'SYSTEM_DEFINED'}
+     * @example 'USER DEFINED' // or 'SYSTEM_DEFINED'
+     */
+    type?: "USER DEFINED" | "SYSTEM_DEFINED";
+  };
 }
