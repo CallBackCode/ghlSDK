@@ -1112,23 +1112,23 @@ export namespace Objects {
    * @example
    * ```ts
    * const customObject: Objects.ObjectLabels = {
-   *  singular: 'Customer',
-   *  plural: 'Customers'
+   *  singular: 'Pet',
+   *  plural: 'Pets'
    * };
    * ```
    *
    * @property {string} singular - The singular label for the custom object.
-   * @example 'Customer'
+   * @example 'Pet'
    *
    * @property {string} plural - The plural label for the custom object.
-   * @example 'Customers'
+   * @example 'Pets'
    */
   type ObjectLabels = {
     /**
      * singular: The singular label for the custom object.
      *
      * @type {string}
-     * @example 'Customer'
+     * @example 'Pet'
      */
     singular: string;
 
@@ -1136,7 +1136,7 @@ export namespace Objects {
      * plural: The plural label for the custom object.
      *
      * @type {string}
-     * @example 'Customers'
+     * @example 'Pets'
      */
     plural: string;
   };
@@ -1159,17 +1159,17 @@ export namespace Objects {
    * const customObject: Objects.CustomObjectDTO = {
    *  id: '1234567890abcdef',
    *  standard: true,
-   *  key: 'customer',
+   *  key: 'custom_objects.pet',
    *  labels: {
-   *    singular: 'Customer',
-   *    plural: 'Customers'
+   *    singular: 'Pet',
+   *    plural: 'Pets'
    *  },
    *  locationId: '502goXVW3lIExEQPOnd3',
-   *  primaryDisplayProperty: 'customer_name',
+   *  primaryDisplayProperty: 'custom_object.pet.name',
    *  dateAdded: '2024-07-11T10:00:00Z',
    *  dateUpdated: '2024-07-11T10:00:00Z',
-   *  description: 'This object represents a customer in the system.',
-   *  type: 'USER DEFINED' // or 'SYSTEM_DEFINED'
+   *  description: 'This object represents a pet in the system.',
+   *  type: 'USER_DEFINED' // or 'SYSTEM_DEFINED'
    * };
    * ```
    *
@@ -1180,7 +1180,7 @@ export namespace Objects {
    * @example true
    *
    * @property {string} key - The internal key of the custom object.
-   * @example 'customer'
+   * @example 'custom_objects.pet'
    *
    * @property {ObjectLabels} labels - The labels for the custom object, including singular and plural forms.
    *
@@ -1188,7 +1188,7 @@ export namespace Objects {
    * @example '502goXVW3lIExEQPOnd3'
    *
    * @property {string} primaryDisplayProperty - The primary property used to display the custom object.
-   * @example 'customer_name'
+   * @example 'custom_object.pet.name'
    *
    * @property {string} dateAdded - The date and time when the custom object was added, in ISO 8601 format.
    * @example '2024-07-11T10:00:00Z'
@@ -1197,10 +1197,10 @@ export namespace Objects {
    * @example '2024-07-11T10:00:00Z'
    *
    * @property {string} [description] - An optional description of the custom object.
-   * @example 'This object represents a customer in the system.'
+   * @example 'This object represents a pet in the system.'
    *
-   * @property {'USER DEFINED' | 'SYSTEM_DEFINED'} [type] - The type of the custom object, indicating whether it is user-defined or system-defined.
-   * @example 'USER DEFINED' // or 'SYSTEM_DEFINED'
+   * @property {'USER_DEFINED' | 'SYSTEM_DEFINED'} [type] - The type of the custom object, indicating whether it is user-defined or system-defined.
+   * @example 'USER_DEFINED' // or 'SYSTEM_DEFINED'
    */
   export type CustomObjectDTO = {
     /**
@@ -1223,7 +1223,7 @@ export namespace Objects {
      * key: The internal key of the custom object.
      *
      * @type {string}
-     * @example 'customer'
+     * @example 'custom_objects.pet'
      */
     key: string;
 
@@ -1234,8 +1234,8 @@ export namespace Objects {
      * @example
      * ```ts
      * labels: {
-     *   singular: 'Customer',
-     *   plural: 'Customers'
+     *   singular: 'Pet',
+     *   plural: 'Pets'
      * }
      * ```
      */
@@ -1253,7 +1253,7 @@ export namespace Objects {
      * primaryDisplayProperty: The primary property used to display the custom object.
      *
      * @type {string}
-     * @example 'customer_name'
+     * @example 'custom_object.pet.name'
      */
     primaryDisplayProperty: string;
 
@@ -1277,17 +1277,17 @@ export namespace Objects {
      * description: An optional description of the custom object.
      *
      * @type {string}
-     * @example 'This object represents a customer in the system.'
+     * @example 'This object represents a pet in the system.'
      */
     description?: string;
 
     /**
      * type: The type of the custom object, indicating whether it is user-defined or system-defined.
      *
-     * @type {'USER DEFINED' | 'SYSTEM_DEFINED'}
-     * @example 'USER DEFINED' // or 'SYSTEM_DEFINED'
+     * @type {'USER_DEFINED' | 'SYSTEM_DEFINED'}
+     * @example 'USER_DEFINED' // or 'SYSTEM_DEFINED'
      */
-    type?: "USER DEFINED" | "SYSTEM_DEFINED";
+    type?: "USER_DEFINED" | "SYSTEM_DEFINED";
   };
 
   /**
@@ -1297,14 +1297,14 @@ export namespace Objects {
    * @example
    * ```ts
    * const params: Objects.GetParams = {
-   *   key: 'customer',
+   *   key: 'pet',
    *   locationId: '502goXVW3lIExEQPOnd3',
    *   fetchProperties: true // Optional, defaults to false
    * };
    * ```
    *
    * @property {string} key - The internal key of the custom object.
-   * @example 'customer'
+   * @example 'pet'
    *
    * @property {string} locationId - The ID of the location where the custom object is stored.
    * @example '502goXVW3lIExEQPOnd3'
@@ -1317,7 +1317,7 @@ export namespace Objects {
      * key: The internal key of the custom object.
      *
      * @type {string}
-     * @example 'customer'
+     * @example 'pet'
      */
     key: string;
 
@@ -1337,5 +1337,135 @@ export namespace Objects {
      * @example true
      */
     fetchProperties?: boolean;
+  };
+
+  /**
+   * SearchParams: The parameters required to search for records within a custom object.
+   *
+   * @memberof Objects
+   *
+   * @example
+   * ```ts
+   * const searchParams: Objects.SearchParams = {
+   *  locationId: '502goXVW3lIExEQPOnd3'
+   * };
+   * ```
+   *
+   * @property {string} locationId - The ID of the location where the records are stored.
+   * @example '502goXVW3lIExEQPOnd3'
+   */
+  export type SearchParams = {
+    /**
+     * locationId: The ID of the location where the records are stored.
+     *
+     * @type {string}
+     * @example '502goXVW3lIExEQPOnd3'
+     */
+    locationId: string;
+  };
+
+  /**
+   * PrimaryDisplayPropertyDetails: The details of the primary display property for a custom object.
+   *
+   * @memberof Objects
+   * @description This type defines the structure of the primary display property details, including its key, name, and data type.
+   *
+   * @example
+   * ```ts
+   * const primaryDisplayProperty: Objects.PrimaryDisplayPropertyDetails = {
+   *  key: 'custom_object.pet.name',
+   *  name: 'Name',
+   *  dataType: 'TEXT' // or 'NUMERICAL'
+   * };
+   * ```
+   *
+   * @property {string} key - The internal key of the primary display property.
+   * @example 'custom_object.pet.name'
+   *
+   * @property {string} name - The name of the primary display property.
+   * @example 'Name'
+   *
+   * @property {"TEXT" | "NUMERICAL"} dataType - The data type of the primary display property, which can be either "TEXT" or "NUMERICAL".
+   * @example 'TEXT'
+   */
+  type PrimaryDisplayPropertyDetails = {
+    /**
+     * key: The internal key of the primary display property.
+     *
+     * @type {string}
+     * @example 'custom_object.pet.name'
+     */
+    key: string;
+
+    /**
+     * name: The name of the primary display property.
+     *
+     * @type {string}
+     * @example 'Name'
+     */
+    name: string;
+
+    /**
+     * dataType: The data type of the primary display property, which can be either "TEXT" or "NUMERICAL".
+     *
+     * @type {"TEXT" | "NUMERICAL"}
+     * @example 'TEXT'
+     */
+    dataType: "TEXT" | "NUMERICAL";
+  };
+
+  export type CreateBody = {
+    /**
+     * objectId: The ID of the custom object to which the record belongs.
+     *
+     * @type {ObjectLabels}
+     * @example
+     * ```ts
+     * objectLabels: {
+     *   singular: 'Pet',
+     *   plural: 'Pets'
+     * }
+     * ```
+     */
+    labels: ObjectLabels;
+
+    /**
+     * key: The internal key of the custom object.
+     *
+     * @type {string}
+     * @example 'custom_objects.pet'
+     */
+    key: string;
+
+    /**
+     * locationId: The ID of the location where the record is stored.
+     *
+     * @type {string}
+     * @example '502goXVW3lIExEQPOnd3'
+     */
+    locationId: string;
+
+    /**
+     * primaryDisplayProperty: The primary property used to display the custom object.
+     *
+     * @type {PrimaryDisplayPropertyDetails}
+     * @example
+     * ```ts
+     * primaryDisplayProperty: {
+     *  key: 'custom_object.pet.name',
+     *  name: 'Name',
+     *  dataType: 'TEXT' // or 'NUMERICAL'
+     * }
+     * ```
+     */
+    primaryDisplayProperty: PrimaryDisplayPropertyDetails;
+
+    /**
+     * description: An optional description of the custom object.
+     *
+     * @type {string}
+     * @example 'This object represents a pet in the system.'
+     */
+    description?: string;
   };
 }
