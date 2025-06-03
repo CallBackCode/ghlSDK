@@ -1849,4 +1849,102 @@ export namespace Objects {
      */
     objects: CustomObjectDTO[];
   };
+
+  /**
+   * CreateResponse: The structure of the response when retrieving a custom object.
+   *
+   * @memberof Objects
+   * @description This type defines the properties of a custom object, including its ID, standard status, key, labels, location ID, primary display property, date added, date updated, and optional description and type.
+   *
+   * @example
+   * ```ts
+   * const response: Objects.CreateResponse = {
+   *  object: {
+   *    id: '1234567890abcdef',
+   *    standard: true,
+   *    key: 'custom_objects.pet',
+   *    labels: {
+   *      singular: 'Pet',
+   *      plural: 'Pets'
+   *    },
+   *    locationId: '502goXVW3lIExEQPOnd3',
+   *    primaryDisplayProperty: 'custom_object.pet.name',
+   *    dateAdded: '2024-07-11T10:00:00Z',
+   *    dateUpdated: '2024-07-11T10:00:00Z',
+   *    description: 'This object represents a pet in the system.',
+   *    type: 'USER_DEFINED' // or 'SYSTEM_DEFINED'
+   *  },
+   * };
+   * ```
+   *
+   * @property {CustomObjectDTO} object - The custom object that was retrieved.
+   * @example
+   * ```ts
+   * object: {
+   *   id: '1234567890abcdef',
+   *   standard: true,
+   *   key: 'custom_objects.pet',
+   *   labels: {
+   *     singular: 'Pet',
+   *     plural: 'Pets'
+   *   },
+   *   locationId: '502goXVW3lIExEQPOnd3',
+   *   primaryDisplayProperty: 'custom_object.pet.name',
+   *   dateAdded: '2024-07-11T10:00:00Z',
+   *   dateUpdated: '2024-07-11T10:00:00Z',
+   *   description: 'This object represents a pet in the system.',
+   *   type: 'USER_DEFINED' // or 'SYSTEM_DEFINED'
+   * };
+   * ```
+   */
+  export type CreateResponse = GetResponse;
+
+  /**
+   * UpdateResponse: The structure of the response when retrieving a custom object.
+   *
+   * @memberof Objects
+   * @description This type defines the properties of a custom object, including its ID, standard status, key, labels, location ID, primary display property, date added, date updated, and optional description and type.
+   *
+   * @example
+   * ```ts
+   * const response: Objects.UpdateResponse = {
+   *  object: {
+   *    id: '1234567890abcdef',
+   *    standard: true,
+   *    key: 'custom_objects.pet',
+   *    labels: {
+   *      singular: 'Pet',
+   *      plural: 'Pets'
+   *    },
+   *    locationId: '502goXVW3lIExEQPOnd3',
+   *    primaryDisplayProperty: 'custom_object.pet.name',
+   *    dateAdded: '2024-07-11T10:00:00Z',
+   *    dateUpdated: '2024-07-11T10:00:00Z',
+   *    description: 'This object represents a pet in the system.',
+   *    type: 'USER_DEFINED' // or 'SYSTEM_DEFINED'
+   *  },
+   * };
+   * ```
+   *
+   * @property {CustomObjectDTO} object - The custom object that was retrieved.
+   * @example
+   * ```ts
+   * object: {
+   *   id: '1234567890abcdef',
+   *   standard: true,
+   *   key: 'custom_objects.pet',
+   *   labels: {
+   *     singular: 'Pet',
+   *     plural: 'Pets'
+   *   },
+   *   locationId: '502goXVW3lIExEQPOnd3',
+   *   primaryDisplayProperty: 'custom_object.pet.name',
+   *   dateAdded: '2024-07-11T10:00:00Z',
+   *   dateUpdated: '2024-07-11T10:00:00Z',
+   *   description: 'This object represents a pet in the system.',
+   *   type: 'USER_DEFINED' // or 'SYSTEM_DEFINED'
+   * };
+   * ```
+   */
+  export type UpdateResponse = GetResponse;
 }
