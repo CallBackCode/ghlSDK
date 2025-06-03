@@ -18,12 +18,10 @@ type ResponseTypes =
   | UnprocessableDTO;
 
 const getAccessToken = async (
-  options: GetAccessCodeBodyDTO
+  options: GetAccessCodeBodyDTO,
 ): Promise<ResponseTypes | null> => {
-  const URL = `${baseUrl}/`;
-
   const executeRequest = async (): Promise<ResponseTypes> => {
-    const response = await fetch(URL, {
+    const response = await fetch(baseUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
