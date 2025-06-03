@@ -12,9 +12,9 @@ import {
  * Custom Objects:
  * Unlike Standard objects, Custom Objects allow users to define and structure their own data models.
  * Custom Objects offer flexibility by enabling users to specify:
- * * Name of the Object
- * * Fields and Field Types (e.g., single line text)
- * * Searchable Properties (fields that can be indexed for searching)
+ * Name of the Object
+ * Fields and Field Types (e.g., single line text)
+ * Searchable Properties (fields that can be indexed for searching)
  *
  * Primary Display Property (the main identifier used for displaying the record)
  */
@@ -50,7 +50,7 @@ export namespace Objects {
     /**
      * FileValue: Represents a file associated with a record.
      * It includes:
-     * * - url: The URL of the file.
+     * - url: The URL of the file.
      * @typedef {Object} FileValue
      * @memberof Objects.Records
      * @example
@@ -69,7 +69,7 @@ export namespace Objects {
      * ```
      */
     type FileValue = {
-      /** * url: The URL of the file.
+      /** url: The URL of the file.
        * @property {string} url - The URL of the file.
        */
       url: string; // The URL of the file.
@@ -1414,6 +1414,62 @@ export namespace Objects {
     dataType: "TEXT" | "NUMERICAL";
   };
 
+  /**
+   * CreateParams: The parameters required to create a new custom object.
+   *
+   * @memberof Objects
+   * @description This type defines the properties required to create a custom object, including its key, location ID, and primary display property.
+   *
+   * @requires labels: The labels for the custom object, including singular and plural forms.
+   * @requires key: The internal key of the custom object.
+   * @requires locationId: The ID of the location where the custom object will be stored.
+   *
+   * @example
+   * ```ts
+   * const createParams: Objects.CreateParams = {
+   *  labels: {
+   *   singular: 'Pet',
+   *  plural: 'Pets'
+   *  },
+   * key: 'custom_objects.pet',
+   * locationId: '502goXVW3lIExEQPOnd3',
+   * primaryDisplayProperty: {
+   *  key: 'custom_object.pet.name',
+   * name: 'Name',
+   * dataType: 'TEXT' // or 'NUMERICAL'
+   * }
+   * };
+   * ```
+   *
+   * @property {ObjectLabels} labels - The labels for the custom object, including singular and plural forms.
+   * @example
+   * ```ts
+   * labels: {
+   *  singular: 'Pet',
+   *  plural: 'Pets'
+   * }
+   * ```
+   *
+   * @property {string} key - The internal key of the custom object.
+   * @example 'custom_objects.pet'
+   *
+   * @property {string} locationId - The ID of the location where the custom object will be stored.
+   * @example '502goXVW3lIExEQPOnd3'
+   *
+   * @property {PrimaryDisplayPropertyDetails} primaryDisplayProperty - The primary property used to display the custom object.
+   * @example
+   * ```ts
+   * primaryDisplayProperty: {
+   * key: 'custom_object.pet.name',
+   * name: 'Name',
+   * dataType: 'TEXT' // or 'NUMERICAL'
+   * }
+   * ```
+   *
+   * @property {string} [description] - An optional description of the custom object.
+   * @example 'This object represents a pet in the system.'
+   */
+
   export type CreateBody = {
     /**
      * objectId: The ID of the custom object to which the record belongs.
@@ -1577,5 +1633,118 @@ export namespace Objects {
      * @example 'This object represents a pet in the system.'
      */
     description?: string | null;
+  };
+
+  /**
+   * GetResponse: The structure of the response when retrieving a custom object.
+   *
+   * @memberof Objects
+   * @description This type defines the properties of a custom object, including its ID, standard status, key, labels, location ID, primary display property, date added, date updated, and optional description and type.
+   *
+   * @example
+   * ```ts
+   * const response: Objects.GetResponse = {
+   *  object: {
+   *    id: '1234567890abcdef',
+   *    standard: true,
+   *    key: 'custom_objects.pet',
+   *    labels: {
+   *      singular: 'Pet',
+   *      plural: 'Pets'
+   *    },
+   *    locationId: '502goXVW3lIExEQPOnd3',
+   *    primaryDisplayProperty: 'custom_object.pet.name',
+   *    dateAdded: '2024-07-11T10:00:00Z',
+   *    dateUpdated: '2024-07-11T10:00:00Z',
+   *    description: 'This object represents a pet in the system.',
+   *    type: 'USER_DEFINED' // or 'SYSTEM_DEFINED'
+   *  },
+   * };
+   * ```
+   *
+   * @property {CustomObjectDTO} object - The custom object that was retrieved.
+   * @example
+   * ```ts
+   * object: {
+   *   id: '1234567890abcdef',
+   *   standard: true,
+   *   key: 'custom_objects.pet',
+   *   labels: {
+   *     singular: 'Pet',
+   *     plural: 'Pets'
+   *   },
+   *   locationId: '502goXVW3lIExEQPOnd3',
+   *   primaryDisplayProperty: 'custom_object.pet.name',
+   *   dateAdded: '2024-07-11T10:00:00Z',
+   *   dateUpdated: '2024-07-11T10:00:00Z',
+   *   description: 'This object represents a pet in the system.',
+   *   type: 'USER_DEFINED' // or 'SYSTEM_DEFINED'
+   * };
+   * ```
+   */
+  export type GetResponse = {
+    /**
+     * CustomObjectDTO: The structure of a custom object data transfer object (DTO).
+     *
+     * @memberof Objects
+     * @requires id: The unique identifier of the custom object.
+     * @requires standard: Indicates whether the custom object is a standard object.
+     * @requires key: The internal key of the custom object.
+     * @requires labels: The labels for the custom object, including singular and plural forms.
+     * @requires locationId: The ID of the location where the custom object is stored.
+     * @requires primaryDisplayProperty: The primary property used to display the custom object.
+     * @requires dateAdded: The date and time when the custom object was added, in ISO 8601 format.
+     * @requires dateUpdated: The date and time when the custom object was last updated, in ISO 8601 format.
+     *
+     * @example
+     * ```ts
+     * const customObject: Objects.CustomObjectDTO = {
+     *   id: '1234567890abcdef',
+     *   standard: true,
+     *   key: 'custom_objects.pet',
+     *   labels: {
+     *     singular: 'Pet',
+     *     plural: 'Pets'
+     *   },
+     *   locationId: '502goXVW3lIExEQPOnd3',
+     *   primaryDisplayProperty: 'custom_object.pet.name',
+     *   dateAdded: '2024-07-11T10:00:00Z',
+     *   dateUpdated: '2024-07-11T10:00:00Z',
+     *   description: 'This object represents a pet in the system.',
+     *   type: 'USER_DEFINED' // or 'SYSTEM_DEFINED'
+     *   },
+     * };
+     * ```
+     *
+     * @property {string} id - The unique identifier of the custom object.
+     * @example '1234567890abcdef'
+     *
+     * @property {boolean} standard - Indicates whether the custom object is a standard object.
+     * @example true
+     *
+     * @property {string} key - The internal key of the custom object.
+     * @example 'custom_objects.pet'
+     *
+     * @property {ObjectLabels} labels - The labels for the custom object, including singular and plural forms.
+     *
+     * @property {string} locationId - The ID of the location where the custom object is stored.
+     * @example '502goXVW3lIExEQPOnd3'
+     *
+     * @property {string} primaryDisplayProperty - The primary property used to display the custom object.
+     * @example 'custom_object.pet.name'
+     *
+     * @property {string} dateAdded - The date and time when the custom object was added, in ISO 8601 format.
+     * @example '2024-07-11T10:00:00Z'
+     *
+     * @property {string} dateUpdated - The date and time when the custom object was last updated, in ISO 8601 format.
+     * @example '2024-07-11T10:00:00Z'
+     *
+     * @property {string} [description] - An optional description of the custom object.
+     * @example 'This object represents a pet in the system.'
+     *
+     * @property {'USER_DEFINED' | 'SYSTEM_DEFINED'} [type] - The type of the custom object, indicating whether it is user-defined or system-defined.
+     * @example 'USER_DEFINED' // or 'SYSTEM_DEFINED'
+     */
+    object: CustomObjectDTO;
   };
 }
