@@ -1747,4 +1747,106 @@ export namespace Objects {
      */
     object: CustomObjectDTO;
   };
+
+  /**
+   * SearchResponse: The structure of the response when searching for records within a custom object.
+   *
+   * @memberof Objects
+   * @description This type defines the properties of the search response, which includes an array of custom object records.
+   *
+   * @example
+   * ```ts
+   * const response: Objects.SearchResponse = {
+   *  objects: [
+   *   {
+   *       id: '1234567890abcdef',
+   *       standard: true,
+   *       key: 'custom_objects.pet',
+   *       labels: {
+   *         singular: 'Pet',
+   *         plural: 'Pets'
+   *       },
+   *       locationId: '502goXVW3lIExEQPOnd3',
+   *       primaryDisplayProperty: 'custom_object.pet.name',
+   *       dateAdded: '2024-07-11T10:00:00Z',
+   *       dateUpdated: '2024-07-11T10:00:00Z',
+   *       description: 'This object represents a pet in the system.',
+   *       type: 'USER_DEFINED' // or 'SYSTEM_DEFINED'
+   *     },
+   *   ],
+   * };
+   * ```
+   *
+   * @property {CustomObjectDTO[]} objects - An array of custom object records that match the search criteria.
+   * @example
+   * ```ts
+   * objects: [
+   *   {
+   *     id: '1234567890abcdef',
+   *     standard: true,
+   *     key: 'custom_objects.pet',
+   *     labels: {
+   *       singular: 'Pet',
+   *       plural: 'Pets'
+   *     },
+   *     locationId: '502goXVW3lIExEQPOnd3',
+   *     primaryDisplayProperty: 'custom_object.pet.name',
+   *     dateAdded: '2024-07-11T10:00:00Z',
+   *     dateUpdated: '2024-07-11T10:00:00Z',
+   *     description: 'This object represents a pet in the system.',
+   *     type: 'USER_DEFINED' // or 'SYSTEM_DEFINED'
+   *   }
+   * ]
+   * ```
+   */
+  export type SearchResponse = {
+    /**
+     * objects: An array of custom object records that match the search criteria.
+     *
+     * @type {CustomObjectDTO[]}
+     * @example
+     * ```ts
+     * objects: [
+     *  {
+     *    id: '1234567890abcdef',
+     *    standard: true,
+     *    key: 'custom_objects.pet',
+     *    labels: {
+     *     singular: 'Pet',
+     *     plural: 'Pets'
+     *    },
+     *    locationId: '502goXVW3lIExEQPOnd3',
+     *    primaryDisplayProperty: 'custom_object.pet.name',
+     *    dateAdded: '2024-07-11T10:00:00Z',
+     *    dateUpdated: '2024-07-11T10:00:00Z',
+     *    description: 'This object represents a pet in the system.',
+     *    type: 'USER_DEFINED' // or 'SYSTEM_DEFINED'
+     *  }
+     * ]
+     * ```
+     *
+     * @type {CustomObjectDTO[]}
+     * @example
+     * ```ts
+     * objects: [
+     *  {
+     *    id: '1234567890abcdef',
+     *    standard: true,
+     *    key: 'custom_objects.pet',
+     *    labels: {
+     *     singular: 'Pet',
+     *     plural: 'Pets'
+     *    },
+     *    locationId: '502goXVW3lIExEQPOnd3',
+     *    primaryDisplayProperty: 'custom_object.pet.name',
+     *    dateAdded: '2024-07-11T10:00:00Z',
+     *    dateUpdated: '2024-07-11T10:00:00Z',
+     *    description: 'This object represents a pet in the system.',
+     *    type: 'USER_DEFINED' // or 'SYSTEM_DEFINED'
+     *  }
+     * ]
+     * ```
+     */
+    objects: CustomObjectDTO[];
+  };
 }
