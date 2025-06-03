@@ -1,5 +1,5 @@
 import { BadRequestDTO, UnauthorizedDTO, UnprocessableDTO } from "../../types/_global";
-import type { BusinessDTO, BusinessGetResponseDTO } from "../../types/businesses";
-type ResponseTypes = BusinessGetResponseDTO | BadRequestDTO | UnauthorizedDTO | UnprocessableDTO;
-declare const get: (businessId: BusinessDTO["id"], authToken: string) => Promise<ResponseTypes | null>;
+import type { Businesses } from "../../types/businesses";
+type ResponseTypes = Businesses.GetResponseDTO | BadRequestDTO | UnauthorizedDTO | UnprocessableDTO;
+declare const get: (businessId: Businesses.DTO["id"], authToken: string) => Promise<ResponseTypes | null>;
 export default get;

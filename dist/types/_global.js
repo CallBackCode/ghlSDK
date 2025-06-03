@@ -1,6 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CountryCodes = void 0;
+/**
+ * Represents the country abbreviations accepted by the API.
+ *
+ * This type is used to represent the country codes.
+ *
+ * The country codes are two-letter abbreviations.
+ *
+ * @property {string} - The country code.
+ * @example "US"
+ */
 var CountryCodes;
 (function (CountryCodes) {
     CountryCodes["Afghanistan"] = "AF";
@@ -251,4 +261,14 @@ var CountryCodes;
     CountryCodes["Zambia"] = "ZM";
     CountryCodes["Zimbabwe"] = "ZW";
 })(CountryCodes || (exports.CountryCodes = CountryCodes = {}));
+var SearchFilterOpporators;
+(function (SearchFilterOpporators) {
+    SearchFilterOpporators["eq"] = "eq";
+    SearchFilterOpporators["not_eq"] = "not_eq";
+    SearchFilterOpporators["contains"] = "contains";
+    SearchFilterOpporators["not_contains"] = "not_contains";
+    SearchFilterOpporators["exists"] = "exists";
+    SearchFilterOpporators["not_exists"] = "not_exists";
+    SearchFilterOpporators["range"] = "range";
+})(SearchFilterOpporators || (SearchFilterOpporators = {}));
 //# sourceMappingURL=_global.js.map
