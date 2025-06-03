@@ -1468,4 +1468,114 @@ export namespace Objects {
      */
     description?: string;
   };
+
+  /**
+   * UpdateBody: The structure of the body for updating a custom object.
+   *
+   * @memberof Objects
+   * @description This type defines the properties required to update a custom object, including its location ID, searchable properties, labels, and an optional description.
+   *
+   * @requires key: The internal key of the custom object.
+   *
+   * @example
+   * ```ts
+   * const updateParams: Objects.UpdateParams = {
+   *  key: 'custom_objects.pet'
+   * };
+   * ```
+   *
+   * @property {string} key - The internal key of the custom object.
+   * @example 'custom_objects.pet'
+   */
+  export type UpdateParams = {
+    /**
+     * key: The internal key of the custom object.
+     *
+     * @type {string}
+     * @example 'custom_objects.pet'
+     */
+    key: string;
+  };
+
+  /**
+   * UpdateBody: The structure of the body for updating a custom object.
+   *
+   * @memberof Objects
+   * @description This type defines the properties required to update a custom object, including its location ID, searchable properties, labels, and an optional description.
+   *
+   * @requires locationId: The ID of the location where the custom object is stored.
+   * @requires searchableProperties: An array of property keys that should be searchable in the custom object.
+   * @requires labels: An object containing the singular and plural labels for the custom object.
+   *
+   * @example
+   * ```ts
+   * const updateBody: Objects.UpdateBody = {
+   *  locationId: '502goXVW3lIExEQPOnd3',
+   *  searchableProperties: ['custom_objects.mad.mad', 'custom_objects.mad.record_1', 'custom_objects.mad.nn'],
+   *  labels: {
+   *    singular: 'Pet',
+   *    plural: 'Pets'
+   *  },
+   *  description: 'This object represents a pet in the system.'
+   * };
+   * ```
+   *
+   * @property {string} locationId - The ID of the location where the custom object is stored.
+   * @example '502goXVW3lIExEQPOnd3'
+   *
+   * @property {string[]} searchableProperties - An array of property keys that should be searchable in the custom object.
+   * @example ['custom_objects.mad.mad', 'custom_objects.mad.record_1', 'custom_objects.mad.nn']
+   *
+   * @property {Partial<ObjectLabels>} [labels] - An object containing the singular and plural labels for the custom object.
+   * @example
+   * ```ts
+   * labels: {
+   *  singular: 'Pet',
+   *  plural: 'Pets'
+   * }
+   * ```
+   *
+   * @property {string | null} [description] - An optional description of the custom object.
+   * @example 'This object represents a pet in the system.'
+   * @example null
+   */
+  export type UpdateBody = {
+    /**
+     * locationId: The ID of the location where the custom object is stored.
+     *
+     * @type {string}
+     * @example '502goXVW3lIExEQPOnd3'
+     */
+    locationId: string;
+
+    /**
+     * searchableProperties: An array of property keys that should be searchable in the custom object.
+     *
+     * @type {string[]}
+     * @example ["custom_objects.mad.mad","custom_objects.mad.record_1","custom_objects.mad.nn"]
+     */
+    searchableProperties: string[];
+
+    /**
+     * labels: An object containing the singular and plural labels for the custom object.
+     *
+     * @type {Partial<ObjectLabels>}
+     * @example
+     * ```ts
+     * labels: {
+     *  singular: 'Pet',
+     *  plural: 'Pets'
+     * }
+     * ```
+     */
+    labels?: Partial<ObjectLabels>;
+
+    /**
+     * description: An optional description of the custom object.
+     *
+     * @type {string | null}
+     * @example 'This object represents a pet in the system.'
+     */
+    description?: string | null;
+  };
 }
