@@ -1158,18 +1158,18 @@ export namespace Objects {
    * ```ts
    * const customObject: Objects.CustomObjectDTO = {
    *  id: '1234567890abcdef',
-   * standard: true,
-   * key: 'customer',
-   * labels: {
-   *   singular: 'Customer',
-   *  plural: 'Customers'
-   * },
-   * locationId: '502goXVW3lIExEQPOnd3',
-   * primaryDisplayProperty: 'customer_name',
-   * dateAdded: '2024-07-11T10:00:00Z',
-   * dateUpdated: '2024-07-11T10:00:00Z',
-   * description: 'This object represents a customer in the system.',
-   * type: 'USER DEFINED' // or 'SYSTEM_DEFINED'
+   *  standard: true,
+   *  key: 'customer',
+   *  labels: {
+   *    singular: 'Customer',
+   *    plural: 'Customers'
+   *  },
+   *  locationId: '502goXVW3lIExEQPOnd3',
+   *  primaryDisplayProperty: 'customer_name',
+   *  dateAdded: '2024-07-11T10:00:00Z',
+   *  dateUpdated: '2024-07-11T10:00:00Z',
+   *  description: 'This object represents a customer in the system.',
+   *  type: 'USER DEFINED' // or 'SYSTEM_DEFINED'
    * };
    * ```
    *
@@ -1288,5 +1288,54 @@ export namespace Objects {
      * @example 'USER DEFINED' // or 'SYSTEM_DEFINED'
      */
     type?: "USER DEFINED" | "SYSTEM_DEFINED";
+  };
+
+  /**
+   * GetParams: The parameters required to retrieve a custom object.
+   *
+   * @memberof Objects
+   * @example
+   * ```ts
+   * const params: Objects.GetParams = {
+   *   key: 'customer',
+   *   locationId: '502goXVW3lIExEQPOnd3',
+   *   fetchProperties: true // Optional, defaults to false
+   * };
+   * ```
+   *
+   * @property {string} key - The internal key of the custom object.
+   * @example 'customer'
+   *
+   * @property {string} locationId - The ID of the location where the custom object is stored.
+   * @example '502goXVW3lIExEQPOnd3'
+   *
+   * @property {boolean} [fetchProperties] - Optional flag to indicate whether to fetch properties of the custom object. Defaults to false.
+   * @example true
+   */
+  export type GetParams = {
+    /**
+     * key: The internal key of the custom object.
+     *
+     * @type {string}
+     * @example 'customer'
+     */
+    key: string;
+
+    /**
+     * locationId: The ID of the location where the custom object is stored.
+     *
+     * @type {string}
+     * @example '502goXVW3lIExEQPOnd3'
+     */
+    locationId: string;
+
+    /**
+     * fetchProperties: Optional flag to indicate whether to fetch properties of the custom object. Defaults to false.
+     *
+     * @type {boolean}
+     * @default false
+     * @example true
+     */
+    fetchProperties?: boolean;
   };
 }
