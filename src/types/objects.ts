@@ -1710,6 +1710,140 @@ export namespace Objects {
        */
       associationType: "USER_DEFINED" | "SYSTEM_DEFINED";
     };
+
+    /**
+     * GetKeyNameParams: The structure of the parameters when retrieving an association by the key name of an association.
+     *
+     * @memberof Objects.Associations
+     * @requires key_name: The internal key name of the association.
+     * @requires locationId: The ID of the location where the association is stored.
+     *
+     * @example
+     * ```ts
+     * const params: Objects.Associations.GetKeyNameParams = {
+     *  key_name: 'student_teacher',
+     *  locationId: '502goXVW3lIExEQPOnd3'
+     * };
+     * ```
+     *
+     * @property {string} key_name - The internal key name of the association.
+     * @example 'student_teacher'
+     *
+     * @property {string} locationId - The ID of the location where the association is stored.
+     * @example '502goXVW3lIExEQPOnd3'
+     */
+    export type GetKeyNameParams = {
+      /**
+       * key_name: The internal key name of the association.
+       *
+       * @type {string}
+       * @example 'student_teacher'
+       */
+      key_name: string;
+
+      /**
+       * locationId: The ID of the location where the association is stored.
+       *
+       * @type {string}
+       * @example '502goXVW3lIExEQPOnd3'
+       */
+      locationId: string;
+    };
+
+    /**
+     * GetKeyNameResponse: The structure of the response when retrieving the key name of an association.
+     *
+     * @memberof Objects.Associations
+     * @example
+     * ```ts
+     * const response: Objects.Associations.GetKeyNameResponse = {
+     *   id: '1234567890abcdef',
+     *   key: 'student_teacher',
+     *   firstObjectLabel: 'Student',
+     *   firstObjectKey: 'student',
+     *   secondObjectLabel: 'Teacher',
+     *   secondObjectKey: 'teacher',
+     *   associationType: 'USER_DEFINED',
+     *   locationId: '502goXVW3lIExEQPOnd3',
+     *   traceId: 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+     * };
+     * ```
+     *
+     * @property id - The unique identifier of the association.
+     * @example '1234567890abcdef'
+     *
+     * @property key - The internal key of the association.
+     * @example 'student_teacher'
+     *
+     * @property firstObjectLabel - The label for the first object in the association.
+     * @example 'Student'
+     *
+     * @property firstObjectKey - The internal key of the first object in the association.
+     * @example 'student'
+     *
+     * @property secondObjectLabel - The label for the second object in the association.
+     * @example 'Teacher'
+     *
+     * @property secondObjectKey - The internal key of the second object in the association.
+     * @example 'teacher'
+     *
+     * @property associationType - The type of the association, indicating whether it is user-defined or system-defined.
+     * @example 'USER_DEFINED'
+     *
+     * @property locationId - The ID of the location where the association is stored.
+     * @example '502goXVW3lIExEQPOnd3'
+     *
+     * @property traceId - The unique identifier for tracing the request.
+     * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+     */
+    export type GetKeyNameResponse = AssociationDTO & {
+      /**
+       * traceId: The unique identifier for tracing the request.
+       *
+       * @type {string}
+       * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+       */
+      traceId: string;
+    };
+
+    /**
+     * GetObjectKeyParams: The structure of the parameters when retrieving an association by the object key of an association.
+     *
+     * @memberof Objects.Associations
+     * @requires objectKey: The internal key for the object.
+     * @requires locationId: The ID of the location where the association is stored.
+     *
+     * @example
+     * ```ts
+     * const params: Objects.Associations.GetObjectKeyParams = {
+     *   objectKey: 'custom_objects.student',
+     *   locationId: '502goXVW3lIExEQPOnd3'
+     * };
+     * ```
+     *
+     * @property {string} objectKey - The internal key for the object.
+     * @example 'custom_objects.student'
+     *
+     * @property {string} locationId - The ID of the location where the association is stored.
+     * @example '502goXVW3lIExEQPOnd3'
+     */
+    export type GetObjectKeyParams = {
+      /**
+       * objectKey: The internal key for the object.
+       *
+       * @type {string}
+       * @example 'custom_objects.student'
+       */
+      objectKey: string;
+
+      /**
+       * locationId: The ID of the location where the association is stored.
+       *
+       * @type {string}
+       * @example '502goXVW3lIExEQPOnd3'
+       */
+      locationId: string;
+    };
   }
 
   /**
