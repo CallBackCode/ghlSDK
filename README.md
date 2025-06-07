@@ -330,6 +330,29 @@ GHL.locations.tasks.search();
 GHL.locations.timezones.search();
 ```
 
+### Objects
+
+```typescript
+GHL.objects.get();
+GHL.objects.search();
+GHL.objects.create();
+GHL.objects.update();
+GHL.objects.associations.get();
+GHL.objects.associations.getId();
+GHL.objects.associations.getKeyName();
+GHL.objects.associations.getObjectKey();
+GHL.objects.associations.create();
+GHL.objects.associations.update();
+GHL.objects.associations.delete();
+GHL.objects.associations.relations.get();
+GHL.objects.associations.relations.create();
+GHL.objects.associations.relations.delete();
+GHL.objects.records.get();
+GHL.objects.records.create();
+GHL.objects.records.update();
+GHL.objects.records.delete();
+```
+
 ### Opportunities
 
 ```typescript

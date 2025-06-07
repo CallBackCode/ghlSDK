@@ -100,6 +100,30 @@ export namespace Objects {
       | null;
 
     /**
+     * CreateParams: The structure of the parameters when creating a new record.
+     *
+     * @requires schemaKey: The ID of the object to which the record belongs.
+     * @memberof Objects.Records
+     * @example
+     * ```ts
+     * const params: Objects.Records.CreateParams = {
+     *   schemaKey: 'abcdef1234567890'
+     * };
+     * ```
+     *
+     * @property {string} schemaKey - The ID of the object to which the record belongs.
+     * @example 'abcdef1234567890'
+     */
+    export type CreateParams = {
+      /**
+       * objectId: The ID of the object to which the record belongs.
+       * @type {string}
+       * @example 'abcdef1234567890'
+       */
+      schemaKey: string;
+    };
+
+    /**
      * UpdateBody: The structure of the request body when creating a new record.
      * It includes the location ID, owners, followers, and properties of the record.
      *
@@ -1115,7 +1139,71 @@ export namespace Objects {
      */
     export namespace Relations {
       /**
-       * GetResponse: The structure of the response when retrieving relations for a specific record.
+       * GetQueryObject: The structure of the response when retrieving relations for a specific record.
+       *
+       * @memberof Objects.Associations.Relations
+       * @requires locationId: The ID of the location where the relations are stored.
+       * @requires limit: The maximum number of relations to retrieve.
+       * @requires skip: The number of relations to skip before starting to collect the result set.
+       *
+       * @example
+       * ```ts
+       * const params: Objects.Associations.Relations.GetParams = {
+       *  recordId: '632c34b4c9b7da3358ac9891',
+       * locationId: '502goXVW3lIExEQPOnd3',
+       * limit: "100",
+       * skip: "0"
+       * };
+       * ```
+       *
+       * @property {string} locationId - The ID of the location where the relation is stored.
+       * @example '502goXVW3lIExEQPOnd3'
+       *
+       * @property {string} limit - The maximum number of relations to retrieve.
+       * @example "100"
+       *
+       * @property {string} skip - The number of relations to skip before starting to collect the result set.
+       * @example "0"
+       *
+       * @property {string[]} [associationIds] - An optional array of association IDs to filter the relations.
+       * @example ['assoc1', 'assoc2']
+       */
+      export type GetQueryObject = {
+        /**
+         * locationId: The ID of the location where the relation is stored.
+         *
+         * @type {string}
+         * @example '502goXVW3lIExEQPOnd3'
+         */
+        locationId: string;
+
+        /**
+         * limit: The maximum number of relations to retrieve.
+         *
+         * @type {string}
+         * @example "100"
+         */
+        limit: string;
+
+        /**
+         * skip: The number of relations to skip before starting to collect the result set.
+         *
+         * @type {string}
+         * @example "0"
+         */
+        skip: string;
+
+        /**
+         * associationIds: An optional array of association IDs to filter the relations.
+         *
+         * @type {string[]}
+         * @example ['assoc1', 'assoc2']
+         */
+        associationIds?: string[];
+      };
+
+      /**
+       * GetParams: The structure of the response when retrieving relations for a specific record.
        *
        * @memberof Objects.Associations.Relations
        * @requires recordId: The ID of the record for which relations are being retrieved.
@@ -1128,8 +1216,8 @@ export namespace Objects {
        * const params: Objects.Associations.Relations.GetParams = {
        *  recordId: '632c34b4c9b7da3358ac9891',
        * locationId: '502goXVW3lIExEQPOnd3',
-       * limit: 100,
-       * skip: 0
+       * limit: "100",
+       * skip: "0"
        * };
        * ```
        *
@@ -1139,13 +1227,16 @@ export namespace Objects {
        * @property {string} locationId - The ID of the location where the relation is stored.
        * @example '502goXVW3lIExEQPOnd3'
        *
-       * @property {number} limit - The maximum number of relations to retrieve.
-       * @example 100
+       * @property {string} limit - The maximum number of relations to retrieve.
+       * @example "100"
        *
-       * @property {number} skip - The number of relations to skip before starting to collect the result set.
-       * @example 0
+       * @property {string} skip - The number of relations to skip before starting to collect the result set.
+       * @example "0"
+       *
+       * @property {string[]} [associationIds] - An optional array of association IDs to filter the relations.
+       * @example ['assoc1', 'assoc2']
        */
-      export type GetParams = {
+      export type GetParams = GetQueryObject & {
         /**
          * recordId: The ID of the record for which relations are being retrieved.
          *
@@ -1153,30 +1244,6 @@ export namespace Objects {
          * @example '632c34b4c9b7da3358ac9891'
          */
         recordId: string;
-
-        /**
-         * locationId: The ID of the location where the relation is stored.
-         *
-         * @type {string}
-         * @example '502goXVW3lIExEQPOnd3'
-         */
-        locationId: string;
-
-        /**
-         * limit: The maximum number of relations to retrieve.
-         *
-         * @type {number}
-         * @example 100
-         */
-        limit: number;
-
-        /**
-         * skip: The number of relations to skip before starting to collect the result set.
-         *
-         * @type {number}
-         * @example 0
-         */
-        skip: number;
       };
 
       /**
@@ -2025,19 +2092,19 @@ export namespace Objects {
      * ```ts
      * const params: Objects.Associations.GetParams = {
      *   locationId: '502goXVW3lIExEQPOnd3',
-     *   limit: 10,
-     *   skip: 0
+     *   limit: "10",
+     *   skip: "0"
      * };
      * ```
      *
      * @property {string} locationId - The ID of the location where the associations are stored.
      * @example '502goXVW3lIExEQPOnd3'
      *
-     * @property {number} limit - The maximum number of associations to retrieve.
-     * @example 10
+     * @property {string} limit - The maximum number of associations to retrieve.
+     * @example "10"
      *
-     * @property {number} skip - The number of associations to skip before starting to retrieve.
-     * @example 0
+     * @property {string} skip - The number of associations to skip before starting to retrieve.
+     * @example "0"
      */
     export type GetParams = {
       /**
@@ -2051,18 +2118,18 @@ export namespace Objects {
       /**
        * limit: The maximum number of associations to retrieve.
        *
-       * @type {number}
-       * @example 10
+       * @type {string}
+       * @example "10"
        */
-      limit: number;
+      limit: string;
 
       /**
        * skip: The number of associations to skip before starting to retrieve.
        *
-       * @type {number}
-       * @example 0
+       * @type {string}
+       * @example "0"
        */
-      skip: number;
+      skip: string;
     };
 
     /**
@@ -2720,36 +2787,24 @@ export namespace Objects {
   };
 
   /**
-   * GetParams: The parameters required to retrieve a custom object.
+   * GetQueryParams: The parameters required to retrieve a custom object.
    *
    * @memberof Objects
    * @example
    * ```ts
-   * const params: Objects.GetParams = {
-   *   key: 'pet',
+   * const params: Objects.GetQueryParams = {
    *   locationId: '502goXVW3lIExEQPOnd3',
-   *   fetchProperties: true // Optional, defaults to false
+   *   fetchProperties: "true" // Optional, defaults to "false"
    * };
    * ```
-   *
-   * @property {string} key - The internal key of the custom object.
-   * @example 'pet'
    *
    * @property {string} locationId - The ID of the location where the custom object is stored.
    * @example '502goXVW3lIExEQPOnd3'
    *
-   * @property {boolean} [fetchProperties] - Optional flag to indicate whether to fetch properties of the custom object. Defaults to false.
-   * @example true
+   * @property {string} [fetchProperties] - Optional flag to indicate whether to fetch properties of the custom object. Defaults to "false".
+   * @example "true"
    */
-  export type GetParams = {
-    /**
-     * key: The internal key of the custom object.
-     *
-     * @type {string}
-     * @example 'pet'
-     */
-    key: string;
-
+  export type GetQueryParams = {
     /**
      * locationId: The ID of the location where the custom object is stored.
      *
@@ -2762,10 +2817,42 @@ export namespace Objects {
      * fetchProperties: Optional flag to indicate whether to fetch properties of the custom object. Defaults to false.
      *
      * @type {boolean}
-     * @default false
-     * @example true
+     * @default "false"
+     * @example "true"
      */
-    fetchProperties?: boolean;
+    fetchProperties?: string;
+  };
+
+  /**
+   * GetParams: The parameters required to retrieve a custom object.
+   *
+   * @memberof Objects
+   * @example
+   * ```ts
+   * const params: Objects.GetParams = {
+   *   key: 'pet',
+   *   locationId: '502goXVW3lIExEQPOnd3',
+   *   fetchProperties: "true" // Optional, defaults to "false"
+   * };
+   * ```
+   *
+   * @property {string} key - The internal key of the custom object.
+   * @example 'pet'
+   *
+   * @property {string} locationId - The ID of the location where the custom object is stored.
+   * @example '502goXVW3lIExEQPOnd3'
+   *
+   * @property {string} [fetchProperties] - Optional flag to indicate whether to fetch properties of the custom object. Defaults to "false".
+   * @example "true"
+   */
+  export type GetParams = GetQueryParams & {
+    /**
+     * key: The internal key of the custom object.
+     *
+     * @type {string}
+     * @example 'pet'
+     */
+    key: string;
   };
 
   /**

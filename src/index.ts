@@ -13,6 +13,7 @@ import { invoices } from "./objects/invoices";
 import { locations } from "./objects/locations";
 // import { media } from "./objects/media";
 import { oauth } from "./objects/oauth";
+import { objects } from "./objects/objects";
 import { opportunities } from "./objects/opportunites";
 import { pipelines } from "./objects/pipelines";
 import { payments } from "./objects/payments";
