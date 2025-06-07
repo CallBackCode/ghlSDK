@@ -1844,6 +1844,692 @@ export namespace Objects {
        */
       locationId: string;
     };
+
+    /**
+     * GetObjectKeyResponse: The structure of the response when retrieving associations by the object key.
+     *
+     * @memberof Objects.Associations
+     * @example
+     * ```ts
+     * const response: Objects.Associations.GetObjectKeyResponse = {
+     *   associations: [
+     *     {
+     *       id: '1234567890abcdef',
+     *       key: 'student_teacher',
+     *       firstObjectLabel: 'Student',
+     *       firstObjectKey: 'student',
+     *       secondObjectLabel: 'Teacher',
+     *       secondObjectKey: 'teacher',
+     *       associationType: 'USER_DEFINED',
+     *       locationId: '502goXVW3lIExEQPOnd3'
+     *     }
+     *   ],
+     *   total: 1,
+     *   traceId: 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+     * };
+     * ```
+     *
+     * @property {AssociationDTO[]} associations - The list of associations that match the provided object key.
+     * @example
+     * ```ts
+     * associations: [
+     *   {
+     *     id: '1234567890abcdef',
+     *     key: 'student_teacher',
+     *     firstObjectLabel: 'Student',
+     *     firstObjectKey: 'student',
+     *     secondObjectLabel: 'Teacher',
+     *     secondObjectKey: 'teacher',
+     *     associationType: 'USER_DEFINED',
+     *     locationId: '502goXVW3lIExEQPOnd3'
+     *   }
+     * ]
+     * ```
+     *
+     * @property {number} total - The total number of associations found for the provided object key.
+     * @example 1
+     *
+     * @property {string} traceId - The unique identifier for tracing the request.
+     * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+     */
+    export type GetObjectKeyResponse = {
+      /**
+       * associations: The association that matches the provided object key.
+       *
+       * @type {AssociationDTO[]}
+       * @example
+       * ```ts
+       * associations: [
+       *   {
+       *     id: '1234567890abcdef',
+       *     key: 'student_teacher',
+       *     firstObjectLabel: 'Student',
+       *     firstObjectKey: 'student',
+       *     secondObjectLabel: 'Teacher',
+       *     secondObjectKey: 'teacher',
+       *     associationType: 'USER_DEFINED',
+       *     locationId: '502goXVW3lIExEQPOnd3'
+       *   }
+       * ]
+       * ```
+       */
+      associations: AssociationDTO[];
+      /**
+       * total: The total number of associations found for the provided object key.
+       *
+       * @type {number}
+       * @example 1
+       */
+      total: number;
+
+      /**
+       * traceId: The unique identifier for tracing the request.
+       *
+       * @type {string}
+       * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+       */
+      traceId: string;
+    };
+
+    /**
+     * GetIdParams: The structure of the parameters when retrieving an association by its ID.
+     *
+     * @memberof Objects.Associations
+     * @requires associationId: The unique identifier of the association.
+     *
+     * @example
+     * ```ts
+     * const params: Objects.Associations.GetIdParams = {
+     *   associationId: '1234567890abcdef'
+     * };
+     * ```
+     *
+     * @property {string} associationId - The unique identifier of the association.
+     * @example '1234567890abcdef'
+     */
+    export type GetIdParams = {
+      /**
+       * associationId: The unique identifier of the association.
+       *
+       * @type {string}
+       * @example '1234567890abcdef'
+       */
+      associationId: string;
+    };
+
+    /**
+     * GetIdResponse: The structure of the response when retrieving an association by its ID.
+     *
+     * @memberof Objects.Associations
+     * @example
+     * ```ts
+     * const response: Objects.Associations.GetIdResponse = {
+     *   id: '1234567890abcdef',
+     *   key: 'student_teacher',
+     *   firstObjectLabel: 'Student',
+     *   firstObjectKey: 'student',
+     *   secondObjectLabel: 'Teacher',
+     *   secondObjectKey: 'teacher',
+     *   associationType: 'USER_DEFINED',
+     *   locationId: '502goXVW3lIExEQPOnd3',
+     *   traceId: 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+     * };
+     * ```
+     *
+     * @property {string} id - The unique identifier of the association.
+     * @example '1234567890abcdef'
+     *
+     * @property {string} key - The internal key of the association.
+     * @example 'student_teacher'
+     *
+     * @property {string} firstObjectLabel - The label for the first object in the association.
+     * @example 'Student'
+     *
+     * @property {string} firstObjectKey - The internal key of the first object in the association.
+     * @example 'student'
+     *
+     * @property {string} secondObjectLabel - The label for the second object in the association.
+     * @example 'Teacher'
+     *
+     * @property {string} secondObjectKey - The internal key of the second object in the association.
+     * @example 'teacher'
+     *
+     * @property {'USER_DEFINED' | 'SYSTEM_DEFINED'} associationType - The type of the association, indicating whether it is user-defined or system-defined.
+     * @example 'USER_DEFINED'
+     *
+     * @property {string} locationId - The ID of the location where the association is stored.
+     * @example '502goXVW3lIExEQPOnd3'
+     *
+     * @property {string} traceId - The unique identifier for tracing the request.
+     * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+     */
+    export type GetIdResponse = AssociationDTO & {
+      /**
+       * traceId: The unique identifier for tracing the request.
+       *
+       * @type {string}
+       * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+       */
+      traceId: string;
+    };
+
+    /**
+     * GetParams: The structure of the parameters when retrieving associations for a specific location.
+     *
+     * @memberof Objects.Associations
+     * @requires locationId: The ID of the location where the associations are stored.
+     * @requires limit: The maximum number of associations to retrieve.
+     * @requires skip: The number of associations to skip before starting to retrieve.
+     *
+     * @example
+     * ```ts
+     * const params: Objects.Associations.GetParams = {
+     *   locationId: '502goXVW3lIExEQPOnd3',
+     *   limit: 10,
+     *   skip: 0
+     * };
+     * ```
+     *
+     * @property {string} locationId - The ID of the location where the associations are stored.
+     * @example '502goXVW3lIExEQPOnd3'
+     *
+     * @property {number} limit - The maximum number of associations to retrieve.
+     * @example 10
+     *
+     * @property {number} skip - The number of associations to skip before starting to retrieve.
+     * @example 0
+     */
+    export type GetParams = {
+      /**
+       * locationId: The ID of the location where the associations are stored.
+       *
+       * @type {string}
+       * @example '502goXVW3lIExEQPOnd3'
+       */
+      locationId: string;
+
+      /**
+       * limit: The maximum number of associations to retrieve.
+       *
+       * @type {number}
+       * @example 10
+       */
+      limit: number;
+
+      /**
+       * skip: The number of associations to skip before starting to retrieve.
+       *
+       * @type {number}
+       * @example 0
+       */
+      skip: number;
+    };
+
+    /**
+     * GetResponse: The structure of the response when retrieving associations for a specific location.
+     *
+     * @memberof Objects.Associations
+     * @example
+     * ```ts
+     * const response: Objects.Associations.GetResponse = {
+     *   associations: [
+     *     {
+     *       id: '1234567890abcdef',
+     *       key: 'student_teacher',
+     *       firstObjectLabel: 'Student',
+     *       firstObjectKey: 'student',
+     *       secondObjectLabel: 'Teacher',
+     *       secondObjectKey: 'teacher',
+     *       associationType: 'USER_DEFINED',
+     *       locationId: '502goXVW3lIExEQPOnd3'
+     *     }
+     *   ],
+     *   total: 10,
+     *   traceId: 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+     * };
+     * ```
+     *
+     * @property {AssociationDTO[]} associations - The list of associations retrieved for the specified location.
+     * @example
+     * ```ts
+     * associations: [
+     *   {
+     *     id: '1234567890abcdef',
+     *     key: 'student_teacher',
+     *     firstObjectLabel: 'Student',
+     *     firstObjectKey: 'student',
+     *     secondObjectLabel: 'Teacher',
+     *     secondObjectKey: 'teacher',
+     *     associationType: 'USER_DEFINED',
+     *     locationId: '502goXVW3lIExEQPOnd3'
+     *   }
+     * ]
+     * ```
+     *
+     * @property {number} total - The total number of associations available for the specified location.
+     * @example 10
+     *
+     * @property {string} traceId - The unique identifier for tracing the request.
+     * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+     */
+    export type GetResponse = {
+      /**
+       * associations: The list of associations retrieved for the specified location.
+       *
+       * @type {AssociationDTO[]}
+       * @example
+       * ```ts
+       * associations: [
+       *   {
+       *     id: '1234567890abcdef',
+       *     key: 'student_teacher',
+       *     firstObjectLabel: 'Student',
+       *     firstObjectKey: 'student',
+       *     secondObjectLabel: 'Teacher',
+       *     secondObjectKey: 'teacher',
+       *     associationType: 'USER_DEFINED',
+       *     locationId: '502goXVW3lIExEQPOnd3'
+       *   }
+       * ]
+       * ```
+       */
+      associations: AssociationDTO[];
+
+      /**
+       * total: The total number of associations available for the specified location.
+       *
+       * @type {number}
+       * @example 10
+       */
+      total: number;
+
+      /**
+       * traceId: The unique identifier for tracing the request.
+       *
+       * @type {string}
+       * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+       */
+      traceId: string;
+    };
+
+    /**
+     * CreateBody: The structure of the body when creating a new association.
+     *
+     * @memberof Objects.Associations
+     * @requires locationId: The ID of the location where the association is stored.
+     * @requires key: The internal key of the association.
+     * @requires firstObjectLabel: The label for the first object in the association.
+     * @requires firstObjectKey: The internal key of the first object in the association.
+     * @requires secondObjectLabel: The label for the second object in the association.
+     * @requires secondObjectKey: The internal key of the second object in the association.
+     *
+     * @example
+     * ```ts
+     * const body: Objects.Associations.CreateBody = {
+     *   locationId: '502goXVW3lIExEQPOnd3',
+     *   key: 'student_teacher',
+     *   firstObjectLabel: 'Student',
+     *   firstObjectKey: 'student',
+     *   secondObjectLabel: 'Teacher',
+     *   secondObjectKey: 'teacher'
+     * };
+     * ```
+     *
+     * @property {string} locationId - The ID of the location where the association is stored.
+     * @example '502goXVW3lIExEQPOnd3'
+     *
+     * @property {string} key - The internal key of the association.
+     * @example 'student_teacher'
+     *
+     * @property {string} firstObjectLabel - The label for the first object in the association.
+     * @example 'Student'
+     *
+     * @property {string} firstObjectKey - The internal key of the first object in the association.
+     * @example 'student'
+     *
+     * @property {string} secondObjectLabel - The label for the second object in the association.
+     * @example 'Teacher'
+     *
+     * @property {string} secondObjectKey - The internal key of the second object in the association.
+     * @example 'teacher'
+     */
+    export type CreateBody = {
+      /**
+       * locationId: The ID of the location where the association is stored.
+       *
+       * @type {string}
+       * @example '502goXVW3lIExEQPOnd3'
+       */
+      locationId: string;
+
+      /**
+       * key: The internal key of the association.
+       *
+       * @type {string}
+       * @example 'student_teacher'
+       */
+      key: string;
+
+      /**
+       * firstObjectLabel: The label for the first object in the association.
+       *
+       * @type {string}
+       * @example 'Student'
+       */
+      firstObjectLabel: string;
+
+      /**
+       * firstObjectKey: The internal key of the first object in the association.
+       *
+       * @type {string}
+       * @example 'student'
+       */
+      firstObjectKey: string;
+
+      /**
+       * secondObjectLabel: The label for the second object in the association.
+       *
+       * @type {string}
+       * @example 'Teacher'
+       */
+      secondObjectLabel: string;
+
+      /**
+       * secondObjectKey: The internal key of the second object in the association.
+       *
+       * @type {string}
+       * @example 'teacher'
+       */
+      secondObjectKey: string;
+    };
+
+    /**
+     * CreateResponse: The structure of the response when creating a new association.
+     *
+     * @memberof Objects.Associations
+     * @example
+     * ```ts
+     * const response: Objects.Associations.CreateResponse = {
+     *   id: '1234567890abcdef',
+     *   key: 'student_teacher',
+     *   firstObjectLabel: 'Student',
+     *   firstObjectKey: 'student',
+     *   secondObjectLabel: 'Teacher',
+     *   secondObjectKey: 'teacher',
+     *   associationType: 'USER_DEFINED',
+     *   locationId: '502goXVW3lIExEQPOnd3',
+     *   traceId: 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+     * };
+     * ```
+     *
+     * @property {string} id - The unique identifier of the association.
+     * @example '1234567890abcdef'
+     *
+     * @property {string} key - The internal key of the association.
+     * @example 'student_teacher'
+     *
+     * @property {string} firstObjectLabel - The label for the first object in the association.
+     * @example 'Student'
+     *
+     * @property {string} firstObjectKey - The internal key of the first object in the association.
+     * @example 'student'
+     *
+     * @property {string} secondObjectLabel - The label for the second object in the association.
+     * @example 'Teacher'
+     *
+     * @property {string} secondObjectKey - The internal key of the second object in the association.
+     * @example 'teacher'
+     *
+     * @property {'USER_DEFINED' | 'SYSTEM_DEFINED'} associationType - The type of the association, indicating whether it is user-defined or system-defined.
+     * @example 'USER_DEFINED'
+     *
+     * @property {string} locationId - The ID of the location where the association is stored.
+     * @example '502goXVW3lIExEQPOnd3'
+     *
+     * @property {string} traceId - The unique identifier for tracing the request.
+     * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+     */
+    export type CreateResponse = AssociationDTO & {
+      /**
+       * traceId: The unique identifier for tracing the request.
+       *
+       * @type {string}
+       * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+       */
+      traceId: string;
+    };
+
+    /**
+     * UpdateParams: The structure of the parameters when updating an association.
+     *
+     * @memberof Objects.Associations
+     * @requires associationId: The unique identifier of the association to update.
+     *
+     * @example
+     * ```ts
+     * const params: Objects.Associations.UpdateParams = {
+     *   associationId: '1234567890abcdef'
+     * };
+     * ```
+     *
+     * @property {string} associationId - The unique identifier of the association to update.
+     * @example '1234567890abcdef'
+     */
+    export type UpdateParams = {
+      /**
+       * associationId: The unique identifier of the association to update.
+       *
+       * @type {string}
+       * @example '1234567890abcdef'
+       */
+      associationId: string;
+    };
+
+    /**
+     * UpdateBody: The structure of the body when updating an association.
+     *
+     * @memberof Objects.Associations
+     * @requires firstObjectLabel: The label for the first object in the association.
+     * @requires secondObjectLabel: The internal key of the second object in the association.
+     *
+     * @example
+     * ```ts
+     * const body: Objects.Associations.UpdateBody = {
+     *   firstObjectLabel: 'Student',
+     *   secondObjectLabel: 'Teacher'
+     * };
+     * ```
+     *
+     * @property {string} firstObjectLabel - The label for the first object in the association.
+     * @example 'Student'
+     *
+     * @property {string} secondObjectLabel - The internal key of the second object in the association.
+     * @example 'teacher'
+     */
+    export type UpdateBody = {
+      /**
+       * firstObjectLabel: The label for the first object in the association.
+       *
+       * @type {string}
+       * @example 'Student'
+       */
+      firstObjectLabel: string;
+
+      /**
+       * firstObjectKey: The internal key of the first object in the association.
+       *
+       * @type {string}
+       * @example 'student'
+       */
+      secondObjectLabel: string;
+    };
+
+    /**
+     * UpdateResponse: The structure of the response when updating an association.
+     *
+     * @memberof Objects.Associations
+     * @example
+     * ```ts
+     * const response: Objects.Associations.UpdateResponse = {
+     *   updated: true,
+     *   association: {
+     *     id: '1234567890abcdef',
+     *     key: 'student_teacher',
+     *     firstObjectLabel: 'Student',
+     *     firstObjectKey: 'student',
+     *     secondObjectLabel: 'Teacher',
+     *     secondObjectKey: 'teacher',
+     *     associationType: 'USER_DEFINED',
+     *     locationId: '502goXVW3lIExEQPOnd3'
+     *   },
+     *   traceId: 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+     * };
+     * ```
+     *
+     * @property {boolean} updated - Indicates whether the association was successfully updated.
+     * @example true
+     *
+     * @property {AssociationDTO} association - The updated association data transfer object (DTO).
+     * @example
+     * ```ts
+     * association: {
+     *   id: '1234567890abcdef',
+     *   key: 'student_teacher',
+     *   firstObjectLabel: 'Student',
+     *   firstObjectKey: 'student',
+     *   secondObjectLabel: 'Teacher',
+     *   secondObjectKey: 'teacher',
+     *   associationType: 'USER_DEFINED',
+     *   locationId: '502goXVW3lIExEQPOnd3'
+     * }
+     * ```
+     *
+     * @property {string} traceId - The unique identifier for tracing the request.
+     * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+     */
+    export type UpdateResponse = {
+      /**
+       * updated: Indicates whether the association was successfully updated.
+       *
+       * @type {boolean}
+       * @example true
+       */
+      updated: boolean;
+
+      /**
+       * association: The updated association data transfer object (DTO).
+       *
+       * @type {AssociationDTO}
+       * @example
+       * ```ts
+       * association: {
+       *   id: '1234567890abcdef',
+       *   key: 'student_teacher',
+       *   firstObjectLabel: 'Student',
+       *   firstObjectKey: 'student',
+       *   secondObjectLabel: 'Teacher',
+       *   secondObjectKey: 'teacher',
+       *   associationType: 'USER_DEFINED',
+       *   locationId: '502goXVW3lIExEQPOnd3'
+       * }
+       * ```
+       */
+      association: AssociationDTO;
+
+      /**
+       * traceId: The unique identifier for tracing the request.
+       *
+       * @type {string}
+       * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+       */
+      traceId: string;
+    };
+
+    /**
+     * DeleteParams: The structure of the parameters when deleting an association.
+     *
+     * @memberof Objects.Associations
+     * @requires associationId: The unique identifier of the association to delete.
+     *
+     * @example
+     * ```ts
+     * const params: Objects.Associations.DeleteParams = {
+     *   associationId: '1234567890abcdef'
+     * };
+     * ```
+     *
+     * @property {string} associationId - The unique identifier of the association to delete.
+     * @example '1234567890abcdef'
+     */
+    export type DeleteParams = {
+      /**
+       * associationId: The unique identifier of the association to delete.
+       *
+       * @type {string}
+       * @example '1234567890abcdef'
+       */
+      associationId: string;
+    };
+
+    /**
+     * DeleteResponse: The structure of the response when deleting an association.
+     *
+     * @memberof Objects.Associations
+     * @example
+     * ```ts
+     * const response: Objects.Associations.DeleteResponse = {
+     *   deleted: true,
+     *   id: '1234567890abcdef',
+     *   message: 'Association deleted successfully.',
+     *   traceId: 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+     * };
+     * ```
+     *
+     * @property {boolean} deleted - Indicates whether the association was successfully deleted.
+     * @example true
+     *
+     * @property {string} id - The unique identifier of the deleted association.
+     * @example '1234567890abcdef'
+     *
+     * @property {string} message - A message indicating the result of the deletion operation.
+     * @example 'Association deleted successfully.'
+     *
+     * @property {string} traceId - The unique identifier for tracing the request.
+     * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+     */
+    export type DeleteResponse = {
+      /**
+       * deleted: Indicates whether the association was successfully deleted.
+       *
+       * @type {boolean}
+       * @example true
+       */
+      deleted: boolean;
+
+      /**
+       * id: The unique identifier of the deleted association.
+       *
+       * @type {string}
+       * @example '1234567890abcdef'
+       */
+      id: string;
+
+      /**
+       * message: A message indicating the result of the deletion operation.
+       *
+       * @type {string}
+       * @example 'Association deleted successfully.'
+       */
+      message: string;
+
+      /**
+       * traceId: The unique identifier for tracing the request.
+       *
+       * @type {string}
+       * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+       */
+      traceId: string;
+    };
   }
 
   /**
