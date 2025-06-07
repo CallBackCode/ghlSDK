@@ -1104,6 +1104,615 @@ export namespace Objects {
   }
 
   /**
+   * An Association represents a connection between two records in the system.
+   * It is used to establish a meaningful link between different entities such as contacts and custom objects.
+   * The purpose of an association is to categorize how two objects are related to each other and to provide labels that define their relationship.
+   */
+  export namespace Associations {
+    /**
+     * A Relation specifies how two associated records are conceptually linked.
+     * Unlike an association, which simply establishes a connection, a relation defines the meaning behind the connection.
+     */
+    export namespace Relations {
+      /**
+       * GetResponse: The structure of the response when retrieving relations for a specific record.
+       *
+       * @memberof Objects.Associations.Relations
+       * @requires recordId: The ID of the record for which relations are being retrieved.
+       * @requires locationId: The ID of the location where the relations are stored.
+       * @requires limit: The maximum number of relations to retrieve.
+       * @requires skip: The number of relations to skip before starting to collect the result set.
+       *
+       * @example
+       * ```ts
+       * const params: Objects.Associations.Relations.GetParams = {
+       *  recordId: '632c34b4c9b7da3358ac9891',
+       * locationId: '502goXVW3lIExEQPOnd3',
+       * limit: 100,
+       * skip: 0
+       * };
+       * ```
+       *
+       * @property {string} recordId - The ID of the record for which relations are being retrieved.
+       * @example '632c34b4c9b7da3358ac9891'
+       *
+       * @property {string} locationId - The ID of the location where the relation is stored.
+       * @example '502goXVW3lIExEQPOnd3'
+       *
+       * @property {number} limit - The maximum number of relations to retrieve.
+       * @example 100
+       *
+       * @property {number} skip - The number of relations to skip before starting to collect the result set.
+       * @example 0
+       */
+      export type GetParams = {
+        /**
+         * recordId: The ID of the record for which relations are being retrieved.
+         *
+         * @type {string}
+         * @example '632c34b4c9b7da3358ac9891'
+         */
+        recordId: string;
+
+        /**
+         * locationId: The ID of the location where the relation is stored.
+         *
+         * @type {string}
+         * @example '502goXVW3lIExEQPOnd3'
+         */
+        locationId: string;
+
+        /**
+         * limit: The maximum number of relations to retrieve.
+         *
+         * @type {number}
+         * @example 100
+         */
+        limit: number;
+
+        /**
+         * skip: The number of relations to skip before starting to collect the result set.
+         *
+         * @type {number}
+         * @example 0
+         */
+        skip: number;
+      };
+
+      /**
+       * CreateBody: The structure of the request body when creating a relation.
+       *
+       * @memberof Objects.Associations.Relations
+       * @requires recordId: The ID of the record for which the relation is being created.
+       * @requires locationId: The ID of the location where the relation is stored.
+       * @requires associationId: The ID of the association to which the relation belongs.
+       * @requires firstRecordId: The ID of the first record in the relation.
+       * @requires secondRecordId: The ID of the second record in the relation.
+       *
+       * @example
+       * ```ts
+       * const body: Objects.Associations.Relations.CreateBody = {
+       *   recordId: '632c34b4c9b7da3358ac9891',
+       *   locationId: '502goXVW3lIExEQPOnd3',
+       *   associationId: '1234567890abcdef',
+       *   firstRecordId: 'abcdef1234567890',
+       *   secondRecordId: 'fedcba0987654321'
+       * };
+       * ```
+       *
+       * @property {string} recordId - The ID of the record for which the relation is being created.
+       * @example '632c34b4c9b7da3358ac9891'
+       *
+       * @property {string} locationId - The ID of the location where the relation is stored.
+       * @example '502goXVW3lIExEQPOnd3'
+       *
+       * @property {string} associationId - The ID of the association to which the relation belongs.
+       * @example '1234567890abcdef'
+       *
+       * @property {string} firstRecordId - The ID of the first record in the relation.
+       * @example 'abcdef1234567890'
+       *
+       * @property {string} secondRecordId - The ID of the second record in the relation.
+       * @example 'fedcba0987654321'
+       */
+      export type CreateBody = {
+        /**
+         * recordId: The ID of the record for which the relation is being created.
+         *
+         * @type {string}
+         * @example '632c34b4c9b7da3358ac9891'
+         */
+        recordId: string;
+
+        /**
+         * locationId: The ID of the location where the relation is stored.
+         *
+         * @type {string}
+         * @example '502goXVW3lIExEQPOnd3'
+         */
+        locationId: string;
+
+        /**
+         * associationId: The ID of the association to which the relation belongs.
+         *
+         * @type {string}
+         * @example '1234567890abcdef'
+         */
+        associationId: string;
+
+        /**
+         * firstRecordId: The ID of the first record in the relation.
+         *
+         * @type {string}
+         * @example 'abcdef1234567890'
+         */
+        firstRecordId: string;
+
+        /**
+         * secondRecordId: The ID of the second record in the relation.
+         *
+         * @type {string}
+         * @example 'fedcba0987654321'
+         */
+        secondRecordId: string;
+      };
+
+      /**
+       * DeleteParams: The structure of the parameters when deleting a relation.
+       *
+       * @memberof Objects.Associations.Relations
+       * @requires relationId: The ID of the relation to be deleted.
+       * @requires locationId: The ID of the location where the relation is stored.
+       *
+       * @example
+       * ```ts
+       * const params: Objects.Associations.Relations.DeleteParams = {
+       *  relationId: '1234567890abcdef',
+       *  locationId: '502goXVW3lIExEQPOnd3'
+       * };
+       * ```
+       *
+       * @property {string} relationId - The ID of the relation to be deleted.
+       * @example '1234567890abcdef'
+       *
+       * @property {string} locationId - The ID of the location where the relation is stored.
+       * @example '502goXVW3lIExEQPOnd3'
+       */
+      export type DeleteParams = {
+        /**
+         * relationId: The ID of the relation to be deleted.
+         *
+         * @type {string}
+         * @example '1234567890abcdef'
+         */
+        relationId: string;
+
+        /**
+         * locationId: The ID of the location where the relation is stored.
+         *
+         * @type {string}
+         * @example '502goXVW3lIExEQPOnd3'
+         */
+        locationId: string;
+      };
+
+      /**
+       * RelationDTO: The structure of a relation data type object (DTO).
+       *
+       * @memberof Objects.Associations.Relations
+       * @requires id: The unique identifier of the relation.
+       * @requires firstObjectKey: The internal key of the first object in the relation.
+       * @requires firstRecordId: The ID of the first record in the relation.
+       * @requires secondObjectKey: The internal key of the second object in the relation.
+       * @requires secondRecordId: The ID of the second record in the relation.
+       * @requires associationId: The ID of the association to which the relation belongs.
+       * @requires primary: Indicates whether the relation is primary.
+       * @requires locationId: The ID of the location where the relation is stored.
+       *
+       * @example
+       * ```ts
+       * const relation: Objects.Associations.Relations.RelationDTO = {
+       *  id: '1234567890abcdef',
+       * firstObjectKey: 'student',
+       * firstRecordId: 'abcdef1234567890',
+       * secondObjectKey: 'teacher',
+       * secondRecordId: 'fedcba0987654321',
+       * associationId: '1234567890abcdef',
+       * primary: false,
+       * locationId: '502goXVW3lIExEQPOnd3'
+       * };
+       * ```
+       *
+       * @property {string} id - The unique identifier of the relation.
+       * @example '1234567890abcdef'
+       *
+       * @property {string} firstObjectKey - The internal key of the first object in the relation.
+       * @example 'student'
+       *
+       * @property {string} firstRecordId - The ID of the first record in the relation.
+       * @example 'abcdef1234567890'
+       *
+       * @property {string} secondObjectKey - The internal key of the second object in the relation.
+       * @example 'teacher'
+       *
+       * @property {string} secondRecordId - The ID of the second record in the relation.
+       * @example 'fedcba0987654321'
+       *
+       * @property {string} associationId - The ID of the association to which the relation belongs.
+       * @example '1234567890abcdef'
+       *
+       * @property {boolean} primary - Indicates whether the relation is primary.
+       * @example false
+       *
+       * @property {string} locationId - The ID of the location where the relation is stored.
+       * @example '502goXVW3lIExEQPOnd3'
+       */
+      export type RelationDTO = {
+        /**
+         * id: The unique identifier of the relation.
+         *
+         * @type {string}
+         * @example '1234567890abcdef'
+         */
+        id: string;
+
+        /**
+         * firstObjectKey: The internal key of the first object in the relation.
+         *
+         *  @type {string}
+         * @example 'student'
+         */
+        firstObjectKey: string;
+
+        /**
+         * firstRecordId: The ID of the first record in the relation.
+         *
+         * @type {string}
+         * @example 'abcdef1234567890'
+         */
+        firstRecordId: string;
+
+        /**
+         * secondObjectKey: The internal key of the second object in the relation.
+         *
+         * @type {string}
+         * @example 'teacher'
+         */
+        secondObjectKey: string;
+
+        /**
+         * secondRecordId: The ID of the second record in the relation.
+         *
+         * @type {string}
+         * @example 'fedcba0987654321'
+         */
+        secondRecordId: string;
+
+        /**
+         * associationId: The ID of the association to which the relation belongs.
+         *
+         * @type {string}
+         * @example '1234567890abcdef'
+         */
+        associationId: string;
+
+        /**
+         * primary: Indicates whether the relation is primary.
+         *
+         * @type {boolean}
+         * @example false
+         */
+        primary: boolean;
+
+        /**
+         * locationId: The ID of the location where the relation is stored.
+         *
+         * @type {string}
+         * @example '502goXVW3lIExEQPOnd3'
+         */
+        locationId: string;
+      };
+
+      /**
+       * GetResponse: The structure of the response when retrieving relations for a specific record.
+       *
+       * @memberof Objects.Associations.Relations
+       * @example
+       * ```ts
+       * const response: Objects.Associations.Relations.GetResponse = {
+       *  relations: [
+       *    {
+       *      id: '1234567890abcdef',
+       *      firstObjectKey: 'student',
+       *      firstRecordId: 'abcdef1234567890',
+       *      secondObjectKey: 'teacher',
+       *      secondRecordId: 'fedcba0987654321',
+       *      associationId: '1234567890abcdef',
+       *      primary: false,
+       *      locationId: '502goXVW3lIExEQPOnd3'
+       *    }
+       *  ],
+       *  total: 10,
+       *  traceId: 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+       * };
+       * ```
+       *
+       * @property {RelationDTO[]} relations - The list of relations retrieved for the specified record.
+       * @example
+       * ```ts
+       * relations: [
+       *   {
+       *     id: '1234567890abcdef',
+       *     firstObjectKey: 'student',
+       *     firstRecordId: 'abcdef1234567890',
+       *     secondObjectKey: 'teacher',
+       *     secondRecordId: 'fedcba0987654321',
+       *     associationId: '1234567890abcdef',
+       *     primary: false,
+       *     locationId: '502goXVW3lIExEQPOnd3'
+       *   }
+       * ]
+       * ```
+       *
+       * @property {number} total - The total number of relations available for the specified record.
+       * @example 10
+       *
+       * @property {string} traceId - The unique identifier for tracing the request.
+       * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+       */
+      export type GetResponse = {
+        /**
+         * relations: The list of relations retrieved for the specified record.
+         * @type {RelationDTO[]}
+         * @example
+         *        * ```ts
+         * relations: [
+         *   {
+         *     id: '1234567890abcdef',
+         *     firstObjectKey: 'student',
+         *     firstRecordId: 'abcdef1234567890',
+         *     secondObjectKey: 'teacher',
+         *     secondRecordId: 'fedcba0987654321',
+         *     associationId: '1234567890abcdef',
+         *     primary: false,
+         *     locationId: '502goXVW3lIExEQPOnd3'
+         *   }
+         * ]
+         */
+        relations: RelationDTO[];
+
+        /**
+         * total: The total number of relations available for the specified record.
+         *
+         * @type {number}
+         * @example 10
+         */
+        total: number;
+
+        /**
+         * traceId: The unique identifier for tracing the request.
+         *
+         * @type {string}
+         * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+         */
+        traceId: string;
+      };
+
+      /**
+       * CreateResponse: The structure of the response when creating a relation.
+       *
+       * @memberof Objects.Associations.Relations
+       * @example
+       * ```ts
+       * const response: Objects.Associations.Relations.CreateResponse = {
+       *   id: '1234567890abcdef',
+       *   firstObjectKey: 'student',
+       *   firstRecordId: 'abcdef1234567890',
+       *   secondObjectKey: 'teacher',
+       *   secondRecordId: 'fedcba0987654321',
+       *   associationId: '1234567890abcdef',
+       *   primary: false,
+       *   locationId: '502goXVW3lIExEQPOnd3',
+       *   traceId: 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+       * };
+       * ```
+       *
+       * @property {RelationDTO} relation - The relation that was created.
+       * @example
+       * ```ts
+       * relation: {
+       *   id: '1234567890abcdef',
+       *   firstObjectKey: 'student',
+       *   firstRecordId: 'abcdef1234567890',
+       *   secondObjectKey: 'teacher',
+       *   secondRecordId: 'fedcba0987654321',
+       *   associationId: '1234567890abcdef',
+       *   primary: false,
+       *   locationId: '502goXVW3lIExEQPOnd3'
+       * }
+       * ```
+       *
+       * @property {string} traceId - The unique identifier for tracing the request.
+       * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+       */
+      export type CreateResponse = RelationDTO & {
+        /**
+         * traceId: The unique identifier for tracing the request.
+         *
+         * @type {string}
+         * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+         */
+        traceId: string;
+      };
+
+      /**
+       * DeleteResponse: The structure of the response when deleting a relation.
+       *
+       * @memberof Objects.Associations.Relations
+       * @example
+       * ```ts
+       * const response: Objects.Associations.Relations.DeleteResponse = {
+       *   deleted: true,
+       *   message: 'Relation deleted successfully',
+       *   traceId: 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+       * };
+       * ```
+       *
+       * @property {boolean} deleted - Indicates whether the relation was successfully deleted.
+       * @example true
+       *
+       * @property {string} message - A message indicating the result of the deletion operation.
+       * @example 'Relation deleted successfully'
+       *
+       * @property {string} traceId - The unique identifier for tracing the request.
+       * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+       */
+      export type DeleteResponse = {
+        /**
+         * deleted: Indicates whether the relation was successfully deleted.
+         *
+         * @type {boolean}
+         * @example true
+         */
+        deleted: boolean;
+
+        /**
+         * message: A message indicating the result of the deletion operation.
+         *
+         * @type {string}
+         * @example 'Relation deleted successfully'
+         */
+        message: string;
+
+        /**
+         * traceId: The unique identifier for tracing the request.
+         *
+         * @type {string}
+         * @example 'dcbf04db-ed4c-4519-81b6-83e01bcd65af'
+         */
+        traceId: string;
+      };
+    }
+
+    /**
+     * AssociationDTO: The structure of an association data type object (DTO).
+     *
+     * @memberof Objects.Associations
+     * @requires locationId: The ID of the location where the association is stored.
+     * @requires id: The unique identifier of the association.
+     * @requires key: The internal key of the association.
+     * @requires firstObjectLabel: The label for the first object in the association. Must match the order of objects when the assciation was created.
+     * @requires firstObjectKey: The internal key of the first object in the association.
+     * @requires secondObjectLabel: The label for the second object in the association.
+     * @requires secondObjectKey: The internal key of the second object in the association.
+     * @requires associationType: The type of the association, indicating whether it is user-defined or system-defined.
+     *
+     * @example
+     * ```ts
+     * const association: Objects.Associations.AssociationDTO = {
+     *  locationId: '502goXVW3lIExEQPOnd3',
+     *  id: '1234567890abcdef',
+     *  key: 'student',
+     *  firstObjectLabel: 'student',
+     *  firstObjectKey: 'student',
+     * secondObjectLabel: 'teacher',
+     * secondObjectKey: 'contact',
+     * associationType: 'USER_DEFINED' // or 'SYSTEM_DEFINED'
+     * };
+     * ```
+     *
+     * @property {string} locationId - The ID of the location where the association is stored.
+     * @example '502goXVW3lIExEQPOnd3'
+     *
+     * @property {string} id - The unique identifier of the association.
+     * @example '1234567890abcdef'
+     *
+     * @property {string} key - The internal key of the association.
+     * @example 'student'
+     *
+     * @property {string} firstObjectLabel - The label for the first object in the association.
+     * @example 'student'
+     *
+     * @property {string} firstObjectKey - The internal key of the first object in the association.
+     * @example 'student'
+     *
+     * @property {string} secondObjectLabel - The label for the second object in the association.
+     * @example 'teacher'
+     *
+     * @property {string} secondObjectKey - The internal key of the second object in the association.
+     * @example 'contact'
+     *
+     * @property {'USER_DEFINED' | 'SYSTEM_DEFINED'} associationType - The type of the association, indicating whether it is user-defined or system-defined.
+     * @example 'USER_DEFINED'
+     */
+    export type AssociationDTO = {
+      /**
+       * locationId: The ID of the location where the association is stored.
+       *
+       * @type {string}
+       * @example '502goXVW3lIExEQPOnd3'
+       */
+      locationId: string;
+
+      /**
+       * id: The unique identifier of the association.
+       *
+       * @type {string}
+       * @example '1234567890abcdef'
+       */
+      id: string;
+
+      /**
+       * key: The internal key of the association.
+       *
+       * @type {string}
+       * @example 'student'
+       */
+      key: string;
+
+      /**
+       * firstObjectLabel: The label for the first object in the association.
+       *
+       * @type {string}
+       * @example 'student'
+       */
+      firstObjectLabel: string;
+
+      /**
+       * firstObjectKey: The internal key of the first object in the association.
+       *
+       * @type {string}
+       * @example 'student'
+       */
+      firstObjectKey: string;
+
+      /**
+       * secondObjectLabel: The label for the second object in the association.
+       *
+       * @type {string}
+       * @example 'teacher'
+       */
+      secondObjectLabel: string;
+
+      /**
+       * secondObjectKey: The internal key of the second object in the association.
+       *
+       * @type {string}
+       * @example 'contact'
+       */
+      secondObjectKey: string;
+
+      /**
+       * associationType: The type of the association, indicating whether it is user-defined or system-defined.
+       *
+       * @type {'USER_DEFINED' | 'SYSTEM_DEFINED'}
+       * @example 'USER_DEFINED'
+       */
+      associationType: "USER_DEFINED" | "SYSTEM_DEFINED";
+    };
+  }
+
+  /**
    * Objects: The namespace for custom objects in the application.
    *
    * @memberof Objects
