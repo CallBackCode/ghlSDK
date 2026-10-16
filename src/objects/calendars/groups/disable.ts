@@ -3,10 +3,7 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../../types/_global";
-import type {
-  CalendarCreateUpdateBlockedSlotSuccessfulResponseDTO,
-  CalendarGroupDTO,
-} from "../../../types/calendars";
+import type { Calendars } from "../../../types/calendars";
 import { withExponentialBackoff } from "../../../contexts/requestUtils";
 
 const baseUrl = "https://services.leadconnectorhq.com/calendars/groups";
@@ -18,7 +15,7 @@ type ResponseTypes =
   | UnprocessableDTO;
 
 const disable = async (
-  groupId: CalendarGroupDTO["id"],
+  groupId: Calendars.Groups.DTO["id"],
   options: { isActive: boolean },
   authToken: string
 ): Promise<ResponseTypes> | null => {

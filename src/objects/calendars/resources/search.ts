@@ -3,28 +3,25 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../../types/_global";
-import type {
-  CalendarResourceDTO,
-  CalendarResourceTypeDTO,
-} from "../../../types/calendars";
+import type { Calendars } from "../../../types/calendars";
 import { withExponentialBackoff } from "../../../contexts/requestUtils";
 
 const baseUrl = "https://services.leadconnectorhq.com/calendars/resources";
 
 type QueryOptions = {
-  locationId: CalendarResourceDTO["locationId"];
+  locationId: Calendars.ResourceDTO["locationId"];
   limit: number;
   skip: number;
 };
 
 type ResponseTypes =
-  | CalendarResourceDTO
+  | Calendars.ResourceDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
 const search = async (
-  resourceType: CalendarResourceTypeDTO[],
+  resourceType: Calendars.ResourceTypeDTO[],
   options: QueryOptions,
   authToken: string
 ): Promise<ResponseTypes> | null => {

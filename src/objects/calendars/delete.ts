@@ -4,7 +4,7 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../types/_global";
-import type { CalendarDTO } from "../../types/calendars";
+import type { Calendars } from "../../types/calendars";
 import { withExponentialBackoff } from "../../contexts/requestUtils";
 
 const baseUrl = "https://services.leadconnectorhq.com/calendars";
@@ -16,7 +16,7 @@ type ResponseTypes =
   | UnprocessableDTO;
 
 const del = async (
-  calendarId: CalendarDTO["id"],
+  calendarId: Calendars.DTO["id"],
   authToken: string
 ): Promise<ResponseTypes | null> => {
   const URL = `${baseUrl}/${calendarId}/`;

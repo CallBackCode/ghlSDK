@@ -1,4 +1,4 @@
-import { CalendarEventDTO } from "../../../types/calendars";
+import type { Calendars } from "../../../types/calendars";
 import {
   BadRequestDTO,
   SuccededDeleteDTO,
@@ -16,7 +16,7 @@ type ResponseTypes =
   | UnprocessableDTO;
 
 const del = async (
-  eventId: CalendarEventDTO["id"],
+  eventId: Calendars.Events.DTO["id"],
   authToken: string
 ): Promise<ResponseTypes> | null => {
   const deleteEvent = async () => {

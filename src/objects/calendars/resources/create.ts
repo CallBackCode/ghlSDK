@@ -3,24 +3,20 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../../types/_global";
-import type {
-  CalendarCreateResourceDTO,
-  CalendarResourceResponseDTO,
-  CalendarResourceTypeDTO,
-} from "../../../types/calendars";
+import type { Calendars } from "../../../types/calendars";
 import { withExponentialBackoff } from "../../../contexts/requestUtils";
 
 const baseUrl = "https://services.leadconnectorhq.com/calendars/resources";
 
 type ResponseTypes =
-  | CalendarResourceResponseDTO
+  | Calendars.ResourceResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
 const create = async (
-  resourceType: CalendarResourceTypeDTO,
-  options: CalendarCreateResourceDTO,
+  resourceType: Calendars.ResourceTypeDTO,
+  options: Calendars.CreateResourceDTO,
   authToken: string
 ): Promise<ResponseTypes> | null => {
   const URL = `${baseUrl}/${resourceType}`;

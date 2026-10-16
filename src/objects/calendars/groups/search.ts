@@ -3,22 +3,19 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../../types/_global";
-import type {
-  CalendarGroupDTO,
-  CalendarAllGroupsSuccessfulResponseDTO,
-} from "../../../types/calendars";
+import type { Calendars } from "../../../types/calendars";
 import { withExponentialBackoff } from "../../../contexts/requestUtils";
 
 const baseUrl = "https://services.leadconnectorhq.com/calendars/groups";
 
 type ResponseTypes =
-  | CalendarAllGroupsSuccessfulResponseDTO
+  | Calendars.Groups.AllSuccessfulResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
 const search = async (
-  locationId: CalendarGroupDTO["locationId"],
+  locationId: Calendars.Groups.DTO["locationId"],
   authToken: string
 ): Promise<ResponseTypes> | null => {
   const query = new URLSearchParams({ locationId }).toString();

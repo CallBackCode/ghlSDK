@@ -3,23 +3,20 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../../types/_global";
-import type {
-  CalendarGetEventSuccessfulResponseDTO,
-  CalendarEventDTO,
-} from "../../../types/calendars";
+import type { Calendars } from "../../../types/calendars";
 import { withExponentialBackoff } from "../../../contexts/requestUtils";
 
 const baseUrl =
   "https://services.leadconnectorhq.com/calendars/events/appointments";
 
 type ResponseTypes =
-  | CalendarGetEventSuccessfulResponseDTO
+  | { event: Calendars.Events.DTO }
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
 const get = async (
-  calendarId: CalendarEventDTO["id"],
+  calendarId: Calendars.Events.DTO["id"],
   authToken: string
 ): Promise<ResponseTypes> | null => {
   const fetchEvent = async () => {

@@ -3,7 +3,7 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../types/_global";
-import type { CalendarsGetSuccessfulResponseDTO } from "../../types/calendars";
+import type { Calendars } from "../../types/calendars";
 import { withExponentialBackoff } from "../../contexts/requestUtils";
 
 const baseUrl = "https://services.leadconnectorhq.com/calendars";
@@ -21,7 +21,7 @@ type Params = {
 };
 
 type ResponseTypes =
-  | CalendarsGetSuccessfulResponseDTO
+  | Calendars.GetSuccessfulResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;

@@ -3,25 +3,21 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../../types/_global";
-import type {
-  CalendarGetCreateUpdateNoteSuccessfulResponseDto,
-  CalendarEventDTO,
-  CalendarGetNoteSchemaDTO,
-} from "../../../types/calendars";
+import type { Calendars } from "../../../types/calendars";
 import { withExponentialBackoff } from "../../../contexts/requestUtils";
 import { ContactNotesDTO } from "../../../types/contacts";
 
 const baseUrl = "https://services.leadconnectorhq.com/calendars/appointments";
 
 type ResponseTypes =
-  | CalendarGetCreateUpdateNoteSuccessfulResponseDto
+  | Calendars.GetCreateUpdateNoteSuccessfulResponseDto
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
 const update = async (
-  appointmentId: CalendarEventDTO["id"],
-  noteId: CalendarGetNoteSchemaDTO["id"],
+  appointmentId: Calendars.Events.DTO["id"],
+  noteId: Calendars.GetNoteSchemaDTO["id"],
   options: ContactNotesDTO,
   authToken: string
 ): Promise<ResponseTypes> | null => {

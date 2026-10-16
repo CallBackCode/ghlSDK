@@ -1,4 +1,4 @@
-import { CalendarGroupDTO } from "../../../types/calendars";
+import type { Calendars } from "../../../types/calendars";
 import {
   BadRequestDTO,
   SuccessDeleteDTO,
@@ -16,7 +16,7 @@ type ResponseTypes =
   | UnprocessableDTO;
 
 const del = async (
-  groupId: CalendarGroupDTO["id"],
+  groupId: Calendars.Groups.DTO["id"],
   authToken: string
 ): Promise<ResponseTypes> | null => {
   const URL = `${baseUrl}/${groupId}`;

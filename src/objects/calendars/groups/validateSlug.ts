@@ -3,23 +3,20 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../../types/_global";
-import type {
-  CalendarValidateGroupSlugPostBodyDTO,
-  CalendarValidateGroupSlugSuccessResponseDTO,
-} from "../../../types/calendars";
+import type { Calendars } from "../../../types/calendars";
 import { withExponentialBackoff } from "../../../contexts/requestUtils";
 
 const baseUrl =
   "https://services.leadconnectorhq.com/calendars/groups/validate-slug";
 
 type ResponseTypes =
-  | CalendarValidateGroupSlugSuccessResponseDTO
+  | Calendars.Groups.ValidateSlugSuccessResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
 const validateSlug = async (
-  options: CalendarValidateGroupSlugPostBodyDTO,
+  options: Calendars.Groups.ValidateSlugPostBodyDTO,
   authToken: string
 ): Promise<ResponseTypes> | null => {
   const URL = `${baseUrl}`;

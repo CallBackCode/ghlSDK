@@ -1,4 +1,4 @@
-import { CalendarResourceTypeDTO } from "../../../types/calendars";
+import type { Calendars } from "../../../types/calendars";
 import {
   BadRequestDTO,
   SuccessDeleteDTO,
@@ -17,7 +17,7 @@ type ResponseTypes =
 
 const del = async (
   resourceId: string,
-  resourceType: CalendarResourceTypeDTO,
+  resourceType: Calendars.ResourceTypeDTO,
   authToken: string
 ): Promise<ResponseTypes> | null => {
   const URL = `${baseUrl}/${resourceType}/${resourceId}`;

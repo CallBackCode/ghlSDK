@@ -3,25 +3,21 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../../types/_global";
-import type {
-  CalendarBlockSlotEditSchemaDTO,
-  CalendarAppointmentSchemaResponseDTO,
-  CalendarEventDTO,
-} from "../../../types/calendars";
+import type { Calendars } from "../../../types/calendars";
 import { withExponentialBackoff } from "../../../contexts/requestUtils";
 
 const baseUrl =
   "https://services.leadconnectorhq.com/calendars/events/block-slots";
 
 type ResponseTypes =
-  | CalendarAppointmentSchemaResponseDTO
+  | Calendars.Appointments.ResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
 
 const update = async (
-  eventId: CalendarEventDTO["id"],
-  options: CalendarBlockSlotEditSchemaDTO,
+  eventId: Calendars.Events.DTO["id"],
+  options: Calendars.BlockSlotEditSchemaDTO,
   authToken: string
 ): Promise<ResponseTypes> | null => {
   const updateSlot = async () => {

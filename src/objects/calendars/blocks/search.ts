@@ -3,7 +3,7 @@ import {
   UnauthorizedDTO,
   UnprocessableDTO,
 } from "../../../types/_global";
-import type { CalendarGetEventsSuccessfulResponseDTO } from "../../../types/calendars";
+import type { Calendars } from "../../../types/calendars";
 import { withExponentialBackoff } from "../../../contexts/requestUtils";
 
 const baseUrl = "https://services.leadconnectorhq.com/calendars/blocked-slots";
@@ -18,7 +18,7 @@ type QueryOptions = {
 };
 
 type ResponseTypes =
-  | CalendarGetEventsSuccessfulResponseDTO
+  | Calendars.Events.GetSuccessfulResponseDTO
   | BadRequestDTO
   | UnauthorizedDTO
   | UnprocessableDTO;
