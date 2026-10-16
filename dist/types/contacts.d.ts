@@ -36,7 +36,9 @@ export type ContactDTO = {
     id?: string /** The ID of the contact (102goXVW3lIExEQPOnd3) */;
     phoneLabel?: string /** The label of the phone number (Mobile) */;
     country?: string /** The country of the contact (United States) */;
-    address?: string /** The address of the contact (123 Main Street) */;
+    address1?: string /** The street address of the contact, as returned by the API (123 Main Street) */;
+    /** @deprecated The API returns `address1`, not `address`. Use `address1`. */
+    address?: string;
     source?: string /** The source of the contact (Website) */;
     type?: string /** The type of the contact (lead) */;
     locationId?: string /** The ID of the location (502goXVW3lIExEQPOnd3) */;
