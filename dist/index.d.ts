@@ -20,38 +20,40 @@ export declare const GHL: {
     };
     businesses: {
         get: (businessId: import("./types/businesses").Businesses.DTO["id"], authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/businesses").Businesses.GetResponseDTO) | null>;
-        listByLocation: (locationId: import("./types/businesses").Businesses.DTO["locationId"], authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/businesses").Businesses.SearchResponseDTO) | null>;
+        listByLocation: (params: import("./types/objects").Objects.Associations.GetParams, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/objects").Objects.Associations.GetResponse) | null>;
         create: (options: import("./types/businesses").Businesses.CreateDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/businesses").Businesses.CreateUpdateResponseDTO) | null>;
         update: (businessId: import("./types/businesses").Businesses.DTO["id"], options: import("./types/businesses").Businesses.UpdateDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/businesses").Businesses.CreateUpdateResponseDTO) | null>;
         delete: (businessId: import("./types/businesses").Businesses.DTO["id"], authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/_global").SuccessDeleteDTO) | null>;
     };
     calendars: {
-        get: (calendarId: CalendarDTO, authToken: string) => Promise<any | null>;
+        get: (calendarId: import("./types/calendars").Calendars.DTO["id"], authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.ByIdSuccessfulResponseDTO) | null>;
         search: (options: {
             locationId: string;
             showDrafted?: boolean;
             groupId?: string;
-        }, authToken: string) => Promise<any | null>;
-        create: (options: CalendarCreateDTO, authToken: string) => Promise<any | null>;
-        update: (calendarId: CalendarDTO, options: CalendarUpdateDTO, authToken: string) => Promise<any | null>;
-        delete: (calendarId: CalendarDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/_global").SuccessDeleteDTO) | null>;
+        }, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.GetSuccessfulResponseDTO) | null>;
+        create: (options: import("./types/calendars").Calendars.CreateDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.ByIdSuccessfulResponseDTO) | null>;
+        update: (calendarId: import("./types/calendars").Calendars.DTO["id"], options: import("./types/calendars").Calendars.UpdateDTO, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.ByIdSuccessfulResponseDTO) | null>;
+        delete: (calendarId: import("./types/calendars").Calendars.DTO["id"], authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/_global").SuccessDeleteDTO) | null>;
         freeSlots: {
-            get: (calendarId: CalendarDTO, options: CalendarGetFreeSlotsDTO, authToken: string) => Promise<any> | null;
+            get: (calendarId: import("./types/calendars").Calendars.DTO["id"], options: import("./types/calendars").Calendars.Slots.GetFreeDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.Slots.GetSuccessfulResponseDTO> | null;
         };
         groups: {
-            search: (locationId: CalendarGroupDTO, authToken: string) => Promise<any> | null;
-            create: (options: CalendarGroupCreateDTO, authToken: string) => Promise<any> | null;
-            update: (groupId: CalendarGroupDTO, options: CalendarGroupUpdateDTO, authToken: string) => Promise<any> | null;
-            delete: (groupId: CalendarGroupDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/_global").SuccessDeleteDTO> | null;
-            disable: (groupId: CalendarGroupDTO, options: {
+            search: (locationId: import("./types/calendars").Calendars.Groups.DTO["locationId"], authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.Groups.AllSuccessfulResponseDTO> | null;
+            create: (options: import("./types/calendars").Calendars.Groups.CreateDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.Groups.CreateSuccessfulResponseDTO> | null;
+            update: (groupId: import("./types/calendars").Calendars.Groups.DTO["id"], options: import("./types/calendars").Calendars.Groups.UpdateDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.CreateUpdateBlockedSlotSuccessfulResponseDTO> | null;
+            delete: (groupId: import("./types/calendars").Calendars.Groups.DTO["id"], authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/_global").SuccessDeleteDTO> | null;
+            disable: (groupId: import("./types/calendars").Calendars.Groups.DTO["id"], options: {
                 isActive: boolean;
             }, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | {
                 success: true;
             }> | null;
-            validateSlug: (options: CalendarValidateGroupSlugPostBodyDTO, authToken: string) => Promise<any> | null;
+            validateSlug: (options: import("./types/calendars").Calendars.Groups.ValidateSlugPostBodyDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.Groups.ValidateSlugSuccessResponseDTO> | null;
         };
         appointments: {
-            get: (calendarId: CalendarEventDTO, authToken: string) => Promise<any> | null;
+            get: (calendarId: import("./types/calendars").Calendars.Events.DTO["id"], authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | {
+                event: import("./types/calendars").Calendars.Events.DTO;
+            }> | null;
             search: (options: {
                 locationId: string;
                 startTime: string;
@@ -59,19 +61,19 @@ export declare const GHL: {
                 calendarId?: string;
                 groupId?: string;
                 userId?: string;
-            }, authToken: string) => Promise<any> | null;
-            create: (options: CalendarAppointmentCreateUpdateSchemaDTO, authToken: string) => Promise<any> | null;
-            update: (eventId: CalendarEventDTO, options: Partial<CalendarAppointmentCreateUpdateSchemaDTO>, authToken: string) => Promise<any> | null;
-            delete: (eventId: CalendarEventDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/_global").SuccededDeleteDTO> | null;
+            }, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.Events.GetSuccessfulResponseDTO> | null;
+            create: (options: import("./types/calendars").Calendars.Appointments.CreateUpdateDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.CreateUpdateBlockedSlotSuccessfulResponseDTO> | null;
+            update: (eventId: import("./types/calendars").Calendars.Events.DTO["id"], options: Partial<import("./types/calendars").Calendars.Appointments.CreateUpdateDTO>, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.CreateUpdateBlockedSlotSuccessfulResponseDTO> | null;
+            delete: (eventId: import("./types/calendars").Calendars.Events.DTO["id"], authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/_global").SuccededDeleteDTO> | null;
         };
         notes: {
-            search: (appointmentId: CalendarEventDTO, options: {
+            search: (appointmentId: import("./types/calendars").Calendars.Events.DTO["id"], options: {
                 limit: number;
                 offset: number;
-            }, authToken: string) => Promise<any> | null;
-            create: (appointmentId: CalendarEventDTO, options: import("./types/contacts").ContactNotesDTO, authToken: string) => Promise<any> | null;
-            update: (appointmentId: CalendarEventDTO, noteId: CalendarGetNoteSchemaDTO, options: import("./types/contacts").ContactNotesDTO, authToken: string) => Promise<any> | null;
-            delete: (appointmentId: CalendarEventDTO, noteId: CalendarGetNoteSchemaDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/_global").SuccessDeleteDTO> | null;
+            }, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.GetNotesDTO> | null;
+            create: (appointmentId: import("./types/calendars").Calendars.Events.DTO["id"], options: import("./types/contacts").ContactNotesDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.GetCreateUpdateNoteSuccessfulResponseDto> | null;
+            update: (appointmentId: import("./types/calendars").Calendars.Events.DTO["id"], noteId: import("./types/calendars").Calendars.GetNoteSchemaDTO["id"], options: import("./types/contacts").ContactNotesDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.GetCreateUpdateNoteSuccessfulResponseDto> | null;
+            delete: (appointmentId: import("./types/calendars").Calendars.Events.DTO["id"], noteId: import("./types/calendars").Calendars.GetNoteSchemaDTO["id"], authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/_global").SuccessDeleteDTO> | null;
         };
         blocks: {
             search: (options: {
@@ -81,23 +83,23 @@ export declare const GHL: {
                 calendarId?: string;
                 groupId?: string;
                 userId?: string;
-            }, authToken: string) => Promise<any> | null;
-            create: (options: CalendarBlockSlotCreateSchemaDTO, authToken: string) => Promise<any> | null;
-            update: (eventId: CalendarEventDTO, options: CalendarBlockSlotEditSchemaDTO, authToken: string) => Promise<any> | null;
-            delete: (eventId: CalendarEventDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/_global").SuccededDeleteDTO> | null;
+            }, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.Events.GetSuccessfulResponseDTO> | null;
+            create: (options: import("./types/calendars").Calendars.BlockSlotCreateSchemaDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.CreateUpdateBlockedSlotSuccessfulResponseDTO> | null;
+            update: (eventId: import("./types/calendars").Calendars.Events.DTO["id"], options: import("./types/calendars").Calendars.BlockSlotEditSchemaDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.Appointments.ResponseDTO> | null;
+            delete: (eventId: import("./types/calendars").Calendars.Events.DTO["id"], authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/_global").SuccededDeleteDTO> | null;
         };
         resources: {
-            get: (resourceId: string, resourceType: CalendarResourceTypeDTO, authToken: string) => Promise<any> | null;
-            search: (resourceType: CalendarResourceTypeDTO[], options: {
-                locationId: CalendarResourceDTO;
+            get: (resourceId: string, resourceType: import("./types/calendars").Calendars.ResourceTypeDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.ResourceDTO> | null;
+            search: (resourceType: import("./types/calendars").Calendars.ResourceTypeDTO[], options: {
+                locationId: import("./types/calendars").Calendars.ResourceDTO["locationId"];
                 limit: number;
                 skip: number;
-            }, authToken: string) => Promise<any> | null;
-            create: (resourceType: CalendarResourceTypeDTO, options: CalendarCreateResourceDTO, authToken: string) => Promise<any> | null;
-            update: (resourceId: string, resourceType: CalendarResourceTypeDTO, options: Partial<CalendarCreateResourceDTO & {
+            }, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.ResourceDTO> | null;
+            create: (resourceType: import("./types/calendars").Calendars.ResourceTypeDTO, options: import("./types/calendars").Calendars.CreateResourceDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.ResourceResponseDTO> | null;
+            update: (resourceId: string, resourceType: import("./types/calendars").Calendars.ResourceTypeDTO, options: Partial<import("./types/calendars").Calendars.CreateResourceDTO & {
                 isActive: boolean;
-            }>, authToken: string) => Promise<any | null>;
-            delete: (resourceId: string, resourceType: CalendarResourceTypeDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/_global").SuccessDeleteDTO> | null;
+            }>, authToken: string) => Promise<(import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/calendars").Calendars.ResourceResponseDTO) | null>;
+            delete: (resourceId: string, resourceType: import("./types/calendars").Calendars.ResourceTypeDTO, authToken: string) => Promise<import("./types/_global").BadRequestDTO | import("./types/_global").UnauthorizedDTO | import("./types/_global").UnprocessableDTO | import("./types/_global").SuccessDeleteDTO> | null;
         };
     };
     campaigns: {

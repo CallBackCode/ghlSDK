@@ -181,7 +181,7 @@ export declare namespace Calendars {
          * }
          */
         interface CreateUpdateDTO extends DTO {
-            rrule?: ;
+            rrule?: string /** Recurrence Rule (RRULE) as per the iCalendar (RFC 5545) specification for recurring events. DTSTART is not required, instance ids are calculated on the basis of startTime of the event. The rrule only be applied if ignoreFreeSlotValidation is true. */;
         }
         interface EditDTO extends DeepRequired<DTO> {
         }

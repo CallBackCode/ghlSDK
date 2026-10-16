@@ -1,5 +1,5 @@
 import { BadRequestDTO, UnauthorizedDTO, UnprocessableDTO } from "../../../types/_global";
-import { CalendarDTO, CalendarGetFreeSlotsDTO, CalendarGetSlotsSuccessfulResponseDto } from "../../../types/calendars";
-type ResponseTypes = CalendarGetSlotsSuccessfulResponseDto | BadRequestDTO | UnauthorizedDTO | UnprocessableDTO;
-declare const get: (calendarId: CalendarDTO["id"], options: CalendarGetFreeSlotsDTO, authToken: string) => Promise<ResponseTypes> | null;
+import type { Calendars } from "../../../types/calendars";
+type ResponseTypes = Calendars.Slots.GetSuccessfulResponseDTO | BadRequestDTO | UnauthorizedDTO | UnprocessableDTO;
+declare const get: (calendarId: Calendars.DTO["id"], options: Calendars.Slots.GetFreeDTO, authToken: string) => Promise<ResponseTypes> | null;
 export default get;

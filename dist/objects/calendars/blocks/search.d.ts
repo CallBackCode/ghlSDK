@@ -1,5 +1,5 @@
 import { BadRequestDTO, UnauthorizedDTO, UnprocessableDTO } from "../../../types/_global";
-import type { CalendarGetEventsSuccessfulResponseDTO } from "../../../types/calendars";
+import type { Calendars } from "../../../types/calendars";
 type QueryOptions = {
     locationId: string;
     startTime: string;
@@ -8,6 +8,6 @@ type QueryOptions = {
     groupId?: string;
     userId?: string;
 };
-type ResponseTypes = CalendarGetEventsSuccessfulResponseDTO | BadRequestDTO | UnauthorizedDTO | UnprocessableDTO;
+type ResponseTypes = Calendars.Events.GetSuccessfulResponseDTO | BadRequestDTO | UnauthorizedDTO | UnprocessableDTO;
 declare const search: (options: QueryOptions, authToken: string) => Promise<ResponseTypes> | null;
 export default search;

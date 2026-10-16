@@ -1,13 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const requestUtils_1 = require("../../contexts/requestUtils");
-const baseUrl = "https://services.leadconnectorhq.com/businesses";
-const listByLocation = async (locationId, authToken) => {
-    const URL = `${baseUrl}/?` + new URLSearchParams({ locationId });
+const requestUtils_1 = require("../../../contexts/requestUtils");
+const baseUrl = "https://services.leadconnectorhq.com/objects";
+const del = async (params, authToken) => {
+    const URL = `${baseUrl}/${params.schemaKey}/records/${params.id}/`;
     const executeRequest = async () => {
         const response = await fetch(URL, {
-            method: "GET",
+            method: "DELETE",
             headers: {
+                "Content-Type": "application/json",
                 Accept: "application/json",
                 Version: "2021-07-28",
                 Authorization: `Bearer ${authToken}`,
@@ -29,5 +30,5 @@ const listByLocation = async (locationId, authToken) => {
         return null;
     }
 };
-exports.default = listByLocation;
-//# sourceMappingURL=listByLocation.js.map
+exports.default = del;
+//# sourceMappingURL=delete.js.map

@@ -1,5 +1,5 @@
 import { BadRequestDTO, UnauthorizedDTO, UnprocessableDTO } from "../../../types/_global";
-import type { CalendarResourceDTO, CalendarResourceTypeDTO } from "../../../types/calendars";
-type ResponseTypes = CalendarResourceDTO | BadRequestDTO | UnauthorizedDTO | UnprocessableDTO;
-declare const get: (resourceId: string, resourceType: CalendarResourceTypeDTO, authToken: string) => Promise<ResponseTypes> | null;
+import type { Calendars } from "../../../types/calendars";
+type ResponseTypes = Calendars.ResourceDTO | BadRequestDTO | UnauthorizedDTO | UnprocessableDTO;
+declare const get: (resourceId: string, resourceType: Calendars.ResourceTypeDTO, authToken: string) => Promise<ResponseTypes> | null;
 export default get;

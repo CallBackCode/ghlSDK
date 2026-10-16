@@ -1,5 +1,7 @@
 import { BadRequestDTO, UnauthorizedDTO, UnprocessableDTO } from "../../../types/_global";
-import type { CalendarGetEventSuccessfulResponseDTO, CalendarEventDTO } from "../../../types/calendars";
-type ResponseTypes = CalendarGetEventSuccessfulResponseDTO | BadRequestDTO | UnauthorizedDTO | UnprocessableDTO;
-declare const get: (calendarId: CalendarEventDTO["id"], authToken: string) => Promise<ResponseTypes> | null;
+import type { Calendars } from "../../../types/calendars";
+type ResponseTypes = {
+    event: Calendars.Events.DTO;
+} | BadRequestDTO | UnauthorizedDTO | UnprocessableDTO;
+declare const get: (calendarId: Calendars.Events.DTO["id"], authToken: string) => Promise<ResponseTypes> | null;
 export default get;
